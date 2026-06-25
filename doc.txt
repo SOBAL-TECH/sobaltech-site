@@ -1,0 +1,127 @@
+Add this to the prompt:
+
+## Required Tech Stack
+
+Use the following tech stack:
+
+* **Frontend:** Next.js with App Router
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS
+* **UI Components:** shadcn/ui
+* **Animations:** Framer Motion
+* **Database:** PostgreSQL
+* **ORM:** Prisma
+* **Authentication:** NextAuth/Auth.js
+* **File Uploads:** UploadThing or Cloudinary
+* **Forms:** React Hook Form + Zod validation
+* **Rich Text Editor:** TipTap
+* **Email Service:** Resend or Nodemailer
+* **Deployment:** Vercel
+* **Package Manager:** pnpm
+
+## Design Inspiration
+
+Take strong visual inspiration from **Stripe.com**:
+
+* Clean modern layout
+* Beautiful gradients
+* Premium spacing
+* Sharp typography
+* Smooth interactions
+* Polished cards and sections
+* Professional SaaS/agency feel
+* Subtle animations
+* Minimal but powerful UI
+* Strong hero section
+* Elegant navigation
+* Responsive design excellence
+
+Do not copy Stripe directly. Create an original brand identity for **SobalTech** inspired by Stripe’s level of polish, clarity, and modern feel.
+
+## Code Quality Requirements
+
+Write clean, professional, maintainable code.
+
+Follow these rules:
+
+* Use TypeScript everywhere
+* Use reusable components
+* Use clear folder structure
+* Use server components where appropriate
+* Use client components only when needed
+* Keep business logic separate from UI
+* Use Prisma schema properly
+* Use Zod for validation
+* Use secure authentication
+* Protect admin routes
+* Create reusable form components
+* Use environment variables properly
+* Avoid hardcoded content where admin editing is required
+* Use readable naming conventions
+* Add error handling
+* Add loading states
+* Add empty states
+* Add success and error notifications
+* Optimize images
+* Make the website SEO-friendly
+* Ensure mobile-first responsiveness
+* Keep components small and focused
+* Avoid messy inline logic
+* Use comments only where necessary
+
+## Suggested Folder Structure
+
+Use a structure similar to:
+
+```txt
+app/
+  (site)/
+    page.tsx
+    about/
+    services/
+    portfolio/
+    blog/
+    contact/
+    request-quote/
+  admin/
+    dashboard/
+    services/
+    projects/
+    blog/
+    testimonials/
+    settings/
+  api/
+components/
+  ui/
+  shared/
+  site/
+  admin/
+lib/
+  auth/
+  db/
+  validations/
+  utils/
+prisma/
+public/
+types/
+```
+
+## Admin Editing Requirement
+
+Most website content must come from the database and be editable from the admin dashboard, including:
+
+* Hero content
+* Services
+* About section
+* Projects
+* Blog posts
+* Testimonials
+* Team members
+* CTA text
+* Contact information
+* Social links
+* SEO content
+* Footer content
+* Images
+
+The admin panel should feel modern, simple, and professional.
