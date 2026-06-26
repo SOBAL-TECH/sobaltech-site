@@ -152,12 +152,15 @@
     @apply bg-gradient-to-r from-indigo-500 via-violet-500 to-purple-500 bg-clip-text text-transparent;
   }
 
-  /* Grid pattern overlay */
+  /* Line pattern overlay */
   .grid-pattern {
-    background-image:
-      linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      transparent calc(100% - 1px),
+      hsl(var(--foreground) / 0.025) calc(100% - 1px)
+    );
+    background-size: 38px 100%;
   }
 
   .text-gradient-brand {
@@ -231,6 +234,242 @@
     @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full
       before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent
       before:animate-[shimmer_1.5s_infinite];
+  }
+
+  .hero-active-line-field {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.85;
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.055) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px
+      ),
+      radial-gradient(
+        circle at 50% 0%,
+        rgba(129, 140, 248, 0.18),
+        transparent 42%
+      );
+    background-size:
+      72px 72px,
+      72px 72px,
+      100% 100%;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 10%,
+      black 88%,
+      transparent
+    );
+  }
+
+  .hero-active-line-field::before {
+    content: "";
+    position: absolute;
+    inset-inline: -20%;
+    top: -35%;
+    height: 34%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(99, 102, 241, 0.2),
+      rgba(34, 211, 238, 0.1),
+      transparent
+    );
+    animation: hero-scan-line 4.8s linear infinite;
+  }
+
+  .hero-active-line-field::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, transparent, rgba(129, 140, 248, 0.18), transparent)
+        18% 0 / 1px 100% no-repeat,
+      linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.12), transparent)
+        72% 0 / 1px 100% no-repeat;
+    opacity: 0.7;
+  }
+
+  .hero-line-streams {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .hero-line-streams span {
+    position: absolute;
+    top: -30%;
+    height: 34%;
+    width: 1px;
+    border-radius: 999px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(165, 180, 252, 0.9),
+      rgba(45, 212, 191, 0.45),
+      transparent
+    );
+    box-shadow: 0 0 18px rgba(129, 140, 248, 0.45);
+    animation: hero-line-drop 3.4s linear infinite;
+  }
+
+  .site-vertical-lines {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .site-vertical-lines::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      transparent calc(100% - 1px),
+      hsl(var(--foreground) / 0.026) calc(100% - 1px)
+    );
+    background-size: 38px 100%;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 12%,
+      black 86%,
+      transparent
+    );
+  }
+
+  .site-vertical-lines::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: -28%;
+    height: 30%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      hsl(var(--primary) / 0.055),
+      hsl(190 90% 55% / 0.028),
+      transparent
+    );
+    animation: site-line-scan 7s linear infinite;
+  }
+
+  .site-vertical-lines-dark::before {
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      transparent calc(100% - 1px),
+      rgba(255, 255, 255, 0.038) calc(100% - 1px)
+    );
+  }
+
+  .site-vertical-lines-dark::after {
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(129, 140, 248, 0.075),
+      rgba(34, 211, 238, 0.04),
+      transparent
+    );
+  }
+
+  .page-loading-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0.85;
+  }
+
+  .page-loading-lines::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      transparent calc(100% - 1px),
+      hsl(var(--foreground) / 0.035) calc(100% - 1px)
+    );
+    background-size: 42px 100%;
+  }
+
+  .page-loading-lines::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: -25%;
+    height: 28%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      hsl(var(--primary) / 0.09),
+      transparent
+    );
+    animation: site-line-scan 2.4s linear infinite;
+  }
+}
+
+@keyframes hero-scan-line {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(390%);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-line-drop {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  78% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(390%);
+    opacity: 0;
+  }
+}
+
+@keyframes site-line-scan {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(430%);
+    opacity: 0;
   }
 }
 

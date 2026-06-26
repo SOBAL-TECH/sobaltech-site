@@ -40,6 +40,12 @@ DATABASE_URL="postgresql://user:password@localhost:5432/sobaltech"
 AUTH_SECRET="generate-with: openssl rand -base64 32"
 RESEND_API_KEY="re_..."
 NEXT_PUBLIC_APP_URL="http://localhost:3000"
+GEMINI_API_KEY="..."
+GEMINI_MODEL="gemini-2.0-flash"
+
+# Optional chatbot fallback
+OPENAI_API_KEY="sk-..."
+OPENAI_MODEL="gpt-5.5"
 ```
 
 ### 3. Database setup

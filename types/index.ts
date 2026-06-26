@@ -14,6 +14,9 @@ import type {
   PostStatus,
   SubmissionStatus,
   User,
+  JobPosting,
+  JobApplication,
+  ApplicationStatus,
 } from "@prisma/client";
 
 // ─── Re-export Prisma types ────────────────────────────────────────────────────
@@ -32,6 +35,9 @@ export type {
   ProjectStatus,
   PostStatus,
   SubmissionStatus,
+  JobPosting,
+  JobApplication,
+  ApplicationStatus,
 };
 
 // ─── NextAuth type augmentation ───────────────────────────────────────────────

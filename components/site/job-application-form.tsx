@@ -15,33 +15,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import {
-  ContactFormSchema,
-  type ContactFormValues,
-} from "@/lib/validations/contact";
-import { submitContactForm } from "@/lib/actions/contact";
-
-// ─── Subject options ──────────────────────────────────────────────────────────
-
-const SUBJECT_OPTIONS = [
-  "General Inquiry",
-  "Project Request",
-  "Partnership Opportunity",
-  "Technical Support",
-  "Pricing Question",
-  "Press & Media",
-  "Other",
-] as const;
-
-// ─── Success state ────────────────────────────────────────────────────────────
+  JobApplicationSchema,
+  type JobApplicationValues,
+} from "@/lib/validations/careers";
+import { submitJobApplication } from "@/lib/actions/careers";
 
 function SuccessMessage({ name }: { name: string }) {
   return (
@@ -51,47 +30,43 @@ function SuccessMessage({ name }: { name: string }) {
       transition={{ duration: 0.4 }}
       className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-12 text-center"
     >
-      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/15 border border-emerald-500/20">
+      <div className="flex h-14 w-14 items-center justify-center rounded-full border border-emerald-500/20 bg-emerald-500/15">
         <CheckCircle2 className="h-7 w-7 text-emerald-500" />
       </div>
       <div className="space-y-1">
-        <h3 className="text-xl font-semibold text-foreground">
-          Message Received!
-        </h3>
-        <p className="text-muted-foreground text-sm">
-          Thanks, {name}! We&apos;ll get back to you within 1–2 business days.
+        <h3 className="text-xl font-semibold">Application Submitted!</h3>
+        <p className="text-sm text-muted-foreground">
+          Thanks, {name}. We will review your application and be in touch within
+          5–7 business days.
         </p>
       </div>
     </motion.div>
   );
 }
 
-// ─── Form ─────────────────────────────────────────────────────────────────────
-
-export function ContactForm() {
+export function JobApplicationForm({ jobId }: { jobId: string }) {
   const [submitted, setSubmitted] = useState(false);
   const [submittedName, setSubmittedName] = useState("");
   const [serverError, setServerError] = useState<string | null>(null);
 
-  const form = useForm<ContactFormValues>({
-    resolver: zodResolver(ContactFormSchema),
+  const form = useForm<JobApplicationValues>({
+    resolver: zodResolver(JobApplicationSchema),
     defaultValues: {
+      jobId,
       name: "",
       email: "",
       phone: "",
-      company: "",
-      subject: "",
-      message: "",
+      linkedIn: "",
+      portfolioUrl: "",
+      coverLetter: "",
     },
   });
 
-  const {
-    formState: { isSubmitting },
-  } = form;
+  const { formState: { isSubmitting } } = form;
 
-  const onSubmit = async (data: ContactFormValues) => {
+  const onSubmit = async (data: JobApplicationValues) => {
     setServerError(null);
-    const result = await submitContactForm(data);
+    const result = await submitJobApplication(data);
     if (result.success) {
       setSubmittedName(data.name);
       setSubmitted(true);
@@ -100,31 +75,26 @@ export function ContactForm() {
     }
   };
 
-  if (submitted) {
-    return <SuccessMessage name={submittedName} />;
-  }
+  if (submitted) return <SuccessMessage name={submittedName} />;
 
   return (
     <div className="space-y-6">
       <div className="space-y-1.5">
-        <h2 className="text-2xl font-bold tracking-tight text-foreground">
-          Send us a message
-        </h2>
-        <p className="text-muted-foreground text-sm">
-          Fill in the form and we&apos;ll get back to you as soon as possible.
+        <h2 className="text-2xl font-bold tracking-tight">Apply for this role</h2>
+        <p className="text-sm text-muted-foreground">
+          Fill in the form below and we will get back to you within 5–7 business days.
         </p>
       </div>
 
       {serverError && (
         <div className="flex items-start gap-3 rounded-lg border border-destructive/30 bg-destructive/5 p-4 text-sm text-destructive">
-          <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           <span>{serverError}</span>
         </div>
       )}
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-          {/* Name + Email */}
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <FormField
               control={form.control}
@@ -146,11 +116,7 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>Email Address *</FormLabel>
                   <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="alex@company.com"
-                      {...field}
-                    />
+                    <Input type="email" placeholder="alex@example.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -158,7 +124,6 @@ export function ContactForm() {
             />
           </div>
 
-          {/* Phone + Company */}
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <FormField
               control={form.control}
@@ -167,11 +132,7 @@ export function ContactForm() {
                 <FormItem>
                   <FormLabel>Phone Number</FormLabel>
                   <FormControl>
-                    <Input
-                      type="tel"
-                      placeholder="+233 ..."
-                      {...field}
-                    />
+                    <Input type="tel" placeholder="+233 ..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -179,12 +140,12 @@ export function ContactForm() {
             />
             <FormField
               control={form.control}
-              name="company"
+              name="linkedIn"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Company</FormLabel>
+                  <FormLabel>LinkedIn Profile</FormLabel>
                   <FormControl>
-                    <Input placeholder="Acme Inc." {...field} />
+                    <Input placeholder="https://linkedin.com/in/..." {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -192,43 +153,30 @@ export function ContactForm() {
             />
           </div>
 
-          {/* Subject (Select) */}
           <FormField
             control={form.control}
-            name="subject"
+            name="portfolioUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Subject *</FormLabel>
-                <Select value={field.value} onValueChange={field.onChange}>
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a subject" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {SUBJECT_OPTIONS.map((option) => (
-                      <SelectItem key={option} value={option}>
-                        {option}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <FormLabel>Portfolio / GitHub / Website</FormLabel>
+                <FormControl>
+                  <Input placeholder="https://..." {...field} />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
 
-          {/* Message */}
           <FormField
             control={form.control}
-            name="message"
+            name="coverLetter"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Message *</FormLabel>
+                <FormLabel>Cover Letter *</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Tell us about your project, question, or idea..."
-                    rows={6}
+                    placeholder="Tell us why you are a great fit for this role, relevant experience, and what you are most excited to work on..."
+                    rows={8}
                     className="resize-none"
                     {...field}
                   />
@@ -238,32 +186,31 @@ export function ContactForm() {
             )}
           />
 
-          {/* Submit */}
           <Button
             type="submit"
             disabled={isSubmitting}
             size="lg"
-            className="bg-brand-gradient hover:opacity-90 transition-opacity text-white font-semibold shadow-glow gap-2 w-full sm:w-auto"
+            className="bg-brand-gradient w-full gap-2 text-white hover:opacity-90 sm:w-auto"
           >
             {isSubmitting ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Sending...
+                Submitting...
               </>
             ) : (
               <>
                 <Send className="h-4 w-4" />
-                Send Message
+                Submit Application
               </>
             )}
           </Button>
 
           <p className="text-xs text-muted-foreground">
-            By submitting this form you agree to our{" "}
+            By submitting you agree to our{" "}
             <a href="/privacy" className="underline hover:text-foreground">
               Privacy Policy
             </a>
-            . We&apos;ll never share your details with third parties.
+            . We will never share your details with third parties.
           </p>
         </form>
       </Form>

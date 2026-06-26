@@ -95,18 +95,13 @@ export function Footer() {
                   hello@sobaltech.com
                 </a>
               </li>
-              <li>
-                <a
-                  href="tel:+15551234567"
-                  className="flex items-center gap-2 text-xs text-white/35 transition-colors hover:text-white/70"
-                >
-                  <Phone className="h-3.5 w-3.5 shrink-0 text-indigo-400/50" />
-                  +1 (555) 123-4567
-                </a>
+              <li className="flex items-center gap-2 text-xs text-white/35">
+                <Phone className="h-3.5 w-3.5 shrink-0 text-indigo-400/50" />
+                Available after inquiry
               </li>
               <li className="flex items-center gap-2 text-xs text-white/35">
                 <MapPin className="h-3.5 w-3.5 shrink-0 text-indigo-400/50" />
-                San Francisco, CA
+                Spintex, Accra, Ghana
               </li>
             </ul>
           </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Clock, Calendar, User } from "lucide-react";
 import { prisma } from "@/lib/db";
+import { buildMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/shared/page-header";
 import { Container } from "@/components/shared/container";
 
@@ -12,15 +13,12 @@ import type { BlogPost } from "@/types";
 
 // ─── SEO ──────────────────────────────────────────────────────────────────────
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMeta({
   title: "Blog | SobalTech",
   description:
     "Insights, tutorials, and engineering deep-dives from the SobalTech team.",
-  openGraph: {
-    title: "Blog | SobalTech",
-    description: "Engineering insights and tutorials from SobalTech.",
-  },
-};
+  path: "/blog",
+});
 
 // ─── Placeholder data ─────────────────────────────────────────────────────────
 

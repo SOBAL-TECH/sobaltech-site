@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { prisma } from "@/lib/db";
+import { buildMeta } from "@/lib/seo";
 import { HeroSection } from "@/components/site/hero-section";
 import { LiveDashboardSection } from "@/components/site/live-dashboard-section";
 import { ServicesPreview } from "@/components/site/services-preview";
@@ -9,17 +10,12 @@ import { CTASection } from "@/components/site/cta-section";
 
 // ─── SEO ──────────────────────────────────────────────────────────────────────
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMeta({
   title: "SobalTech — Building the Future, One Line at a Time",
   description:
     "SobalTech is a full-service digital agency building high-performance web apps, mobile solutions, and cloud infrastructure for ambitious companies. Start your project today.",
-  openGraph: {
-    title: "SobalTech — Building the Future, One Line at a Time",
-    description:
-      "High-performance web apps, mobile solutions, and cloud infrastructure for ambitious companies.",
-    type: "website",
-  },
-};
+  path: "/",
+});
 
 // ─── Data fetching ────────────────────────────────────────────────────────────
 

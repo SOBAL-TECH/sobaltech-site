@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { buildMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/shared/page-header";
 import { QuoteForm } from "./quote-form";
 
 // ─── SEO ──────────────────────────────────────────────────────────────────────
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMeta({
   title: "Request a Quote — SobalTech",
   description:
     "Tell us about your project and we'll send you a tailored proposal within 2–3 business days. No commitment required.",
-};
+  path: "/request-quote",
+});
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 

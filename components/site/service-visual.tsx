@@ -2,14 +2,18 @@ import {
   Activity,
   BarChart3,
   Bot,
+  BriefcaseBusiness,
   CheckCircle2,
   Cloud,
   Code2,
   Database,
   GitBranch,
+  GraduationCap,
   MessageSquare,
+  Network,
   Palette,
   Server,
+  ShieldCheck,
   Smartphone,
   Sparkles,
   Terminal,
@@ -254,6 +258,107 @@ function AiWorkspace() {
   );
 }
 
+function SecurityConsole() {
+  return (
+    <div className="relative mx-auto max-w-md overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-950 shadow-2xl shadow-emerald-500/15 transition-transform duration-500 group-hover:-translate-y-2">
+      <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.04] px-4 py-3">
+        <div className="flex items-center gap-2">
+          <ShieldCheck className="h-4 w-4 text-emerald-300" />
+          <span className="text-xs font-semibold text-white">Security review</span>
+        </div>
+        <span className="rounded-full bg-emerald-400/10 px-2.5 py-1 text-[10px] font-semibold text-emerald-300">
+          Active
+        </span>
+      </div>
+      <div className="p-5">
+        <div className="grid grid-cols-3 gap-3">
+          {[
+            ["12", "checks"],
+            ["3", "risks"],
+            ["0", "critical"],
+          ].map(([value, label]) => (
+            <div key={label} className="rounded-xl border border-white/10 bg-white/[0.05] p-3">
+              <p className="text-lg font-bold text-white">{value}</p>
+              <p className="mt-1 text-[10px] text-slate-400">{label}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 space-y-2">
+          {["Access control verified", "Dependencies scanned", "Encryption policy reviewed"].map((item) => (
+            <div key={item} className="flex items-center gap-2 rounded-xl bg-white/[0.05] p-3 text-xs text-slate-300">
+              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-300" />
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AnalyticsWorkspace() {
+  return (
+    <div className="relative mx-auto max-w-md rounded-[1.75rem] border border-white/10 bg-slate-950 p-4 shadow-2xl shadow-blue-500/15 transition-transform duration-500 group-hover:-translate-y-2">
+      <div className="mb-4 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <BarChart3 className="h-4 w-4 text-cyan-300" />
+          <span className="text-xs font-semibold text-white">Operations analytics</span>
+        </div>
+        <Database className="h-4 w-4 text-slate-400" />
+      </div>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+          <p className="text-2xl font-bold text-white">84%</p>
+          <p className="mt-1 text-[10px] text-slate-400">workflow health</p>
+        </div>
+        <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+          <p className="text-2xl font-bold text-white">18k</p>
+          <p className="mt-1 text-[10px] text-slate-400">records synced</p>
+        </div>
+      </div>
+      <div className="mt-4 flex h-28 items-end gap-2 rounded-2xl border border-white/10 bg-white/[0.04] p-3">
+        {[35, 48, 62, 52, 78, 88, 70, 96].map((height, i) => (
+          <div
+            key={i}
+            className="flex-1 rounded-t-md bg-gradient-to-t from-blue-600 to-cyan-300 transition-all duration-500 group-hover:from-cyan-400 group-hover:to-violet-400"
+            style={{ height: `${height}%` }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AdvisoryBoard() {
+  return (
+    <div className="relative mx-auto max-w-md rounded-[1.75rem] border border-white/10 bg-slate-950 p-5 shadow-2xl shadow-slate-500/15 transition-transform duration-500 group-hover:-translate-y-2">
+      <div className="mb-5 flex items-center gap-2">
+        <BriefcaseBusiness className="h-4 w-4 text-indigo-300" />
+        <p className="text-sm font-semibold text-white">Technology roadmap</p>
+      </div>
+      <div className="space-y-3">
+        {[
+          { icon: Network, label: "Systems map" },
+          { icon: Code2, label: "Build vs buy" },
+          { icon: GraduationCap, label: "Team enablement" },
+        ].map((item, index) => (
+          <div key={item.label} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] p-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400">
+              <item.icon className="h-4 w-4 text-white" />
+            </div>
+            <div className="flex-1">
+              <p className="text-xs font-semibold text-white">{item.label}</p>
+              <div className="mt-2 h-1.5 rounded-full bg-white/10">
+                <div className="h-full rounded-full bg-cyan-300" style={{ width: `${62 + index * 12}%` }} />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function ServiceVisual({ slug, className, size = "hero" }: ServiceVisualProps) {
   const visual = (() => {
     switch (slug) {
@@ -267,6 +372,15 @@ export function ServiceVisual({ slug, className, size = "hero" }: ServiceVisualP
         return <ApiConsole />;
       case "ai-integration":
         return <AiWorkspace />;
+      case "cybersecurity":
+      case "penetration-testing":
+        return <SecurityConsole />;
+      case "data-analytics":
+        return <AnalyticsWorkspace />;
+      case "network-engineering":
+      case "it-consulting":
+      case "it-training":
+        return <AdvisoryBoard />;
       case "web-development":
       default:
         return <MacbookDashboard />;

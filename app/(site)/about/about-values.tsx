@@ -3,63 +3,63 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import {
-  Shield,
-  Zap,
-  Users,
-  Eye,
-  Heart,
-  TrendingUp,
+  BadgeCheck,
+  Gauge,
+  Handshake,
+  LockKeyhole,
+  Route,
+  Wrench,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const values = [
   {
-    Icon: Shield,
-    title: "Quality Without Compromise",
+    Icon: Wrench,
+    title: "Practical engineering",
     description:
-      "We don't ship code we wouldn't be proud to maintain ourselves. Every pull request is peer-reviewed, every feature is tested, every deployment is monitored.",
-    color: "text-blue-500",
-    bg: "bg-blue-500/10 border-blue-500/20",
+      "We design systems around the real business workflow, not around fashionable tools or unnecessary complexity.",
+    color: "text-indigo-500",
+    bg: "bg-indigo-500/10 border-indigo-500/20",
   },
   {
-    Icon: Zap,
-    title: "Speed That Scales",
+    Icon: LockKeyhole,
+    title: "Security-minded delivery",
     description:
-      "Fast shipping isn't about cutting corners — it's about smart decisions, clear scope, and eliminating unnecessary process. We move quickly and carefully.",
-    color: "text-amber-500",
-    bg: "bg-amber-500/10 border-amber-500/20",
-  },
-  {
-    Icon: Eye,
-    title: "Radical Transparency",
-    description:
-      "No hidden blockers, no surprises. You always know where your project stands, what decisions we're making, and why. Honesty is non-negotiable.",
-    color: "text-purple-500",
-    bg: "bg-purple-500/10 border-purple-500/20",
-  },
-  {
-    Icon: Users,
-    title: "True Partnership",
-    description:
-      "We act as your engineering partner, not just a vendor. We challenge assumptions, suggest alternatives, and care about your success beyond the engagement.",
+      "Security, permissions, data handling and deployment safety are treated as core product requirements from the start.",
     color: "text-emerald-500",
     bg: "bg-emerald-500/10 border-emerald-500/20",
   },
   {
-    Icon: Heart,
-    title: "Human-Centered Design",
+    Icon: Route,
+    title: "Clear execution",
     description:
-      "Every pixel and every API endpoint exists to serve a real person. We design and build with empathy, accessibility, and user delight as baseline expectations.",
-    color: "text-rose-500",
-    bg: "bg-rose-500/10 border-rose-500/20",
-  },
-  {
-    Icon: TrendingUp,
-    title: "Long-Term Thinking",
-    description:
-      "We optimize for your 3-year roadmap, not just the current sprint. Architecture decisions, tech stack choices, and team processes are all made with longevity in mind.",
+      "Every engagement needs clear scope, visible progress, direct communication and decisions that are easy to defend.",
     color: "text-sky-500",
     bg: "bg-sky-500/10 border-sky-500/20",
+  },
+  {
+    Icon: Handshake,
+    title: "Long-term partnership",
+    description:
+      "We aim to leave clients with systems they can understand, operate, extend and trust after launch.",
+    color: "text-violet-500",
+    bg: "bg-violet-500/10 border-violet-500/20",
+  },
+  {
+    Icon: Gauge,
+    title: "Performance and reliability",
+    description:
+      "Good software should feel fast, stay available, and give teams confidence when real users depend on it.",
+    color: "text-amber-500",
+    bg: "bg-amber-500/10 border-amber-500/20",
+  },
+  {
+    Icon: BadgeCheck,
+    title: "Professional standards",
+    description:
+      "From interface details to backend architecture, the work should look credible and hold up under scrutiny.",
+    color: "text-rose-500",
+    bg: "bg-rose-500/10 border-rose-500/20",
   },
 ] as const;
 
@@ -70,7 +70,7 @@ export function AboutValues() {
   return (
     <section
       ref={ref}
-      className="relative py-20 md:py-28 bg-muted/30 border-y"
+      className="relative border-y bg-muted/30 py-20 md:py-28"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -85,11 +85,11 @@ export function AboutValues() {
             </span>
           </div>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Our Core Values
+            How we approach the work
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground text-base">
-            The principles that guide every decision we make — from hiring to
-            architecture to client communication.
+            The principles below keep our work grounded, useful and credible —
+            from planning through launch and ongoing support.
           </p>
         </motion.div>
 
@@ -100,11 +100,11 @@ export function AboutValues() {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.07 }}
-              className="rounded-2xl border border-border bg-card p-6 space-y-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+              className="group space-y-4 rounded-[1.25rem] border border-slate-200/70 bg-white/72 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-[0_18px_40px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-white/[0.045] dark:hover:border-indigo-400/25"
             >
               <div
                 className={cn(
-                  "inline-flex h-10 w-10 items-center justify-center rounded-xl border",
+                  "inline-flex h-11 w-11 items-center justify-center rounded-xl border transition-transform duration-300 group-hover:scale-105",
                   value.bg
                 )}
               >

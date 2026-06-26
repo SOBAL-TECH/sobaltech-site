@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { buildMeta, breadcrumbJsonLd } from "@/lib/seo";
 import {
   ArrowRight,
   BarChart3,
@@ -53,14 +54,9 @@ export async function generateMetadata({
     });
     if (!product) return { title: "Product Not Found" };
 
-    return {
-      title: product.seoTitle || `${product.title} | SobalTech`,
-      description: product.seoDesc || product.description,
-      openGraph: {
-        title: product.seoTitle || `${product.title} | SobalTech`,
-        description: product.seoDesc || product.description,
-      },
-    };
+    const title = product.seoTitle || `${product.title} | SobalTech`;
+    const description = product.seoDesc || product.description;
+    return buildMeta({ title, description, path: `/products/${slug}` });
   } catch {
     return { title: "Product" };
   }
@@ -101,6 +97,18 @@ export default async function ProductPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", href: "/" },
+              { name: "Products", href: "/products" },
+              { name: product.title, href: `/products/${slug}` },
+            ])
+          ),
+        }}
+      />
       <PageHeader
         title={product.title}
         description={product.description}

@@ -2,92 +2,44 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Linkedin, Twitter, Github } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  Github,
+  Linkedin,
+  Network,
+  ShieldCheck,
+  Twitter,
+  Users,
+} from "lucide-react";
 
 import type { TeamMember } from "@/types";
 
-// ─── Placeholder team ─────────────────────────────────────────────────────────
-
-const PLACEHOLDER_TEAM: Omit<TeamMember, "createdAt" | "updatedAt">[] = [
+const DELIVERY_MODEL = [
   {
-    id: "1",
-    name: "Alex Sobal",
-    role: "Founder & CEO",
-    bio: "15 years building products at Google and Stripe. Obsessed with developer experience and shipping at scale.",
-    avatar: null,
-    email: "alex@sobaltech.com",
-    linkedIn: "https://linkedin.com",
-    twitter: "https://twitter.com",
-    github: "https://github.com",
-    order: 0,
-    isPublished: true,
+    Icon: BriefcaseBusiness,
+    title: "Technical leadership",
+    detail:
+      "Hands-on planning, architecture decisions, delivery management and quality control.",
   },
   {
-    id: "2",
-    name: "Maria Chen",
-    role: "CTO & Co-Founder",
-    bio: "Ex-Netflix infrastructure engineer. Builds distributed systems that don't wake you up at 3am.",
-    avatar: null,
-    email: null,
-    linkedIn: "https://linkedin.com",
-    twitter: null,
-    github: "https://github.com",
-    order: 1,
-    isPublished: true,
+    Icon: Users,
+    title: "Specialist collaborators",
+    detail:
+      "Design, engineering, cloud, cybersecurity and data support are assembled around the project scope.",
   },
   {
-    id: "3",
-    name: "James Okafor",
-    role: "Head of Design",
-    bio: "Design systems architect. Previously led design at two YC companies. Makes complex products feel simple.",
-    avatar: null,
-    email: null,
-    linkedIn: "https://linkedin.com",
-    twitter: "https://twitter.com",
-    github: null,
-    order: 2,
-    isPublished: true,
+    Icon: ShieldCheck,
+    title: "Secure delivery process",
+    detail:
+      "Reviews, access control, release planning and operational checks are part of the delivery workflow.",
   },
   {
-    id: "4",
-    name: "Priya Mehta",
-    role: "Lead Engineer",
-    bio: "Full-stack generalist with a passion for clean APIs and obsessive attention to TypeScript correctness.",
-    avatar: null,
-    email: null,
-    linkedIn: "https://linkedin.com",
-    twitter: null,
-    github: "https://github.com",
-    order: 3,
-    isPublished: true,
+    Icon: Network,
+    title: "Ongoing support",
+    detail:
+      "After launch, we can support improvements, monitoring, maintenance and system expansion.",
   },
-  {
-    id: "5",
-    name: "Tom Weber",
-    role: "DevOps Lead",
-    bio: "Kubernetes wizard. Turns multi-hour deployments into 4-minute pipelines. Zero-downtime migration specialist.",
-    avatar: null,
-    email: null,
-    linkedIn: "https://linkedin.com",
-    twitter: null,
-    github: "https://github.com",
-    order: 4,
-    isPublished: true,
-  },
-  {
-    id: "6",
-    name: "Sofia Ruiz",
-    role: "Product Strategist",
-    bio: "Bridges business goals and technical reality. Runs discovery workshops that actually produce useful outputs.",
-    avatar: null,
-    email: null,
-    linkedIn: "https://linkedin.com",
-    twitter: "https://twitter.com",
-    github: null,
-    order: 5,
-    isPublished: true,
-  },
-];
+] as const;
 
 // ─── Avatar fallback ──────────────────────────────────────────────────────────
 
@@ -99,7 +51,7 @@ function AvatarInitials({ name }: { name: string }) {
     .join("")
     .toUpperCase();
   return (
-    <div className="flex h-full w-full items-center justify-center bg-brand-500/15 text-xl font-bold text-brand-400">
+    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-indigo-500 via-violet-500 to-slate-950 text-2xl font-bold text-white">
       {initials}
     </div>
   );
@@ -111,7 +63,7 @@ function TeamCard({
   member,
   index,
 }: {
-  member: (typeof PLACEHOLDER_TEAM)[number];
+  member: TeamMember;
   index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -123,10 +75,15 @@ function TeamCard({
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.07 }}
-      className="group rounded-2xl border border-border bg-card overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+      className="group relative overflow-hidden rounded-[1.5rem] border border-slate-200/70 bg-white/72 p-3 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)] dark:border-white/10 dark:bg-white/[0.045] dark:hover:border-indigo-400/25"
     >
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-24 bg-gradient-to-br from-indigo-500/14 via-violet-500/10 to-transparent"
+      />
+
       {/* Avatar */}
-      <div className="relative aspect-square overflow-hidden bg-muted">
+      <div className="relative mx-auto mt-4 h-24 w-24 overflow-hidden rounded-3xl border border-white/70 bg-muted shadow-[0_18px_40px_rgba(15,23,42,0.16)] ring-4 ring-white/70 dark:border-white/10 dark:ring-white/10">
         {member.avatar ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -140,26 +97,30 @@ function TeamCard({
       </div>
 
       {/* Info */}
-      <div className="p-5 space-y-3">
+      <div className="relative space-y-4 px-2 pb-3 pt-5 text-center">
         <div>
-          <h3 className="font-semibold text-foreground">{member.name}</h3>
-          <p className="text-sm text-primary font-medium">{member.role}</p>
+          <h3 className="text-base font-semibold tracking-tight text-foreground">
+            {member.name}
+          </h3>
+          <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-indigo-600 dark:text-indigo-400">
+            {member.role}
+          </p>
         </div>
         {member.bio && (
-          <p className="text-xs text-muted-foreground leading-relaxed">
+          <p className="mx-auto line-clamp-3 max-w-[15rem] text-xs leading-relaxed text-muted-foreground">
             {member.bio}
           </p>
         )}
 
         {/* Social links */}
-        <div className="flex items-center gap-2 pt-1">
+        <div className="flex items-center justify-center gap-2 pt-1">
           {member.linkedIn && (
             <a
               href={member.linkedIn}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${member.name} on LinkedIn`}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200/70 bg-white/70 text-muted-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:text-indigo-600 dark:border-white/10 dark:bg-white/[0.05] dark:hover:text-indigo-300"
             >
               <Linkedin className="h-4 w-4" />
             </a>
@@ -170,7 +131,7 @@ function TeamCard({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${member.name} on Twitter`}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200/70 bg-white/70 text-muted-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:text-indigo-600 dark:border-white/10 dark:bg-white/[0.05] dark:hover:text-indigo-300"
             >
               <Twitter className="h-4 w-4" />
             </a>
@@ -181,7 +142,7 @@ function TeamCard({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${member.name} on GitHub`}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200/70 bg-white/70 text-muted-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:text-indigo-600 dark:border-white/10 dark:bg-white/[0.05] dark:hover:text-indigo-300"
             >
               <Github className="h-4 w-4" />
             </a>
@@ -200,13 +161,11 @@ interface AboutTeamProps {
 }
 
 export function AboutTeam({ members, id }: AboutTeamProps) {
-  const display = members.length > 0 ? members : PLACEHOLDER_TEAM;
-
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, margin: "-60px" });
 
   return (
-    <section id={id} className="py-20 md:py-28 bg-background scroll-mt-20">
+    <section id={id} className="bg-background py-20 scroll-mt-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={headerRef}
@@ -221,19 +180,48 @@ export function AboutTeam({ members, id }: AboutTeamProps) {
             </span>
           </div>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Meet the Team
+            Leadership and delivery model
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground text-base">
-            A group of passionate builders who genuinely care about the work
-            they ship and the people they ship it for.
+            SobalTech is built around focused technical leadership and a
+            practical delivery network, so each project gets the right skills
+            without unnecessary overhead.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-          {display.map((member, i) => (
-            <TeamCard key={member.id} member={member} index={i} />
-          ))}
-        </div>
+        {members.length > 0 ? (
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {members.map((member, i) => (
+              <TeamCard key={member.id} member={member} index={i} />
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {DELIVERY_MODEL.map(({ Icon, title, detail }, i) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={headerInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.12 + i * 0.07 }}
+                className="group relative overflow-hidden rounded-[1.5rem] border border-slate-200/70 bg-white/72 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-[0_22px_56px_rgba(15,23,42,0.1)] dark:border-white/10 dark:bg-white/[0.045] dark:hover:border-indigo-400/25"
+              >
+                <div
+                  aria-hidden
+                  className="absolute inset-x-0 top-0 h-20 bg-gradient-to-br from-indigo-500/12 via-violet-500/8 to-transparent"
+                />
+                <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-white shadow-[0_14px_28px_rgba(15,23,42,0.18)] transition-transform duration-300 group-hover:scale-105 dark:bg-white dark:text-slate-950">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="relative mt-6 font-semibold tracking-tight text-foreground">
+                  {title}
+                </h3>
+                <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {detail}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        )}
 
         {/* Hiring CTA */}
         <motion.div
@@ -244,12 +232,12 @@ export function AboutTeam({ members, id }: AboutTeamProps) {
           className="mt-12 text-center"
         >
           <p className="text-muted-foreground text-sm">
-            Interested in joining?{" "}
+            Want to work with the team?{" "}
             <a
-              href="/careers"
+              href="/request-quote"
               className="text-primary font-medium hover:underline"
             >
-              View open positions →
+              Start a project conversation →
             </a>
           </p>
         </motion.div>

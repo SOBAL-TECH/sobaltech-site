@@ -3,12 +3,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ExternalLink, Github, ArrowRight, Tag, Calendar, User } from "lucide-react";
 import { prisma } from "@/lib/db";
+import { buildMeta, breadcrumbJsonLd } from "@/lib/seo";
 import { PageHeader } from "@/components/shared/page-header";
 import { Container } from "@/components/shared/container";
 import { RichTextRenderer } from "@/components/shared/rich-text-renderer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CTASection } from "@/components/site/cta-section";
+import { FALLBACK_PROJECTS, getFallbackProject } from "@/lib/portfolio-fallbacks";
 import { formatDate } from "@/lib/utils";
 import type { Project } from "@/types";
 
@@ -20,9 +22,13 @@ export async function generateStaticParams() {
       where: { isPublished: true },
       select: { slug: true },
     });
-    return projects.map((p) => ({ slug: p.slug }));
+    const slugs = new Set([
+      ...projects.map((p) => p.slug),
+      ...FALLBACK_PROJECTS.map((p) => p.slug),
+    ]);
+    return Array.from(slugs).map((slug) => ({ slug }));
   } catch {
-    return [];
+    return FALLBACK_PROJECTS.map((p) => ({ slug: p.slug }));
   }
 }
 
@@ -35,21 +41,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   try {
-    const project = await prisma.project.findUnique({
+    const project = await prisma.project.findFirst({
       where: { slug, isPublished: true },
       select: { title: true, summary: true, seoTitle: true, seoDesc: true, coverImage: true },
-    });
+    }) ?? getFallbackProject(slug);
     if (!project) return { title: "Project Not Found" };
 
-    return {
-      title: project.seoTitle || `${project.title} | SobalTech Portfolio`,
-      description: project.seoDesc || project.summary,
-      openGraph: {
-        title: project.seoTitle || `${project.title} | SobalTech`,
-        description: project.seoDesc || project.summary,
-        images: project.coverImage ? [{ url: project.coverImage }] : [],
-      },
-    };
+    const title = project.seoTitle || `${project.title} | SobalTech Portfolio`;
+    const description = project.seoDesc || project.summary;
+    return buildMeta({ title, description, path: `/portfolio/${slug}`, image: project.coverImage });
   } catch {
     return { title: "Project" };
   }
@@ -59,14 +59,20 @@ export async function generateMetadata({
 
 async function getProjectData(slug: string) {
   const [project, related] = await Promise.all([
-    prisma.project.findUnique({ where: { slug, isPublished: true } }),
+    prisma.project.findFirst({ where: { slug, isPublished: true } }),
     prisma.project.findMany({
       where: { isPublished: true, NOT: { slug } },
       orderBy: [{ isFeatured: "desc" }, { order: "asc" }],
       take: 3,
     }),
   ]);
-  return { project, related };
+  const fallbackProject = project ?? getFallbackProject(slug);
+  const fallbackRelated = FALLBACK_PROJECTS.filter((p) => p.slug !== slug).slice(0, 3);
+
+  return {
+    project: fallbackProject,
+    related: related.length > 0 ? related : fallbackRelated,
+  };
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -93,6 +99,18 @@ export default async function PortfolioDetailPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", href: "/" },
+              { name: "Portfolio", href: "/portfolio" },
+              { name: project.title, href: `/portfolio/${slug}` },
+            ])
+          ),
+        }}
+      />
       <PageHeader
         title={project.title}
         description={project.summary}

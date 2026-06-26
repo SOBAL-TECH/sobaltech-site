@@ -386,7 +386,7 @@ export default function SettingsPage() {
                     <FormItem>
                       <FormLabel>Phone</FormLabel>
                       <FormControl>
-                        <Input placeholder="+1 (555) 000-0000" {...field} />
+                        <Input placeholder="+233 ..." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -399,7 +399,7 @@ export default function SettingsPage() {
                     <FormItem>
                       <FormLabel>Address</FormLabel>
                       <FormControl>
-                        <Input placeholder="San Francisco, CA" {...field} />
+                        <Input placeholder="Spintex, Accra, Ghana" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

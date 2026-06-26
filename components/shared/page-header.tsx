@@ -37,15 +37,8 @@ export function PageHeader({
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-50/70 via-indigo-50/20 to-transparent dark:from-indigo-950/25 dark:via-indigo-950/5 dark:to-transparent" />
 
-        {/* Subtle grid */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
+        {/* Faint vertical line field */}
+        <div className="site-vertical-lines opacity-30" />
 
         {/* Radial glow */}
         <div className="absolute left-1/4 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-indigo-400/10 blur-[100px] dark:bg-indigo-600/8" />

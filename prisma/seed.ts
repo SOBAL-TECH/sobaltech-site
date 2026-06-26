@@ -114,7 +114,7 @@ async function main() {
       description:
         "Integrate cutting-edge AI capabilities into your existing products.",
       content: `<h2>AI Integration Services</h2><p>We help you leverage the power of AI by integrating LLMs, computer vision, and ML models into your applications.</p>`,
-      icon: "Brain",
+      icon: "Cpu",
       features: [
         "OpenAI / Anthropic",
         "Custom ML models",
@@ -124,6 +124,159 @@ async function main() {
         "Data analytics",
       ],
       order: 6,
+    },
+    {
+      title: "Cybersecurity",
+      slug: "cybersecurity",
+      description:
+        "Security assessments, secure SDLC reviews, data protection guidance, and practical controls for growing digital products.",
+      content: `<h2>Cybersecurity Services</h2><p>We help organizations identify, prioritize, and reduce security risk across software, infrastructure, and internal operations.</p><h3>What We Deliver</h3><ul><li>Security assessments</li><li>Secure SDLC reviews</li><li>Data protection controls</li><li>Cloud and access reviews</li><li>Security awareness guidance</li></ul>`,
+      icon: "ShieldCheck",
+      features: [
+        "Security assessments",
+        "Secure SDLC reviews",
+        "Data protection",
+        "Cloud security checks",
+        "Access reviews",
+        "Remediation planning",
+      ],
+      order: 7,
+    },
+    {
+      title: "Penetration Testing",
+      slug: "penetration-testing",
+      description:
+        "Web application, API, and infrastructure testing that finds exploitable weaknesses before they become business problems.",
+      content: `<h2>Penetration Testing</h2><p>We test business-critical applications and infrastructure for exploitable weaknesses, then provide practical reports your engineering team can act on.</p><h3>Testing Coverage</h3><ul><li>Web application testing</li><li>API testing</li><li>Authentication and access control checks</li><li>Risk-ranked reporting</li><li>Remediation and retesting support</li></ul>`,
+      icon: "ShieldCheck",
+      features: [
+        "Web app testing",
+        "API testing",
+        "Auth and access checks",
+        "Risk-ranked reports",
+        "Remediation support",
+        "Retesting",
+      ],
+      order: 8,
+    },
+    {
+      title: "Network Engineering",
+      slug: "network-engineering",
+      description:
+        "Network design, server setup, monitoring, and support for businesses, institutions, and operations teams.",
+      content: `<h2>Network Engineering</h2><p>We design, configure, and support network and server environments where uptime, documentation, and operational clarity matter.</p><h3>Capabilities</h3><ul><li>Network design and implementation</li><li>Server setup and administration</li><li>Monitoring and support</li><li>Backup and disaster recovery planning</li><li>Operational documentation</li></ul>`,
+      icon: "Network",
+      features: [
+        "Network design",
+        "Server configuration",
+        "Monitoring",
+        "Backup planning",
+        "Support workflows",
+        "Documentation",
+      ],
+      order: 9,
+    },
+    {
+      title: "Data Analytics",
+      slug: "data-analytics",
+      description:
+        "Dashboards, reporting workflows, data pipelines, and decision systems that turn scattered business data into clarity.",
+      content: `<h2>Data Analytics</h2><p>We help teams replace scattered spreadsheets and manual reporting with dashboards, reporting pipelines, and analytics systems connected to real operations.</p><h3>What We Build</h3><ul><li>KPI dashboards</li><li>Operational reports</li><li>Data pipelines</li><li>Scheduled reporting</li><li>Metric definitions and quality checks</li></ul>`,
+      icon: "BarChart3",
+      features: [
+        "KPI dashboards",
+        "Reporting pipelines",
+        "Operational analytics",
+        "Scheduled reports",
+        "Data quality checks",
+        "Metric definitions",
+      ],
+      order: 10,
+    },
+    {
+      title: "IT Consulting",
+      slug: "it-consulting",
+      description:
+        "Technology roadmaps, build-versus-buy decisions, systems integration, and digital transformation advisory.",
+      content: `<h2>IT Consulting</h2><p>We support leaders with practical technical direction before they commit budget, choose platforms, or launch major digital initiatives.</p><h3>Advisory Areas</h3><ul><li>Technology roadmap planning</li><li>Build-versus-buy analysis</li><li>Systems integration strategy</li><li>Digital transformation planning</li><li>Technical budgeting and delivery planning</li></ul>`,
+      icon: "BriefcaseBusiness",
+      features: [
+        "Technology roadmaps",
+        "Build-versus-buy analysis",
+        "Systems integration",
+        "Digital transformation",
+        "Technical budgeting",
+        "Stakeholder reporting",
+      ],
+      order: 11,
+    },
+    {
+      title: "IT Training",
+      slug: "it-training",
+      description:
+        "Practical training and capacity building in software engineering, cybersecurity, AI, networking, and modern IT operations.",
+      content: `<h2>IT Training and Capacity Building</h2><p>We provide practical workshops and mentoring for teams that need to improve how they build, secure, operate, and maintain digital systems.</p><h3>Training Topics</h3><ul><li>Software engineering practices</li><li>Secure development</li><li>Cybersecurity awareness</li><li>Cloud, networking, and operations basics</li><li>AI adoption and workflow automation</li></ul>`,
+      icon: "GraduationCap",
+      features: [
+        "Team workshops",
+        "Secure coding training",
+        "Cybersecurity awareness",
+        "AI adoption",
+        "Operations playbooks",
+        "Developer mentoring",
+      ],
+      order: 12,
+    },
+    {
+      title: "Custom Applications",
+      slug: "custom-applications",
+      description:
+        "Bespoke software built around your specific business processes — replacing manual workflows and generic tools with systems designed for how you actually operate.",
+      content: `<h2>Software built for your specific operations</h2><p>Off-the-shelf tools rarely fit the way a real business works. We build custom applications that match your exact workflows, data structures, and team requirements — from internal tools to full business management platforms.</p><h3>What we build</h3><ul><li>Internal operations and admin platforms</li><li>Business process automation systems</li><li>Customer portals and self-service tools</li><li>Inventory and resource management systems</li><li>Field service and scheduling applications</li><li>Multi-role workflow systems with permissions</li></ul><h3>How we approach it</h3><p>We start with requirements scoping to understand your current processes, bottlenecks, and constraints. The software we deliver is maintainable, documented, and built to evolve with your business.</p>`,
+      icon: "AppWindow",
+      features: [
+        "Requirements scoping",
+        "Full-stack development",
+        "Workflow automation",
+        "Custom admin panels",
+        "Third-party integrations",
+        "Documentation and handoff",
+      ],
+      order: 13,
+    },
+    {
+      title: "POS Systems",
+      slug: "pos-systems",
+      description:
+        "Custom point-of-sale systems for retail, hospitality, and service businesses — built around your workflow, not a generic template.",
+      content: `<h2>Point-of-sale software that fits your business</h2><p>We build POS systems designed around how you actually sell — whether that is a retail counter, a restaurant floor, a service desk, or a multi-location operation. The result is a system that handles your real transactions, reporting, and team workflows without workarounds.</p><h3>What we include</h3><ul><li>Sales and checkout flows</li><li>Product and inventory management</li><li>Payment processing integrations</li><li>Customer order and receipt workflows</li><li>Role-based staff access</li><li>Sales reporting and shift summaries</li><li>Hardware integration (printers, scanners, displays)</li><li>Offline-capable operations</li></ul><h3>Deployment</h3><p>We can build web-based POS systems, tablet applications, or hybrid setups depending on your environment. All systems are designed for day-to-day reliability with clear admin controls.</p>`,
+      icon: "ShoppingCart",
+      features: [
+        "Sales and checkout",
+        "Inventory management",
+        "Payment processing",
+        "Customer order workflows",
+        "Sales reporting",
+        "Hardware integration",
+      ],
+      order: 14,
+    },
+    {
+      title: "E-commerce",
+      slug: "ecommerce",
+      description:
+        "Full-featured online stores with product management, payment processing, order workflows, and integrations that scale with your business.",
+      content: `<h2>Online stores built to sell and scale</h2><p>We build e-commerce platforms that handle your real product catalog, order operations, and customer experience — whether you are launching a new store or replacing a system that has outgrown your needs.</p><h3>What we deliver</h3><ul><li>Product catalog and variant management</li><li>Checkout and payment processing</li><li>Order management and fulfillment workflows</li><li>Customer accounts and purchase history</li><li>Inventory tracking and low-stock alerts</li><li>Discount and promotion systems</li><li>Admin dashboard for store operations</li><li>SEO optimization and performance</li></ul><h3>Integrations</h3><p>We connect your store to shipping providers, payment gateways, accounting tools, and CRM systems so your entire operation stays in sync.</p>`,
+      icon: "Store",
+      features: [
+        "Product catalog management",
+        "Checkout and payments",
+        "Order management",
+        "Inventory tracking",
+        "SEO and performance",
+        "Third-party integrations",
+      ],
+      order: 15,
     },
   ];
 
@@ -491,8 +644,8 @@ async function main() {
     { key: "hero_cta_secondary", value: "View Our Work", type: "text", group: "hero", label: "Secondary CTA Text" },
     // Contact
     { key: "contact_email", value: "hello@sobaltech.com", type: "text", group: "contact", label: "Contact Email" },
-    { key: "contact_phone", value: "+1 (555) 000-0000", type: "text", group: "contact", label: "Phone Number" },
-    { key: "contact_address", value: "123 Tech Street, San Francisco, CA 94105", type: "text", group: "contact", label: "Address" },
+    { key: "contact_phone", value: "Available after inquiry", type: "text", group: "contact", label: "Phone Number" },
+    { key: "contact_address", value: "Spintex, Accra, Ghana", type: "text", group: "contact", label: "Address" },
     { key: "social_twitter", value: "https://twitter.com/sobaltech", type: "text", group: "contact", label: "Twitter/X URL" },
     { key: "social_linkedin", value: "https://linkedin.com/company/sobaltech", type: "text", group: "contact", label: "LinkedIn URL" },
     { key: "social_github", value: "https://github.com/sobaltech", type: "text", group: "contact", label: "GitHub URL" },
@@ -509,6 +662,94 @@ async function main() {
     });
   }
   console.log(`✅ ${settings.length} site settings seeded`);
+
+  // ─── Job Postings ─────────────────────────────────────────────────────────
+  const jobPostings = [
+    {
+      title: "Senior Full-Stack Engineer",
+      slug: "senior-full-stack-engineer",
+      department: "Engineering",
+      type: "Full-time",
+      location: "Remote",
+      summary:
+        "Build production-grade web apps, SaaS platforms, APIs, and admin systems using Next.js, TypeScript, Prisma, and modern cloud tools.",
+      description: `<p>We are looking for a senior engineer who can take ownership of complex features from design through delivery. You will work across the full stack — Next.js, TypeScript, Prisma, and PostgreSQL on the web side, with exposure to cloud infrastructure, API design, and performance work.</p><p>You will work directly with the founding team on client products and internal tooling, and have meaningful influence over architecture and technical direction.</p>`,
+      requirements: [
+        "Strong TypeScript and React experience (3+ years production)",
+        "Comfortable owning backend and frontend work end to end",
+        "Practical judgment around architecture, security, and delivery tradeoffs",
+        "Experience deploying to production and operating what you build",
+      ],
+      responsibilities: [
+        "Design and build full-stack features for client products and internal tools",
+        "Own the backend: schema design, API routes, auth, and data access patterns",
+        "Collaborate with design on implementation and interaction details",
+        "Participate in code review, architecture discussions, and technical planning",
+        "Help maintain and improve deployment, monitoring, and operational workflows",
+      ],
+      isPublished: true,
+      order: 1,
+    },
+    {
+      title: "Product Designer",
+      slug: "product-designer",
+      department: "Design",
+      type: "Contract / Full-time",
+      location: "Remote",
+      summary:
+        "Design clean, useful interfaces for web apps, mobile products, dashboards, and design systems.",
+      description: `<p>We are looking for a product designer who thinks deeply about how interfaces actually work, not just how they look. You will design across web and mobile products for our clients — from initial wireframes through to polished, handoff-ready UI.</p><p>This role suits someone who is comfortable with ambiguity, can shape a product direction visually, and works well alongside engineers during implementation.</p>`,
+      requirements: [
+        "Strong UX thinking and visual design fundamentals",
+        "Experience designing responsive product interfaces (web and mobile)",
+        "Ability to turn ambiguous requirements into clear flows and prototypes",
+        "Proficiency with Figma",
+      ],
+      responsibilities: [
+        "Create wireframes, user flows, prototypes, and high-fidelity UI for client products",
+        "Develop and maintain design systems and component libraries",
+        "Collaborate with engineers to ensure accurate, high-quality implementation",
+        "Run UX reviews and suggest improvements on existing products",
+        "Communicate design decisions clearly to both technical and non-technical stakeholders",
+      ],
+      isPublished: true,
+      order: 2,
+    },
+    {
+      title: "AI Integration Engineer",
+      slug: "ai-integration-engineer",
+      department: "Engineering",
+      type: "Project-based",
+      location: "Remote",
+      summary:
+        "Help clients integrate AI into real workflows: knowledge search, document automation, assistants, and internal tools.",
+      description: `<p>We are looking for an engineer who can build practical AI systems that solve real business problems. This is not research — it is applied work: LLM integrations, RAG pipelines, document processing, and AI-assisted workflows for clients across different industries.</p><p>You will work on project engagements, helping clients identify where AI delivers genuine value and then building systems that are reliable and maintainable.</p>`,
+      requirements: [
+        "Experience with LLM APIs (OpenAI, Anthropic, or similar)",
+        "Good understanding of retrieval, evaluation, and reliability risks in AI systems",
+        "Comfortable building data pipelines, embeddings, and vector search",
+        "Strong product sense around where AI is actually useful versus overhyped",
+      ],
+      responsibilities: [
+        "Design and build AI-powered features for client applications",
+        "Implement RAG pipelines, document processing workflows, and LLM integrations",
+        "Evaluate and monitor AI outputs for quality, reliability, and cost",
+        "Work with clients to identify high-value AI use cases and scope the work clearly",
+        "Document systems thoroughly for client handoff and ongoing maintenance",
+      ],
+      isPublished: true,
+      order: 3,
+    },
+  ];
+
+  for (const posting of jobPostings) {
+    await prisma.jobPosting.upsert({
+      where: { slug: posting.slug },
+      update: posting,
+      create: posting,
+    });
+  }
+  console.log(`✅ ${jobPostings.length} job postings seeded`);
 
   console.log("\n🎉 Seeding complete!");
   console.log("\n📋 Admin credentials:");

@@ -96,16 +96,8 @@ export function StatsSection() {
         className="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-50/60 via-transparent to-violet-50/40 dark:from-indigo-950/20 dark:via-transparent dark:to-violet-950/10"
       />
 
-      {/* Subtle grid pattern */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
-        style={{
-          backgroundImage:
-            "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
-          backgroundSize: "50px 50px",
-        }}
-      />
+      {/* Faint vertical line field */}
+      <div aria-hidden className="site-vertical-lines opacity-25" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Stats grid */}

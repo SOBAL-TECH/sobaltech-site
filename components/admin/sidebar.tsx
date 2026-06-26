@@ -19,6 +19,7 @@ import {
   Zap,
   Menu,
   X,
+  UserCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -43,6 +44,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Blog", href: "/admin/blog", icon: BookOpen },
   { label: "Testimonials", href: "/admin/testimonials", icon: Star },
   { label: "Team", href: "/admin/team", icon: Users },
+  { label: "Careers", href: "/admin/careers", icon: UserCheck },
   { label: "Inbox", href: "/admin/inbox", icon: Mail },
   { label: "Settings", href: "/admin/settings", icon: Settings },
 ];

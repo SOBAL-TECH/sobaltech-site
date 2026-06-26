@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMeta } from "@/lib/seo";
 import {
   Mail,
   Phone,
@@ -13,11 +14,12 @@ import { ContactForm } from "./contact-form";
 
 // ─── SEO ──────────────────────────────────────────────────────────────────────
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMeta({
   title: "Contact SobalTech — Get in Touch",
   description:
     "Have a project in mind? Get in touch with the SobalTech team. We respond within 24 hours and offer a free 30-minute discovery call.",
-};
+  path: "/contact",
+});
 
 // ─── Contact info data ────────────────────────────────────────────────────────
 
@@ -31,13 +33,13 @@ const contactDetails = [
   {
     Icon: Phone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
+    value: "Available after inquiry",
+    href: null,
   },
   {
     Icon: MapPin,
     label: "Location",
-    value: "San Francisco, CA",
+    value: "Spintex, Accra, Ghana",
     href: null,
   },
   {
@@ -146,10 +148,10 @@ export default function ContactPage() {
                   <div className="text-center space-y-1 p-4">
                     <MapPin className="h-8 w-8 text-muted-foreground/40 mx-auto" />
                     <p className="text-xs text-muted-foreground">
-                      San Francisco, CA
+                      Spintex, Accra, Ghana
                     </p>
                     <a
-                      href="https://maps.google.com/?q=San+Francisco,+CA"
+                      href="https://maps.google.com/?q=Spintex,+Accra,+Ghana"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs text-primary hover:underline"

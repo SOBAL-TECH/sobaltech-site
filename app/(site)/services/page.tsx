@@ -1,19 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  AppWindow,
   ArrowRight,
+  BarChart3,
+  BriefcaseBusiness,
   CheckCircle2,
   Cloud,
   Code2,
   Cpu,
+  GraduationCap,
   Globe,
+  Network,
   Palette,
   ShieldCheck,
+  ShoppingCart,
   Smartphone,
   Sparkles,
+  Store,
   Zap,
 } from "lucide-react";
 import { prisma } from "@/lib/db";
+import { buildMeta } from "@/lib/seo";
 import { Container } from "@/components/shared/container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -21,16 +29,12 @@ import { CTASection } from "@/components/site/cta-section";
 import { ServiceVisual } from "@/components/site/service-visual";
 import type { Service } from "@/types";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMeta({
   title: "Our Services | SobalTech",
   description:
     "End-to-end digital solutions: web development, mobile apps, cloud infrastructure, UI/UX design, API development, and AI integration.",
-  openGraph: {
-    title: "Our Services | SobalTech",
-    description:
-      "End-to-end digital solutions crafted with precision — from pixel-perfect UI to robust cloud infrastructure.",
-  },
-};
+  path: "/services",
+});
 
 const PLACEHOLDER_SERVICES: Partial<Service>[] = [
   {
@@ -87,15 +91,104 @@ const PLACEHOLDER_SERVICES: Partial<Service>[] = [
     icon: "Cpu",
     features: ["LLM integrations", "RAG pipelines", "Document automation", "Workflow assistants"],
   },
+  {
+    id: "7",
+    title: "Cybersecurity",
+    slug: "cybersecurity",
+    description:
+      "Security assessments, secure SDLC reviews, data protection guidance, and practical controls for growing digital products.",
+    icon: "ShieldCheck",
+    features: ["Security reviews", "Secure SDLC", "Data protection", "Risk remediation"],
+  },
+  {
+    id: "8",
+    title: "Penetration Testing",
+    slug: "penetration-testing",
+    description:
+      "Application and infrastructure testing that identifies exploitable weaknesses before attackers or outages do.",
+    icon: "ShieldCheck",
+    features: ["Web app testing", "API testing", "Vulnerability reports", "Remediation support"],
+  },
+  {
+    id: "9",
+    title: "Network Engineering",
+    slug: "network-engineering",
+    description:
+      "Network design, implementation, monitoring, and support for offices, institutions, and production operations.",
+    icon: "Network",
+    features: ["Network design", "Server setup", "Monitoring", "Backup planning"],
+  },
+  {
+    id: "10",
+    title: "Data Analytics",
+    slug: "data-analytics",
+    description:
+      "Dashboards, reporting workflows, data pipelines, and decision systems that turn scattered business data into clarity.",
+    icon: "BarChart3",
+    features: ["KPI dashboards", "Data pipelines", "Reporting", "Operational insights"],
+  },
+  {
+    id: "11",
+    title: "IT Consulting",
+    slug: "it-consulting",
+    description:
+      "Technology roadmaps, build-versus-buy decisions, systems integration, and digital transformation advisory.",
+    icon: "BriefcaseBusiness",
+    features: ["Technology roadmap", "Systems integration", "Digital strategy", "Vendor decisions"],
+  },
+  {
+    id: "12",
+    title: "IT Training",
+    slug: "it-training",
+    description:
+      "Practical training and capacity building in software engineering, cybersecurity, AI, networking, and modern IT operations.",
+    icon: "GraduationCap",
+    features: ["Team workshops", "Security awareness", "Developer training", "Operational playbooks"],
+  },
+  {
+    id: "13",
+    title: "Custom Applications",
+    slug: "custom-applications",
+    description:
+      "Bespoke software built around your specific business processes — replacing manual workflows and generic tools with systems designed for how you actually operate.",
+    icon: "AppWindow",
+    features: ["Requirements scoping", "Workflow automation", "Custom admin panels", "Third-party integrations"],
+  },
+  {
+    id: "14",
+    title: "POS Systems",
+    slug: "pos-systems",
+    description:
+      "Custom point-of-sale systems for retail, hospitality, and service businesses — built around your workflow, not a generic template.",
+    icon: "ShoppingCart",
+    features: ["Sales and checkout", "Inventory management", "Payment processing", "Sales reporting"],
+  },
+  {
+    id: "15",
+    title: "E-commerce",
+    slug: "ecommerce",
+    description:
+      "Full-featured online stores with product management, payment processing, order workflows, and integrations that scale with your business.",
+    icon: "Store",
+    features: ["Product catalog", "Checkout and payments", "Order management", "SEO and performance"],
+  },
 ];
 
 const ICON_MAP: Record<string, React.ElementType> = {
-  Globe,
-  Smartphone,
+  AppWindow,
+  BarChart3,
+  BriefcaseBusiness,
   Cloud,
-  Palette,
   Code2,
   Cpu,
+  Globe,
+  GraduationCap,
+  Network,
+  Palette,
+  ShieldCheck,
+  ShoppingCart,
+  Smartphone,
+  Store,
 };
 
 const GRADIENTS = [
@@ -113,7 +206,14 @@ async function getServices(): Promise<Partial<Service>[]> {
       where: { isPublished: true },
       orderBy: [{ order: "asc" }, { createdAt: "asc" }],
     });
-    return services.length > 0 ? services : PLACEHOLDER_SERVICES;
+    if (services.length === 0) return PLACEHOLDER_SERVICES;
+
+    const existingSlugs = new Set(services.map((service) => service.slug));
+    const missingDefaults = PLACEHOLDER_SERVICES.filter(
+      (service) => service.slug && !existingSlugs.has(service.slug)
+    );
+
+    return [...services, ...missingDefaults];
   } catch {
     return PLACEHOLDER_SERVICES;
   }
@@ -199,7 +299,7 @@ export default async function ServicesPage() {
           <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-indigo-500/30 blur-3xl" />
           <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-fuchsia-500/20 blur-3xl" />
           <div className="absolute bottom-0 left-1/2 h-72 w-[720px] -translate-x-1/2 bg-gradient-to-r from-cyan-500/10 via-indigo-500/20 to-purple-500/10 blur-3xl" />
-          <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] [background-size:44px_44px]" />
+          <div className="site-vertical-lines site-vertical-lines-dark opacity-35" />
         </div>
 
         <Container className="relative pb-20 pt-12 sm:pb-24 lg:pb-28">

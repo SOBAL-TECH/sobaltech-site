@@ -40,8 +40,10 @@ import {
   // Portfolio
   Monitor,
   Building2,
-  FolderOpen,
   Briefcase,
+  GraduationCap,
+  Network,
+  ShieldCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -121,7 +123,7 @@ const MENUS: Record<string, MenuConfig> = {
 
   services: {
     heading: "Services",
-    cols: 3,
+    cols: 4,
     cards: [
       {
         Icon: Globe,
@@ -165,6 +167,48 @@ const MENUS: Record<string, MenuConfig> = {
         href: "/services/ai-integration",
         gradient: "from-amber-500 via-orange-500 to-rose-500",
         badge: "Hot",
+      },
+      {
+        Icon: ShieldCheck,
+        label: "Cybersecurity",
+        description: "Security reviews, secure SDLC & data protection controls",
+        href: "/services/cybersecurity",
+        gradient: "from-emerald-600 via-teal-600 to-cyan-700",
+      },
+      {
+        Icon: ShieldCheck,
+        label: "Penetration Testing",
+        description: "Web app, API & infrastructure vulnerability testing",
+        href: "/services/penetration-testing",
+        gradient: "from-red-500 via-rose-600 to-orange-600",
+      },
+      {
+        Icon: Network,
+        label: "Network Engineering",
+        description: "Network design, server setup, monitoring & support",
+        href: "/services/network-engineering",
+        gradient: "from-sky-600 via-cyan-600 to-teal-700",
+      },
+      {
+        Icon: BarChart3,
+        label: "Data Analytics",
+        description: "Dashboards, reporting pipelines & operational insights",
+        href: "/services/data-analytics",
+        gradient: "from-blue-600 via-indigo-600 to-violet-700",
+      },
+      {
+        Icon: Briefcase,
+        label: "IT Consulting",
+        description: "Roadmaps, systems integration & digital transformation",
+        href: "/services/it-consulting",
+        gradient: "from-slate-600 via-slate-700 to-slate-900",
+      },
+      {
+        Icon: GraduationCap,
+        label: "IT Training",
+        description: "Capacity building for software, security, AI & ops",
+        href: "/services/it-training",
+        gradient: "from-violet-600 via-purple-600 to-fuchsia-700",
       },
     ],
     footer: { label: "View all services", href: "/services" },
@@ -272,6 +316,19 @@ const NAV_ITEMS = [
 
 const MENU_ORDER = Object.keys(MENUS); // ['about','services','products','portfolio']
 
+const MENU_ACTIVE_PATHS: Record<string, string[]> = {
+  about: ["/about"],
+  services: ["/services"],
+  products: ["/products"],
+  portfolio: ["/portfolio"],
+};
+
+function isSectionActive(pathname: string, menuId: string) {
+  return (MENU_ACTIVE_PATHS[menuId] ?? []).some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`),
+  );
+}
+
 // ─── Animation config ─────────────────────────────────────────────────────────
 
 const PANEL_SPRING = {
@@ -300,11 +357,9 @@ const menuContentVariants = {
 
 function VisualCard({
   card,
-  index,
   onClose,
 }: {
   card: VisualCard;
-  index: number;
   onClose: () => void;
 }) {
   return (
@@ -312,11 +367,11 @@ function VisualCard({
       <Link
         href={card.href}
         onClick={onClose}
-        className="group flex min-h-[88px] items-start gap-3 rounded-2xl border border-slate-200/70 bg-white/72 p-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] outline-none backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-300/60 hover:bg-white/90 hover:shadow-[0_14px_34px_rgba(15,23,42,0.08)] focus-visible:ring-2 focus-visible:ring-indigo-500/40 dark:border-white/10 dark:bg-white/[0.065] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] dark:hover:border-indigo-400/35 dark:hover:bg-white/[0.1] dark:hover:shadow-[0_18px_42px_rgba(0,0,0,0.3)]"
+        className="group flex min-h-[92px] items-start gap-3 rounded-[1.05rem] border border-slate-200/65 bg-white/64 p-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] outline-none backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-white/88 hover:shadow-[0_18px_38px_rgba(15,23,42,0.09)] focus-visible:ring-2 focus-visible:ring-indigo-500/35 dark:border-white/10 dark:bg-white/[0.055] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] dark:hover:border-indigo-400/30 dark:hover:bg-white/[0.09] dark:hover:shadow-[0_18px_42px_rgba(0,0,0,0.34)]"
       >
         <div
           className={cn(
-            "relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br shadow-sm",
+            "relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br shadow-[0_10px_22px_rgba(79,70,229,0.18)] ring-1 ring-white/35",
             card.gradient,
           )}
         >
@@ -338,8 +393,8 @@ function VisualCard({
           <p className="mt-1 line-clamp-2 text-[11.5px] leading-relaxed text-slate-600 dark:text-slate-300">
             {card.description}
           </p>
-          <div className="mt-2 flex items-center gap-1 text-[11px] font-semibold text-indigo-600 opacity-0 transition-all duration-150 group-hover:opacity-100 dark:text-indigo-400">
-            Open
+          <div className="mt-2 flex items-center gap-1 text-[11px] font-semibold text-indigo-600 opacity-0 transition-all duration-150 group-hover:opacity-100 dark:text-indigo-300">
+            Explore
             <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
           </div>
         </div>
@@ -366,10 +421,10 @@ function FeaturedStrip({
       <Link
         href={strip.href}
         onClick={onClose}
-        className="group flex items-center gap-4 rounded-2xl border border-indigo-200/70 bg-indigo-50/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] backdrop-blur-xl transition-all duration-200 hover:border-indigo-300/80 hover:bg-indigo-50 dark:border-indigo-400/20 dark:bg-indigo-400/[0.08] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] dark:hover:bg-indigo-400/[0.11]"
+        className="group flex items-center gap-4 rounded-[1.1rem] border border-indigo-200/60 bg-gradient-to-r from-indigo-50/90 via-white/72 to-violet-50/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] backdrop-blur-xl transition-all duration-200 hover:border-indigo-300/75 hover:shadow-[0_16px_34px_rgba(79,70,229,0.12)] dark:border-indigo-300/15 dark:from-indigo-400/[0.11] dark:via-white/[0.045] dark:to-violet-400/[0.09] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] dark:hover:bg-indigo-400/[0.11]"
       >
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-indigo-600 shadow-md shadow-indigo-600/20">
-          <Sparkles className="h-4 w-4 text-white" />
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-950 shadow-md shadow-slate-950/20 dark:bg-white">
+          <Sparkles className="h-4 w-4 text-white dark:text-slate-950" />
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-indigo-500 dark:text-indigo-400">
@@ -415,16 +470,15 @@ function PanelContent({
       exit="exit"
       transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Row: heading + footer link */}
-      <div className="mb-4 flex items-center justify-between">
-        <p className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-muted-foreground/70">
+      <div className="mb-4 flex items-center justify-between border-b border-slate-200/65 pb-3 dark:border-white/10">
+        <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
           {config.heading}
         </p>
         {config.footer && (
           <Link
             href={config.footer.href}
             onClick={onClose}
-            className="group flex items-center gap-1.5 text-[12px] font-semibold text-indigo-600 transition-all hover:gap-2 dark:text-indigo-400"
+            className="group flex items-center gap-1.5 rounded-full border border-slate-200/70 bg-white/58 px-3 py-1.5 text-[12px] font-semibold text-indigo-600 shadow-sm backdrop-blur transition-all hover:gap-2 hover:border-indigo-200 hover:bg-white/90 dark:border-white/10 dark:bg-white/[0.04] dark:text-indigo-300"
           >
             {config.footer.label}
             <ArrowRight className="h-3.5 w-3.5" />
@@ -441,8 +495,8 @@ function PanelContent({
           config.cols === 4 && "grid-cols-4",
         )}
       >
-        {config.cards.map((card, i) => (
-          <VisualCard key={card.href} card={card} index={i} onClose={onClose} />
+        {config.cards.map((card) => (
+          <VisualCard key={card.href} card={card} onClose={onClose} />
         ))}
       </div>
 
@@ -588,7 +642,8 @@ export function Navbar() {
             >
               {NAV_ITEMS.map((item) => {
                 if ("menuId" in item) {
-                  const isActive = activeMenu?.id === item.menuId;
+                  const isMenuOpen = activeMenu?.id === item.menuId;
+                  const isActive = isMenuOpen || isSectionActive(pathname, item.menuId);
                   return (
                     <button
                       key={item.label}
@@ -596,9 +651,9 @@ export function Navbar() {
                       onMouseLeave={scheduleClose}
                       onFocus={() => openMenu(item.menuId)}
                       onBlur={scheduleClose}
-                      onClick={() => isActive ? closeMenu() : openMenu(item.menuId)}
+                      onClick={() => isMenuOpen ? closeMenu() : openMenu(item.menuId)}
                       aria-haspopup="true"
-                      aria-expanded={isActive}
+                      aria-expanded={isMenuOpen}
                       role="menuitem"
                       className={cn(
                         "flex items-center gap-0.5 rounded-lg px-2.5 py-2 text-[13px] font-medium outline-none transition-all duration-150 focus-visible:ring-2 focus-visible:ring-indigo-500/40",
@@ -610,7 +665,7 @@ export function Navbar() {
                       <ChevronDown
                         className={cn(
                           "mt-px h-3.5 w-3.5 opacity-40 transition-transform duration-200",
-                          isActive && "rotate-180 opacity-60",
+                          isMenuOpen && "rotate-180 opacity-60",
                         )}
                       />
                     </button>
@@ -744,7 +799,7 @@ export function Navbar() {
             <motion.div
               layout
               className={cn(
-                "pointer-events-auto mx-auto w-[calc(100vw-2rem)] overflow-hidden rounded-[1.35rem] border border-slate-200/70 bg-white/82 p-4 shadow-[0_24px_80px_rgba(15,23,42,0.16),inset_0_1px_0_rgba(255,255,255,0.75)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/78 dark:shadow-[0_26px_90px_rgba(0,0,0,0.62),inset_0_1px_0_rgba(255,255,255,0.08)]",
+                "pointer-events-auto mx-auto w-[calc(100vw-2rem)] overflow-hidden rounded-[1.5rem] border border-white/55 bg-white/72 p-4 shadow-[0_28px_90px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,0.78)] ring-1 ring-slate-950/[0.03] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/68 dark:shadow-[0_30px_96px_rgba(0,0,0,0.64),inset_0_1px_0_rgba(255,255,255,0.08)] dark:ring-white/[0.03]",
                 getPanelWidthClass(MENUS[activeMenu.id]!),
               )}
               transition={PANEL_SPRING}
@@ -808,11 +863,17 @@ export function Navbar() {
                     if ("menuId" in item) {
                       const config = MENUS[item.menuId];
                       const isExpanded = mobileExpanded === item.menuId;
+                      const isActive = isSectionActive(pathname, item.menuId);
                       return (
                         <div key={item.label}>
                           <button
                             onClick={() => setMobileExpanded(isExpanded ? null : item.menuId)}
-                            className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-[13.5px] font-semibold text-foreground transition-colors hover:bg-muted"
+                            className={cn(
+                              "flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-[13.5px] font-semibold transition-colors hover:bg-muted",
+                              isActive
+                                ? "text-indigo-600 dark:text-indigo-400"
+                                : "text-foreground",
+                            )}
                           >
                             {item.label}
                             <ChevronDown className={cn(
@@ -879,7 +940,7 @@ export function Navbar() {
                         onClick={() => setMobileOpen(false)}
                         className={cn(
                           "block rounded-xl px-3 py-2.5 text-[13.5px] font-semibold transition-colors hover:bg-muted",
-                          pathname === item.href
+                          pathname === item.href || pathname.startsWith(`${item.href}/`)
                             ? "text-indigo-600 dark:text-indigo-400"
                             : "text-foreground",
                         )}

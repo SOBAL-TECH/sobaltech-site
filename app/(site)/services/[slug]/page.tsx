@@ -1,18 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { buildMeta, breadcrumbJsonLd, serviceJsonLd } from "@/lib/seo";
 import {
-  CheckCircle2,
+  AppWindow,
   ArrowRight,
+  BarChart3,
+  BriefcaseBusiness,
+  CheckCircle2,
   Clock3,
-  Globe,
-  Smartphone,
   Cloud,
-  Palette,
   Code2,
   Cpu,
+  Globe,
+  GraduationCap,
+  Network,
+  Palette,
   ShieldCheck,
+  ShoppingCart,
+  Smartphone,
   Sparkles,
+  Store,
 } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { Container } from "@/components/shared/container";
@@ -21,6 +29,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CTASection } from "@/components/site/cta-section";
 import { ServiceVisual } from "@/components/site/service-visual";
+import { ServiceHeroArt } from "@/components/site/service-hero-art";
 
 type ServicePageData = {
   id: string;
@@ -38,12 +47,20 @@ type ServicePageData = {
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const ICON_MAP: Record<string, React.ElementType> = {
-  Globe,
-  Smartphone,
+  AppWindow,
+  BarChart3,
+  BriefcaseBusiness,
   Cloud,
-  Palette,
   Code2,
   Cpu,
+  Globe,
+  GraduationCap,
+  Network,
+  Palette,
+  ShieldCheck,
+  ShoppingCart,
+  Smartphone,
+  Store,
 };
 
 const FALLBACK_SERVICES: ServicePageData[] = [
@@ -167,6 +184,186 @@ const FALLBACK_SERVICES: ServicePageData[] = [
     seoTitle: "AI Integration Services | SobalTech",
     seoDesc: "AI integrations for assistants, knowledge search, document workflows, and automation.",
   },
+  {
+    id: "fallback-cybersecurity",
+    title: "Cybersecurity",
+    slug: "cybersecurity",
+    description:
+      "Security assessments, secure SDLC reviews, data protection guidance, and practical controls for growing digital products.",
+    content: `<h2>Security built into the way your systems operate</h2><p>SobalTech helps teams reduce avoidable risk across software, cloud infrastructure, data handling, and day-to-day operations. We combine hands-on engineering experience with cybersecurity and digital forensics knowledge, so recommendations stay practical instead of theoretical.</p><h3>What we support</h3><ul><li>Secure software development lifecycle reviews</li><li>Application and cloud security assessments</li><li>Data protection and encryption guidance</li><li>Dependency, access control, and configuration reviews</li><li>Security awareness for product and operations teams</li><li>Remediation planning after audits or incidents</li></ul><h3>Outcome</h3><p>You get a clear view of the risks that matter, prioritized fixes, and better security habits inside the team.</p>`,
+    icon: "ShieldCheck",
+    image: null,
+    features: [
+      "Security assessments",
+      "Secure SDLC reviews",
+      "Data protection controls",
+      "Cloud security checks",
+      "Dependency and access reviews",
+      "Remediation planning",
+    ],
+    seoTitle: "Cybersecurity Services | SobalTech",
+    seoDesc: "Cybersecurity services for software teams, including security assessments, secure SDLC, data protection, and remediation planning.",
+  },
+  {
+    id: "fallback-penetration-testing",
+    title: "Penetration Testing",
+    slug: "penetration-testing",
+    description:
+      "Application and infrastructure testing that identifies exploitable weaknesses before attackers or outages do.",
+    content: `<h2>Find exploitable weaknesses before they become business problems</h2><p>Our penetration testing service focuses on practical, reproducible findings for web apps, APIs, authentication flows, cloud configurations, and business-critical workflows.</p><h3>Testing coverage</h3><ul><li>Web application penetration testing</li><li>API and authentication testing</li><li>Configuration and access control checks</li><li>Vulnerability verification and risk scoring</li><li>Executive summary and technical report</li><li>Retesting after remediation</li></ul><h3>How we report</h3><p>Reports are written for both leadership and engineers: business impact, evidence, severity, reproduction steps, and recommended fixes.</p>`,
+    icon: "ShieldCheck",
+    image: null,
+    features: [
+      "Web app testing",
+      "API testing",
+      "Auth and access checks",
+      "Risk-ranked findings",
+      "Technical reports",
+      "Retesting support",
+    ],
+    seoTitle: "Penetration Testing Services | SobalTech",
+    seoDesc: "Penetration testing for web applications, APIs, authentication flows, and infrastructure configurations.",
+  },
+  {
+    id: "fallback-network-engineering",
+    title: "Network Engineering",
+    slug: "network-engineering",
+    description:
+      "Network design, implementation, monitoring, and support for offices, institutions, and production operations.",
+    content: `<h2>Reliable networks for teams that cannot afford downtime</h2><p>We design, configure, and support network and server environments for businesses that need stable connectivity, clear administration, and practical disaster recovery.</p><h3>Capabilities</h3><ul><li>Network design and implementation</li><li>Server setup and administration</li><li>Backup and disaster recovery planning</li><li>Monitoring and uptime reviews</li><li>Basic network security hardening</li><li>Documentation and operational handoff</li></ul><p>This service is useful for offices, institutions, operations teams, and businesses modernizing legacy IT environments.</p>`,
+    icon: "Network",
+    image: null,
+    features: [
+      "Network design",
+      "Server configuration",
+      "Monitoring",
+      "Backup planning",
+      "Operational documentation",
+      "Support handoff",
+    ],
+    seoTitle: "Network Engineering Services | SobalTech",
+    seoDesc: "Network design, server administration, monitoring, backup planning, and IT infrastructure support.",
+  },
+  {
+    id: "fallback-data-analytics",
+    title: "Data Analytics",
+    slug: "data-analytics",
+    description:
+      "Dashboards, reporting workflows, data pipelines, and decision systems that turn scattered business data into clarity.",
+    content: `<h2>Turn operational data into decisions</h2><p>We help teams replace scattered spreadsheets and manual reporting with clean dashboards, reporting pipelines, and analytics systems connected to real business workflows.</p><h3>What we build</h3><ul><li>Executive KPI dashboards</li><li>Sales, finance, inventory, and operations reports</li><li>Database and API data pipelines</li><li>Scheduled reports and alerts</li><li>Role-based analytics dashboards</li><li>Data quality checks and metric definitions</li></ul><h3>Outcome</h3><p>Your team gets one reliable view of performance and fewer delays between activity and insight.</p>`,
+    icon: "BarChart3",
+    image: null,
+    features: [
+      "KPI dashboards",
+      "Reporting pipelines",
+      "Operational analytics",
+      "Scheduled reports",
+      "Data quality checks",
+      "Metric definitions",
+    ],
+    seoTitle: "Data Analytics Services | SobalTech",
+    seoDesc: "Data analytics, dashboards, reporting systems, and operational insights for growing businesses.",
+  },
+  {
+    id: "fallback-it-consulting",
+    title: "IT Consulting",
+    slug: "it-consulting",
+    description:
+      "Technology roadmaps, build-versus-buy decisions, systems integration, and digital transformation advisory.",
+    content: `<h2>Technical direction for business decisions</h2><p>SobalTech supports leaders who need clear technical judgment before committing budget, choosing platforms, or launching major digital initiatives.</p><h3>Advisory areas</h3><ul><li>Technology roadmap planning</li><li>Build-versus-buy analysis</li><li>Systems integration strategy</li><li>Digital transformation planning</li><li>Technical budget and delivery planning</li><li>Stakeholder communication and documentation</li></ul><p>The goal is to reduce uncertainty, avoid costly wrong turns, and align technical execution with business outcomes.</p>`,
+    icon: "BriefcaseBusiness",
+    image: null,
+    features: [
+      "Technology roadmaps",
+      "Build-versus-buy analysis",
+      "Systems integration",
+      "Digital transformation",
+      "Technical budgeting",
+      "Stakeholder reporting",
+    ],
+    seoTitle: "IT Consulting Services | SobalTech",
+    seoDesc: "IT consulting for technology roadmaps, systems integration, digital transformation, and build-versus-buy decisions.",
+  },
+  {
+    id: "fallback-it-training",
+    title: "IT Training",
+    slug: "it-training",
+    description:
+      "Practical training and capacity building in software engineering, cybersecurity, AI, networking, and modern IT operations.",
+    content: `<h2>Build stronger internal technical capacity</h2><p>We provide practical training for teams that need to improve how they build, secure, operate, and maintain digital systems.</p><h3>Training topics</h3><ul><li>Software engineering fundamentals and code quality</li><li>Secure development practices</li><li>Cybersecurity awareness</li><li>Cloud, networking, and operations basics</li><li>AI adoption and workflow automation</li><li>Documentation and team delivery practices</li></ul><p>Sessions can be structured as workshops, internal bootcamps, or focused enablement around a product your team already owns.</p>`,
+    icon: "GraduationCap",
+    image: null,
+    features: [
+      "Team workshops",
+      "Secure coding training",
+      "Cybersecurity awareness",
+      "AI adoption sessions",
+      "Operations playbooks",
+      "Developer mentoring",
+    ],
+    seoTitle: "IT Training Services | SobalTech",
+    seoDesc: "IT training and capacity building for software engineering, cybersecurity, AI, networking, and technical operations.",
+  },
+  {
+    id: "fallback-custom-applications",
+    title: "Custom Applications",
+    slug: "custom-applications",
+    description:
+      "Bespoke software built around your specific business processes — replacing manual workflows and generic tools with systems designed for how you actually operate.",
+    content: `<h2>Software built for your specific operations</h2><p>Off-the-shelf tools rarely fit the way a real business works. We build custom applications that match your exact workflows, data structures, and team requirements — from internal tools to full business management platforms.</p><h3>What we build</h3><ul><li>Internal operations and admin platforms</li><li>Business process automation systems</li><li>Customer portals and self-service tools</li><li>Inventory and resource management systems</li><li>Field service and scheduling applications</li><li>Multi-role workflow systems with permissions</li></ul><h3>How we approach it</h3><p>We start with requirements scoping to understand your current processes, bottlenecks, and constraints. The software we deliver is maintainable, documented, and built to evolve with your business.</p>`,
+    icon: "AppWindow",
+    image: null,
+    features: [
+      "Requirements scoping",
+      "Full-stack development",
+      "Workflow automation",
+      "Custom admin panels",
+      "Third-party integrations",
+      "Documentation and handoff",
+    ],
+    seoTitle: "Custom Application Development | SobalTech",
+    seoDesc: "Bespoke software development for internal tools, business process automation, customer portals, and operations platforms.",
+  },
+  {
+    id: "fallback-pos-systems",
+    title: "POS Systems",
+    slug: "pos-systems",
+    description:
+      "Custom point-of-sale systems for retail, hospitality, and service businesses — built around your workflow, not a generic template.",
+    content: `<h2>Point-of-sale software that fits your business</h2><p>We build POS systems designed around how you actually sell — whether that is a retail counter, a restaurant floor, a service desk, or a multi-location operation. The result is a system that handles your real transactions, reporting, and team workflows without workarounds.</p><h3>What we include</h3><ul><li>Sales and checkout flows</li><li>Product and inventory management</li><li>Payment processing integrations</li><li>Customer order and receipt workflows</li><li>Role-based staff access</li><li>Sales reporting and shift summaries</li><li>Hardware integration (printers, scanners, displays)</li><li>Offline-capable operations</li></ul><h3>Deployment</h3><p>We can build web-based POS systems, tablet applications, or hybrid setups depending on your environment. All systems are designed for day-to-day reliability with clear admin controls.</p>`,
+    icon: "ShoppingCart",
+    image: null,
+    features: [
+      "Sales and checkout",
+      "Inventory management",
+      "Payment processing",
+      "Customer order workflows",
+      "Sales reporting",
+      "Hardware integration",
+    ],
+    seoTitle: "Custom POS System Development | SobalTech",
+    seoDesc: "Custom point-of-sale software for retail, hospitality, and service businesses with inventory, payments, and reporting.",
+  },
+  {
+    id: "fallback-ecommerce",
+    title: "E-commerce",
+    slug: "ecommerce",
+    description:
+      "Full-featured online stores with product management, payment processing, order workflows, and integrations that scale with your business.",
+    content: `<h2>Online stores built to sell and scale</h2><p>We build e-commerce platforms that handle your real product catalog, order operations, and customer experience — whether you are launching a new store or replacing a system that has outgrown your needs.</p><h3>What we deliver</h3><ul><li>Product catalog and variant management</li><li>Checkout and payment processing</li><li>Order management and fulfillment workflows</li><li>Customer accounts and purchase history</li><li>Inventory tracking and low-stock alerts</li><li>Discount and promotion systems</li><li>Admin dashboard for store operations</li><li>SEO optimization and performance</li></ul><h3>Integrations</h3><p>We connect your store to shipping providers, payment gateways, accounting tools, and CRM systems so your entire operation stays in sync.</p>`,
+    icon: "Store",
+    image: null,
+    features: [
+      "Product catalog management",
+      "Checkout and payments",
+      "Order management",
+      "Inventory tracking",
+      "SEO and performance",
+      "Third-party integrations",
+    ],
+    seoTitle: "E-commerce Development | SobalTech",
+    seoDesc: "Custom e-commerce development with product management, payments, order workflows, and integrations that grow with your business.",
+  },
 ];
 
 const FALLBACK_BY_SLUG = new Map(
@@ -208,22 +405,14 @@ export async function generateMetadata({
     const pageService = service ?? fallback;
     if (!pageService) return { title: "Service Not Found" };
 
-    return {
-      title: pageService.seoTitle || `${pageService.title} | SobalTech`,
-      description: pageService.seoDesc || pageService.description,
-      openGraph: {
-        title: pageService.seoTitle || `${pageService.title} | SobalTech`,
-        description: pageService.seoDesc || pageService.description,
-      },
-    };
+    const title = pageService.seoTitle || `${pageService.title} | SobalTech`;
+    const description = pageService.seoDesc || pageService.description;
+    return buildMeta({ title, description, path: `/services/${slug}` });
   } catch {
     const fallback = FALLBACK_BY_SLUG.get(slug);
-    return fallback
-      ? {
-          title: fallback.seoTitle || `${fallback.title} | SobalTech`,
-          description: fallback.seoDesc || fallback.description,
-        }
-      : { title: "Service" };
+    const title = fallback ? (fallback.seoTitle || `${fallback.title} | SobalTech`) : "Service";
+    const description = fallback?.seoDesc || fallback?.description || "";
+    return buildMeta({ title, description, path: `/services/${slug}` });
   }
 }
 
@@ -277,55 +466,83 @@ export default async function ServicePage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            serviceJsonLd({
+              name: service.title,
+              description: service.description,
+              url: `/services/${slug}`,
+            })
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", href: "/" },
+              { name: "Services", href: "/services" },
+              { name: service.title, href: `/services/${slug}` },
+            ])
+          ),
+        }}
+      />
       <section className="relative isolate overflow-hidden border-b border-border bg-slate-950 pt-28 text-white dark:bg-black">
         <div className="absolute inset-0 -z-10">
           <div className="absolute left-[-10%] top-10 h-80 w-80 rounded-full bg-indigo-500/30 blur-3xl" />
           <div className="absolute right-[-8%] top-0 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl" />
           <div className="absolute bottom-0 left-1/2 h-72 w-[760px] -translate-x-1/2 bg-gradient-to-r from-fuchsia-500/10 via-indigo-500/20 to-cyan-500/10 blur-3xl" />
-          <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] [background-size:44px_44px]" />
+          <div className="site-vertical-lines site-vertical-lines-dark opacity-35" />
         </div>
 
         <Container className="pb-14 pt-10 sm:pb-18 lg:pb-20">
-          <div className="max-w-4xl">
-            <div className="mb-6 flex flex-wrap items-center gap-2 text-sm">
-              <Link href="/services" className="text-slate-300 transition-colors hover:text-white">
-                Services
-              </Link>
-              <span className="text-slate-600">/</span>
-              <span className="text-white">{service.title}</span>
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_430px] lg:items-center">
+            <div className="max-w-4xl">
+              <div className="mb-6 flex flex-wrap items-center gap-2 text-sm">
+                <Link href="/services" className="text-slate-300 transition-colors hover:text-white">
+                  Services
+                </Link>
+                <span className="text-slate-600">/</span>
+                <span className="text-white">{service.title}</span>
+              </div>
+
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-slate-950 shadow-2xl shadow-indigo-500/20">
+                <IconComponent className="h-6 w-6" />
+              </div>
+
+              <Badge className="mb-5 rounded-full border-white/15 bg-white/10 text-white hover:bg-white/10">
+                Service lane
+              </Badge>
+              <h1 className="max-w-4xl text-4xl font-bold tracking-[-0.04em] text-balance sm:text-6xl">
+                {service.title}
+              </h1>
+              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+                {service.description}
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link href="/request-quote">
+                  <Button size="lg" className="bg-white text-slate-950 hover:bg-slate-100">
+                    Start a Project
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link href="/contact">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white"
+                  >
+                    Talk to Us
+                  </Button>
+                </Link>
+              </div>
             </div>
 
-            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-slate-950 shadow-2xl shadow-indigo-500/20">
-              <IconComponent className="h-6 w-6" />
-            </div>
-
-            <Badge className="mb-5 rounded-full border-white/15 bg-white/10 text-white hover:bg-white/10">
-              Service lane
-            </Badge>
-            <h1 className="max-w-4xl text-4xl font-bold tracking-[-0.04em] text-balance sm:text-6xl">
-              {service.title}
-            </h1>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-              {service.description}
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/request-quote">
-                <Button size="lg" className="bg-white text-slate-950 hover:bg-slate-100">
-                  Start a Project
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white"
-                >
-                  Talk to Us
-                </Button>
-              </Link>
-            </div>
+            <ServiceHeroArt slug={service.slug} />
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3">

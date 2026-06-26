@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import { prisma } from "@/lib/db";
+import { buildMeta, articleJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 import { Container } from "@/components/shared/container";
 import { RichTextRenderer } from "@/components/shared/rich-text-renderer";
 
@@ -50,18 +51,17 @@ export async function generateMetadata({
     });
     if (!post) return { title: "Post Not Found" };
 
-    return {
-      title: post.seoTitle || `${post.title} | SobalTech Blog`,
-      description: post.seoDesc || post.excerpt,
-      openGraph: {
-        title: post.seoTitle || post.title,
-        description: post.seoDesc || post.excerpt,
-        type: "article",
-        publishedTime: post.publishedAt?.toISOString(),
-        authors: [post.author],
-        images: post.coverImage ? [{ url: post.coverImage }] : [],
-      },
-    };
+    const title = post.seoTitle || `${post.title} | SobalTech Blog`;
+    const description = post.seoDesc || post.excerpt;
+    return buildMeta({
+      title,
+      description,
+      path: `/blog/${slug}`,
+      image: post.coverImage,
+      type: "article",
+      publishedTime: post.publishedAt?.toISOString(),
+      authors: [post.author],
+    });
   } catch {
     return { title: "Blog Post" };
   }
@@ -125,6 +125,34 @@ export default async function BlogPostPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            articleJsonLd({
+              title: post.title,
+              description: post.excerpt,
+              url: `/blog/${slug}`,
+              image: post.coverImage,
+              publishedAt: post.publishedAt,
+              updatedAt: post.updatedAt,
+              author: post.author,
+            })
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: "Home", href: "/" },
+              { name: "Blog", href: "/blog" },
+              { name: post.title, href: `/blog/${slug}` },
+            ])
+          ),
+        }}
+      />
       {/* Cover image */}
       {post.coverImage && (
         <div className="w-full border-b border-border bg-muted">

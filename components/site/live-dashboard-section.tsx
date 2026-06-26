@@ -76,7 +76,7 @@ export function LiveDashboardSection() {
     <section ref={ref} className="relative overflow-hidden bg-background py-24 sm:py-32">
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute left-1/2 top-20 h-[520px] w-[720px] -translate-x-1/2 rounded-full bg-indigo-400/10 blur-3xl dark:bg-indigo-500/10" />
-        <div className="absolute inset-0 opacity-[0.025] [background-image:linear-gradient(hsl(var(--foreground))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground))_1px,transparent_1px)] [background-size:44px_44px]" />
+        <div className="site-vertical-lines opacity-25" />
       </div>
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-[0.82fr_1.18fr] lg:px-8">

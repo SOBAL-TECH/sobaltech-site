@@ -11,16 +11,18 @@ import {
   ShoppingCart,
 } from "lucide-react";
 import { prisma } from "@/lib/db";
+import { buildMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/shared/page-header";
 import { Container } from "@/components/shared/container";
 import { CTASection } from "@/components/site/cta-section";
 import type { Product } from "@/types";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMeta({
   title: "Products | SobalTech",
   description:
     "Productized platforms and accelerators from SobalTech: SaaS launch kits, commerce systems, analytics dashboards, admin portals, mobile starters, and AI frameworks.",
-};
+  path: "/products",
+});
 
 const ICON_MAP: Record<string, React.ElementType> = {
   LayoutDashboard,

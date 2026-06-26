@@ -59,7 +59,12 @@ const SERVICES = [
   "UI/UX Design",
   "API Development",
   "AI Integration",
+  "Cybersecurity",
+  "Penetration Testing",
+  "Network Engineering",
+  "Data Analytics",
   "Technical Consulting",
+  "IT Training",
   "Code Audit",
 ] as const;
 
@@ -245,7 +250,7 @@ export function QuoteForm() {
                     <FormControl>
                       <Input
                         type="tel"
-                        placeholder="+1 (555) 000-0000"
+                        placeholder="+233 ..."
                         {...field}
                       />
                     </FormControl>
