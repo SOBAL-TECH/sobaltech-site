@@ -105,7 +105,7 @@ const MENUS: Record<string, MenuConfig> = {
       {
         Icon: Heart,
         label: "Our Values",
-        description: "Craft, honesty & ownership — baked into how we work",
+        description: "Craft, honesty and ownership baked into how we work",
         href: "/about#values",
         gradient: "from-rose-500 via-pink-600 to-fuchsia-600",
       },
@@ -295,7 +295,7 @@ const MENUS: Record<string, MenuConfig> = {
       eyebrow: "Case studies",
       heading: "50+ projects shipped across 4 continents",
       description:
-        "From seed-stage startups to enterprise companies — browse the full body of work.",
+        "From seed-stage startups to enterprise companies, browse the full body of work.",
       cta: "View all case studies",
       href: "/portfolio",
     },

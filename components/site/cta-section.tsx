@@ -93,7 +93,7 @@ export function CTASection() {
           className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/50 sm:text-lg"
         >
           Let&apos;s turn your vision into reality. Book a free 30-minute
-          discovery call — no strings attached, no sales pitch.
+          discovery call, no strings attached and no sales pitch.
         </motion.p>
 
         {/* CTA buttons */}

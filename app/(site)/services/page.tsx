@@ -150,7 +150,7 @@ const PLACEHOLDER_SERVICES: Partial<Service>[] = [
     title: "Custom Applications",
     slug: "custom-applications",
     description:
-      "Bespoke software built around your specific business processes — replacing manual workflows and generic tools with systems designed for how you actually operate.",
+      "Bespoke software built around your specific business processes, replacing manual workflows and generic tools with systems designed for how you actually operate.",
     icon: "AppWindow",
     features: ["Requirements scoping", "Workflow automation", "Custom admin panels", "Third-party integrations"],
   },
@@ -159,7 +159,7 @@ const PLACEHOLDER_SERVICES: Partial<Service>[] = [
     title: "POS Systems",
     slug: "pos-systems",
     description:
-      "Custom point-of-sale systems for retail, hospitality, and service businesses — built around your workflow, not a generic template.",
+      "Custom point-of-sale systems for retail, hospitality, and service businesses, built around your workflow and not a generic template.",
     icon: "ShoppingCart",
     features: ["Sales and checkout", "Inventory management", "Payment processing", "Sales reporting"],
   },
@@ -312,7 +312,7 @@ export default async function ServicesPage() {
                 Digital product teams for every layer of your stack.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-                Strategy, design, engineering, infrastructure, and AI integration — delivered as focused service lanes that can operate independently or as one integrated build team.
+                Strategy, design, engineering, infrastructure, and AI integration delivered as focused service lanes that can operate independently or as one integrated build team.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="/request-quote">

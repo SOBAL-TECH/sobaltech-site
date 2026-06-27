@@ -59,7 +59,7 @@ function SuccessMessage({ name }: { name: string }) {
           Message Received!
         </h3>
         <p className="text-muted-foreground text-sm">
-          Thanks, {name}! We&apos;ll get back to you within 1–2 business days.
+          Thanks, {name}! We&apos;ll get back to you within 1 to 2 business days.
         </p>
       </div>
     </motion.div>

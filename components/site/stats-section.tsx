@@ -151,8 +151,7 @@ export function StatsSection() {
           className="mt-16 border-t border-border pt-10 text-center"
         >
           <p className="text-base font-light italic text-muted-foreground sm:text-lg">
-            &ldquo;We don&apos;t just write code &mdash; we build products that
-            last.&rdquo;
+            &ldquo;We don&apos;t just write code. We build products that last.&rdquo;
           </p>
         </motion.div>
       </div>

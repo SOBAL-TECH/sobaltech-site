@@ -81,7 +81,7 @@ export function ChatbotWidget() {
   };
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-20 right-5 z-50 flex flex-col items-end gap-3">
       {open && (
         <div className="w-[calc(100vw-2.5rem)] max-w-[380px] overflow-hidden rounded-3xl border border-slate-200/80 bg-white/88 shadow-[0_24px_80px_rgba(15,23,42,0.18)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
           <div className="border-b border-border bg-gradient-to-br from-indigo-600 via-violet-600 to-cyan-500 p-4 text-white">

@@ -66,7 +66,7 @@ function MacbookDashboard() {
               </div>
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  ["$84k", "Revenue"],
+                  ["₵84k", "Revenue"],
                   ["12.8k", "Users"],
                   ["99.9%", "Uptime"],
                 ].map(([value, label]) => (

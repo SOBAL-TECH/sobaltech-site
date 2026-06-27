@@ -88,7 +88,7 @@ export function AboutValues() {
             How we approach the work
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground text-base">
-            The principles below keep our work grounded, useful and credible —
+            The principles below keep our work grounded, useful, and credible,
             from planning through launch and ongoing support.
           </p>
         </motion.div>

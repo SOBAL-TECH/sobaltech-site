@@ -15,7 +15,7 @@ import { ContactForm } from "./contact-form";
 // ─── SEO ──────────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = buildMeta({
-  title: "Contact SobalTech — Get in Touch",
+  title: "Contact SobalTech: Get in Touch",
   description:
     "Have a project in mind? Get in touch with the SobalTech team. We respond within 24 hours and offer a free 30-minute discovery call.",
   path: "/contact",
@@ -169,7 +169,7 @@ export default function ContactPage() {
                 </p>
                 <p className="text-xs text-muted-foreground">
                   For project enquiries, our quote form lets you specify budget,
-                  timeline, and services needed — and we&apos;ll respond with a
+                  timeline, and services needed. We&apos;ll respond with a
                   tailored proposal.
                 </p>
                 <a

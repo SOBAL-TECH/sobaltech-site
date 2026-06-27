@@ -8,7 +8,7 @@ const companyLinks = [
   { label: "About", href: "/about" },
   { label: "Careers", href: "/careers" },
   { label: "Blog", href: "/blog" },
-  { label: "Press", href: "/press" },
+  { label: "FAQs", href: "/faqs" },
 ];
 
 const serviceLinks = [
@@ -20,7 +20,8 @@ const serviceLinks = [
 
 const resourceLinks = [
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Case Studies", href: "/portfolio" },
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "Testimonials", href: "/testimonials" },
   { label: "Contact", href: "/contact" },
   { label: "Request Quote", href: "/request-quote" },
 ];

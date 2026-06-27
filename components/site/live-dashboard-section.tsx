@@ -49,7 +49,7 @@ const activity = [
 ];
 
 const metrics = [
-  ["Revenue tracked", "$84.2k"],
+  ["Revenue tracked", "₵84.2k"],
   ["Active users", "12.8k"],
   ["System health", "99.9%"],
 ];

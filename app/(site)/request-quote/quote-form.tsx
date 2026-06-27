@@ -66,23 +66,24 @@ const SERVICES = [
   "Technical Consulting",
   "IT Training",
   "Code Audit",
+  "Other",
 ] as const;
 
 const BUDGET_RANGES = [
-  "Under $10k",
-  "$10k – $25k",
-  "$25k – $50k",
-  "$50k – $100k",
-  "$100k – $250k",
-  "$250k+",
+  "Under ₵5k",
+  "₵10k to ₵25k",
+  "₵25k to ₵50k",
+  "₵50k to ₵100k",
+  "₵100k to ₵250k",
+  "₵250k+",
   "Not sure yet",
 ] as const;
 
 const TIMELINES = [
   "ASAP (under 4 weeks)",
-  "1 – 3 months",
-  "3 – 6 months",
-  "6 – 12 months",
+  "1 to 3 months",
+  "3 to 6 months",
+  "6 to 12 months",
   "12+ months",
   "Flexible",
 ] as const;
@@ -106,7 +107,7 @@ function SuccessState({ name }: { name: string }) {
         </h2>
         <p className="text-muted-foreground">
           Thanks, {name}! Our team is already reviewing your project details.
-          We&apos;ll have a tailored proposal in your inbox within 2–3 business
+          We&apos;ll have a tailored proposal in your inbox within 2 to 3 business
           days.
         </p>
       </div>
@@ -139,6 +140,7 @@ export function QuoteForm() {
   const [submitted, setSubmitted] = useState(false);
   const [submittedName, setSubmittedName] = useState("");
   const [serverError, setServerError] = useState<string | null>(null);
+  const [otherService, setOtherService] = useState("");
 
   const form = useForm<QuoteFormValues>({
     resolver: zodResolver(QuoteFormSchema),
@@ -161,7 +163,12 @@ export function QuoteForm() {
 
   const onSubmit = async (data: QuoteFormValues) => {
     setServerError(null);
-    const result = await submitQuoteRequest(data);
+    const services = data.services.map((s) =>
+      s === "Other" && otherService.trim()
+        ? `Other: ${otherService.trim()}`
+        : s,
+    );
+    const result = await submitQuoteRequest({ ...data, services });
     if (result.success) {
       setSubmittedName(data.name);
       setSubmitted(true);
@@ -339,6 +346,7 @@ export function QuoteForm() {
                                         (v) => v !== service,
                                       ) ?? [],
                                     );
+                                    if (service === "Other") setOtherService("");
                                   }
                                 }}
                               />
@@ -351,6 +359,14 @@ export function QuoteForm() {
                       />
                     ))}
                   </div>
+                  {form.watch("services")?.includes("Other") && (
+                    <Input
+                      className="mt-2"
+                      placeholder="Please describe the service you need…"
+                      value={otherService}
+                      onChange={(e) => setOtherService(e.target.value)}
+                    />
+                  )}
                   <FormMessage />
                 </FormItem>
               )}
@@ -461,7 +477,7 @@ export function QuoteForm() {
               )}
             </Button>
             <p className="text-center text-xs text-muted-foreground">
-              Free of charge · No commitment · Proposal within 2–3 business days
+              Free of charge · No commitment · Proposal within 2 to 3 business days
             </p>
           </div>
         </form>

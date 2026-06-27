@@ -19,7 +19,7 @@ const PLACEHOLDER_TESTIMONIALS: Omit<
     company: "Nexus AI",
     avatar: null,
     content:
-      "SobalTech transformed our MVP into a production-ready platform in 10 weeks. Their engineering quality is exceptional — clean architecture, great test coverage, and zero hand-holding required.",
+      "SobalTech transformed our MVP into a production-ready platform in 10 weeks. Their engineering quality is exceptional: clean architecture, great test coverage, and zero hand-holding required.",
     rating: 5,
     isFeatured: true,
   },
@@ -74,7 +74,7 @@ const PLACEHOLDER_TESTIMONIALS: Omit<
     company: "DataBridge",
     avatar: null,
     content:
-      "The AI integration work they did on our analytics dashboard is genuinely impressive. Natural language queries, smart anomaly detection — features I thought were months away shipped in weeks.",
+      "The AI integration work they did on our analytics dashboard is genuinely impressive. Natural language queries, smart anomaly detection, features I thought were months away, shipped in weeks.",
     rating: 5,
     isFeatured: false,
   },
@@ -96,7 +96,7 @@ const PLACEHOLDER_TESTIMONIALS: Omit<
     company: "TradeFlow",
     avatar: null,
     content:
-      "We've been working with SobalTech on a long-term retainer for 2 years. Their team feels like an extension of ours — deep product context, high ownership, consistently great work.",
+      "We've been working with SobalTech on a long-term retainer for 2 years. Their team feels like an extension of ours: deep product context, high ownership, consistently great work.",
     rating: 5,
     isFeatured: true,
   },

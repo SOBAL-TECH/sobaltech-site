@@ -12,7 +12,7 @@ import type { TeamMember } from "@/types";
 // ─── SEO ──────────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = buildMeta({
-  title: "About SobalTech — Our Story & Mission",
+  title: "About SobalTech: Our Story and Mission",
   description:
     "Learn about SobalTech, a Ghana-based technology company building software, AI, cloud, cybersecurity, networking, and digital transformation solutions.",
   path: "/about",

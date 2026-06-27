@@ -166,7 +166,7 @@ export function ProcessSection() {
             From idea to launch in weeks, not months
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            A proven, transparent process that delivers results — from initial
+            A proven, transparent process that delivers results, from initial
             call to launch and beyond.
           </p>
         </motion.div>
