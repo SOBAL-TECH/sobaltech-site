@@ -18,6 +18,7 @@ import { Container } from "@/components/shared/container";
 import { RichTextRenderer } from "@/components/shared/rich-text-renderer";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/site/cta-section";
+import { FALLBACK_PRODUCTS, getFallbackProduct } from "@/lib/products-fallbacks";
 import type { Product } from "@/types";
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -35,9 +36,13 @@ export async function generateStaticParams() {
       where: { isPublished: true },
       select: { slug: true },
     });
-    return products.map((p) => ({ slug: p.slug }));
+    const slugs = new Set([
+      ...products.map((p) => p.slug),
+      ...FALLBACK_PRODUCTS.map((p) => p.slug),
+    ]);
+    return Array.from(slugs).map((slug) => ({ slug }));
   } catch {
-    return [];
+    return FALLBACK_PRODUCTS.map((p) => ({ slug: p.slug }));
   }
 }
 
@@ -48,10 +53,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   try {
-    const product = await prisma.product.findUnique({
-      where: { slug, isPublished: true },
-      select: { title: true, description: true, seoTitle: true, seoDesc: true },
-    });
+    const product =
+      (await prisma.product.findUnique({
+        where: { slug, isPublished: true },
+        select: { title: true, description: true, seoTitle: true, seoDesc: true },
+      })) ?? getFallbackProduct(slug);
     if (!product) return { title: "Product Not Found" };
 
     const title = product.seoTitle || `${product.title} | SobalTech`;
@@ -71,7 +77,12 @@ async function getProductData(slug: string) {
       take: 3,
     }),
   ]);
-  return { product, related };
+  const fallbackProduct = product ?? getFallbackProduct(slug);
+  const fallbackRelated = FALLBACK_PRODUCTS.filter((p) => p.slug !== slug).slice(0, 3);
+  return {
+    product: fallbackProduct,
+    related: related.length > 0 ? related : fallbackRelated,
+  };
 }
 
 export default async function ProductPage({

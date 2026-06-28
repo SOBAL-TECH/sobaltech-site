@@ -15,6 +15,7 @@ import { buildMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/shared/page-header";
 import { Container } from "@/components/shared/container";
 import { CTASection } from "@/components/site/cta-section";
+import { FALLBACK_PRODUCTS } from "@/lib/products-fallbacks";
 import type { Product } from "@/types";
 
 export const metadata: Metadata = buildMeta({
@@ -35,12 +36,14 @@ const ICON_MAP: Record<string, React.ElementType> = {
 
 async function getProducts(): Promise<Product[]> {
   try {
-    return await prisma.product.findMany({
+    const dbProducts = await prisma.product.findMany({
       where: { isPublished: true },
       orderBy: [{ order: "asc" }, { createdAt: "asc" }],
     });
+    if (dbProducts.length > 0) return dbProducts;
+    return FALLBACK_PRODUCTS;
   } catch {
-    return [];
+    return FALLBACK_PRODUCTS;
   }
 }
 
