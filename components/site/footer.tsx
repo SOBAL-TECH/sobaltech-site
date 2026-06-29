@@ -42,7 +42,7 @@ function FooterColumn({
   children: React.ReactNode;
 }) {
   return (
-    <div className="space-y-4">
+    <div className="flex flex-col items-center space-y-4 sm:items-start">
       <h3 className="text-[11px] font-semibold uppercase tracking-wider text-white/35">
         {title}
       </h3>
@@ -73,16 +73,16 @@ export function Footer() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ── Main grid ── */}
-        <div className="grid grid-cols-1 gap-10 py-14 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-10 py-14 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-5">
           {/* Brand */}
-          <div className="flex flex-col gap-5 lg:col-span-1">
+          <div className="flex flex-col items-center gap-5 sm:items-start lg:col-span-1">
             <Link href="/" className="inline-flex w-fit items-center">
               <span className="text-xl font-bold text-white">Sobal</span>
               <span className="text-xl font-bold bg-brand-gradient bg-clip-text text-transparent">
                 Tech
               </span>
             </Link>
-            <p className="max-w-[200px] text-sm leading-relaxed text-white/30">
+            <p className="max-w-[200px] text-center text-sm leading-relaxed text-white/30 sm:text-left">
               Building the Future, One Line at a Time.
             </p>
             {/* Contact info */}
@@ -90,17 +90,17 @@ export function Footer() {
               <li>
                 <a
                   href="mailto:hello@sobaltech.com"
-                  className="flex items-center gap-2 text-xs text-white/35 transition-colors hover:text-white/70"
+                  className="flex items-center justify-center gap-2 text-xs text-white/35 transition-colors hover:text-white/70 sm:justify-start"
                 >
                   <Mail className="h-3.5 w-3.5 shrink-0 text-indigo-400/50" />
                   hello@sobaltech.com
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-xs text-white/35">
+              <li className="flex items-center justify-center gap-2 text-xs text-white/35 sm:justify-start">
                 <Phone className="h-3.5 w-3.5 shrink-0 text-indigo-400/50" />
                 Available after inquiry
               </li>
-              <li className="flex items-center gap-2 text-xs text-white/35">
+              <li className="flex items-center justify-center gap-2 text-xs text-white/35 sm:justify-start">
                 <MapPin className="h-3.5 w-3.5 shrink-0 text-indigo-400/50" />
                 Spintex, Accra, Ghana
               </li>
@@ -114,7 +114,7 @@ export function Footer() {
                 <li key={href + label}>
                   <Link
                     href={href}
-                    className="text-sm text-white/40 transition-colors hover:text-white"
+                    className="block text-sm text-white/40 transition-colors hover:text-white"
                   >
                     {label}
                   </Link>
@@ -130,7 +130,7 @@ export function Footer() {
                 <li key={href + label}>
                   <Link
                     href={href}
-                    className="text-sm text-white/40 transition-colors hover:text-white"
+                    className="block text-sm text-white/40 transition-colors hover:text-white"
                   >
                     {label}
                   </Link>
@@ -146,7 +146,7 @@ export function Footer() {
                 <li key={href + label}>
                   <Link
                     href={href}
-                    className="text-sm text-white/40 transition-colors hover:text-white"
+                    className="block text-sm text-white/40 transition-colors hover:text-white"
                   >
                     {label}
                   </Link>
@@ -164,7 +164,7 @@ export function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-sm text-white/40 transition-all hover:text-white group"
+                  className="flex items-center justify-center gap-2.5 text-sm text-white/40 transition-all hover:text-white group sm:justify-start"
                 >
                   <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/[0.07] bg-white/[0.04] transition-all group-hover:border-indigo-500/30 group-hover:bg-indigo-500/10">
                     <Icon className="h-3.5 w-3.5" />
