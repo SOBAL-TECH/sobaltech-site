@@ -24,7 +24,6 @@ import {
 } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { Container } from "@/components/shared/container";
-import { RichTextRenderer } from "@/components/shared/rich-text-renderer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CTASection } from "@/components/site/cta-section";
@@ -565,11 +564,12 @@ export default async function ServicePage({
         </Container>
       </section>
 
-      <Container className="py-16 sm:py-24">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_360px]">
-          <main className="min-w-0">
+      <Container className="py-14 sm:py-20">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_340px]">
+          <main className="min-w-0 space-y-8">
+            {/* Visual */}
             {service.image ? (
-              <div className="mb-10 overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-sm">
+              <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={service.image}
@@ -581,61 +581,73 @@ export default async function ServicePage({
               <ServiceVisual
                 slug={service.slug}
                 size="wide"
-                className="mb-10 border-slate-200 bg-slate-950 dark:border-white/10"
+                className="border-slate-200 bg-slate-950 dark:border-white/10"
               />
             )}
 
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-slate-950 sm:p-8">
-              <RichTextRenderer content={service.content} />
-            </div>
+            {/* Content */}
+            <div className="rounded-xl border border-border bg-card p-6 sm:p-8
+              [&_h2]:text-xl [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-foreground [&_h2]:mt-8 [&_h2]:mb-3 first:[&_h2]:mt-0
+              [&_h3]:text-base [&_h3]:font-semibold [&_h3]:text-foreground [&_h3]:mt-6 [&_h3]:mb-2
+              [&_p]:text-sm [&_p]:leading-7 [&_p]:text-muted-foreground [&_p]:mb-3
+              [&_ul]:my-4 [&_ul]:space-y-2 [&_ul]:pl-0 [&_ul]:list-none
+              [&_li]:relative [&_li]:flex [&_li]:items-start [&_li]:gap-2.5 [&_li]:text-sm [&_li]:leading-6 [&_li]:text-muted-foreground
+              [&_li]:before:mt-2 [&_li]:before:block [&_li]:before:h-1.5 [&_li]:before:w-1.5 [&_li]:before:shrink-0 [&_li]:before:rounded-full [&_li]:before:bg-indigo-500"
+              dangerouslySetInnerHTML={{ __html: service.content }}
+            />
 
-            <section className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {/* Process steps */}
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               {[
-                ["Discover", "Clarify users, goals, constraints, and technical risks."],
-                ["Build", "Ship usable increments with clean implementation and review."],
-                ["Handoff", "Document decisions, train your team, and prepare operations."],
-              ].map(([title, text], index) => (
-                <div key={title} className="rounded-2xl border border-border bg-card p-5">
-                  <span className="text-xs font-bold text-brand-500">0{index + 1}</span>
-                  <h2 className="mt-3 text-sm font-semibold">{title}</h2>
-                  <p className="mt-2 text-xs leading-5 text-muted-foreground">{text}</p>
+                ["01", "Discover", "Clarify goals, users, and technical constraints."],
+                ["02", "Build", "Ship clean increments with review at every stage."],
+                ["03", "Handoff", "Document, train your team, and prepare operations."],
+              ].map(([num, title, text]) => (
+                <div key={title} className="rounded-xl border border-border bg-card p-5">
+                  <span className="text-xs font-bold text-indigo-500">{num}</span>
+                  <h3 className="mt-2 text-sm font-semibold text-foreground">{title}</h3>
+                  <p className="mt-1.5 text-xs leading-5 text-muted-foreground">{text}</p>
                 </div>
               ))}
-            </section>
+            </div>
           </main>
 
+          {/* Sidebar */}
           <aside className="lg:sticky lg:top-24 lg:self-start">
-            <div className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_20px_70px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-slate-950">
-              <div className="bg-gradient-to-br from-indigo-500 via-violet-500 to-cyan-400 p-6 text-white">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur">
-                  <IconComponent className="h-6 w-6" />
+            <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+              {/* Header */}
+              <div className="bg-gradient-to-br from-indigo-500 via-violet-600 to-cyan-500 p-5 text-white">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 backdrop-blur">
+                  <IconComponent className="h-5 w-5" />
                 </div>
-                <h2 className="mt-5 text-lg font-semibold">{service.title}</h2>
-                <p className="mt-2 text-sm leading-6 text-white/80">{service.description}</p>
+                <h2 className="mt-4 text-base font-semibold leading-snug">{service.title}</h2>
+                <p className="mt-1.5 text-xs leading-5 text-white/80">{service.description}</p>
               </div>
 
+              {/* Features */}
               {service.features.length > 0 && (
-                <div className="p-6">
-                  <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
+                <div className="p-5">
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
                     What&apos;s included
-                  </h3>
-                  <ul className="mt-4 space-y-3">
+                  </p>
+                  <ul className="mt-3 space-y-2.5">
                     {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2.5 text-sm">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
-                        <span className="text-slate-700 dark:text-slate-300">{feature}</span>
+                      <li key={feature} className="flex items-start gap-2 text-sm">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-indigo-500" />
+                        <span className="text-foreground">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               )}
 
-              <div className="border-t border-border p-6">
-                <h3 className="text-base font-semibold">Ready to get started?</h3>
-                <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  Send the problem, context, and target timeline. We will help shape the next practical step.
+              {/* CTA */}
+              <div className="border-t border-border p-5">
+                <p className="text-sm font-semibold text-foreground">Ready to get started?</p>
+                <p className="mt-1.5 text-xs leading-5 text-muted-foreground">
+                  Tell us about your project and we will help shape the next step.
                 </p>
-                <div className="mt-5 flex flex-col gap-2">
+                <div className="mt-4 flex flex-col gap-2">
                   <Link href="/request-quote">
                     <Button className="w-full bg-brand-gradient text-white hover:opacity-90">
                       Get a Free Quote
@@ -654,31 +666,29 @@ export default async function ServicePage({
 
         {/* Related services */}
         {related.length > 0 && (
-          <section className="mt-20">
-            <h2 className="mb-8 text-xl font-bold tracking-tight sm:text-2xl">
-              Other Services
-            </h2>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <section className="mt-16">
+            <h2 className="mb-6 text-lg font-bold tracking-tight">Other Services</h2>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((s) => {
                 const RelIcon = s.icon ? (ICON_MAP[s.icon] ?? Globe) : Globe;
                 return (
                   <Link
                     key={s.id}
                     href={`/services/${s.slug}`}
-                    className="group flex flex-col gap-3 rounded-xl border border-border bg-card p-5 transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+                    className="group flex flex-col gap-3 rounded-xl border border-border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-indigo-300/60 hover:shadow-sm dark:hover:border-indigo-400/25"
                   >
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/10 border border-brand-500/20">
-                      <RelIcon className="h-4 w-4 text-brand-500" />
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-indigo-500/20 bg-indigo-500/10">
+                      <RelIcon className="h-4 w-4 text-indigo-500" />
                     </div>
                     <div>
-                      <h3 className="font-semibold group-hover:text-brand-500 transition-colors">
+                      <p className="text-sm font-semibold text-foreground group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                         {s.title}
-                      </h3>
-                      <p className="mt-1 text-xs text-muted-foreground line-clamp-2">
+                      </p>
+                      <p className="mt-1 text-xs leading-5 text-muted-foreground line-clamp-2">
                         {s.description}
                       </p>
                     </div>
-                    <span className="inline-flex items-center gap-1 text-xs font-medium text-brand-500">
+                    <span className="inline-flex items-center gap-1 text-xs font-medium text-indigo-500">
                       Learn more <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
                     </span>
                   </Link>
