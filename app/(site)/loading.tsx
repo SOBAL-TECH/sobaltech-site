@@ -16,9 +16,6 @@ export default function SiteLoading() {
         <p className="mt-5 text-sm font-semibold uppercase tracking-[0.18em] text-indigo-600 dark:text-indigo-300">
           Loading SobalTech
         </p>
-        <p className="mt-2 max-w-xs text-sm text-muted-foreground">
-          Preparing the next page.
-        </p>
       </div>
     </div>
   );
