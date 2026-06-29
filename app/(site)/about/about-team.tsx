@@ -2,15 +2,8 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import {
-  BriefcaseBusiness,
-  Github,
-  Linkedin,
-  Network,
-  ShieldCheck,
-  Twitter,
-  Users,
-} from "lucide-react";
+import { FaGithub, FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 import type { TeamMember } from "@/types";
 
@@ -18,8 +11,8 @@ const FALLBACK_TEAM: TeamMember[] = [
   {
     id: "t1",
     name: "Samuel Osei Adu",
-    role: "Founder and CEO",
-    bio: "Leads product strategy and client delivery. Full-stack engineer with a background in fintech and enterprise software.",
+    role: "Founder / CTO",
+    bio: "Leads product strategy, architecture, and client delivery across all SobalTech engagements.",
     avatar: null,
     email: null,
     linkedIn: null,
@@ -32,9 +25,9 @@ const FALLBACK_TEAM: TeamMember[] = [
   },
   {
     id: "t2",
-    name: "Abena Mensah",
-    role: "Head of Engineering",
-    bio: "Oversees engineering standards, code reviews, and infrastructure. 8 years building scalable systems across Ghana and the UK.",
+    name: "Grace Gambari",
+    role: "Administrator",
+    bio: "Manages day-to-day operations, client coordination, and project scheduling across the team.",
     avatar: null,
     email: null,
     linkedIn: null,
@@ -47,9 +40,9 @@ const FALLBACK_TEAM: TeamMember[] = [
   },
   {
     id: "t3",
-    name: "Kwame Boateng",
-    role: "Lead Designer",
-    bio: "Creates UI/UX experiences for web and mobile products. Specialises in design systems and user research with Ghanaian and African audiences.",
+    name: "Williams Owusu",
+    role: "Lead Engineer",
+    bio: "Oversees engineering standards and leads development across web, mobile, and API projects.",
     avatar: null,
     email: null,
     linkedIn: null,
@@ -62,9 +55,9 @@ const FALLBACK_TEAM: TeamMember[] = [
   },
   {
     id: "t4",
-    name: "Ama Darko",
-    role: "Cloud and DevOps Engineer",
-    bio: "Manages cloud infrastructure, CI/CD pipelines, and deployment automation. AWS and GCP certified with 5+ years of operations experience.",
+    name: "Courage Jahmon",
+    role: "Chief Marketing Officer",
+    bio: "Drives brand strategy, growth, and partnerships. Connects SobalTech with clients across Ghana and Africa.",
     avatar: null,
     email: null,
     linkedIn: null,
@@ -77,32 +70,13 @@ const FALLBACK_TEAM: TeamMember[] = [
   },
 ];
 
-const DELIVERY_MODEL = [
-  {
-    Icon: BriefcaseBusiness,
-    title: "Technical leadership",
-    detail:
-      "Hands-on planning, architecture decisions, delivery management and quality control.",
-  },
-  {
-    Icon: Users,
-    title: "Specialist collaborators",
-    detail:
-      "Design, engineering, cloud, cybersecurity and data support are assembled around the project scope.",
-  },
-  {
-    Icon: ShieldCheck,
-    title: "Secure delivery process",
-    detail:
-      "Reviews, access control, release planning and operational checks are part of the delivery workflow.",
-  },
-  {
-    Icon: Network,
-    title: "Ongoing support",
-    detail:
-      "After launch, we can support improvements, monitoring, maintenance and system expansion.",
-  },
-] as const;
+const SOCIAL_ICON_CLASS =
+  "flex h-8 w-8 items-center justify-center rounded-full border border-slate-200/70 bg-white/70 shadow-sm transition-all hover:-translate-y-0.5 dark:border-white/10 dark:bg-white/[0.05]";
+
+const ACTIVE_CLASS =
+  "text-muted-foreground hover:border-indigo-200 hover:text-indigo-600 dark:hover:text-indigo-300 cursor-pointer";
+
+const INACTIVE_CLASS = "text-muted-foreground/25 cursor-default";
 
 // ─── Avatar fallback ──────────────────────────────────────────────────────────
 
@@ -122,15 +96,40 @@ function AvatarInitials({ name }: { name: string }) {
 
 // ─── Team card ────────────────────────────────────────────────────────────────
 
-function TeamCard({
-  member,
-  index,
+function SocialButton({
+  href,
+  label,
+  children,
 }: {
-  member: TeamMember;
-  index: number;
+  href: string | null | undefined;
+  label: string;
+  children: React.ReactNode;
 }) {
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={label}
+        className={`${SOCIAL_ICON_CLASS} ${ACTIVE_CLASS}`}
+      >
+        {children}
+      </a>
+    );
+  }
+  return (
+    <span aria-label={label} className={`${SOCIAL_ICON_CLASS} ${INACTIVE_CLASS}`}>
+      {children}
+    </span>
+  );
+}
+
+function TeamCard({ member, index }: { member: TeamMember; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
+
+  const whatsappHref = member.email?.startsWith("https://wa.me/") ? member.email : null;
 
   return (
     <motion.div
@@ -177,39 +176,18 @@ function TeamCard({
 
         {/* Social links */}
         <div className="flex items-center justify-center gap-2 pt-1">
-          {member.linkedIn && (
-            <a
-              href={member.linkedIn}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${member.name} on LinkedIn`}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200/70 bg-white/70 text-muted-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:text-indigo-600 dark:border-white/10 dark:bg-white/[0.05] dark:hover:text-indigo-300"
-            >
-              <Linkedin className="h-4 w-4" />
-            </a>
-          )}
-          {member.twitter && (
-            <a
-              href={member.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${member.name} on Twitter`}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200/70 bg-white/70 text-muted-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:text-indigo-600 dark:border-white/10 dark:bg-white/[0.05] dark:hover:text-indigo-300"
-            >
-              <Twitter className="h-4 w-4" />
-            </a>
-          )}
-          {member.github && (
-            <a
-              href={member.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`${member.name} on GitHub`}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200/70 bg-white/70 text-muted-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:text-indigo-600 dark:border-white/10 dark:bg-white/[0.05] dark:hover:text-indigo-300"
-            >
-              <Github className="h-4 w-4" />
-            </a>
-          )}
+          <SocialButton href={member.github} label={`${member.name} on GitHub`}>
+            <FaGithub className="h-4 w-4" />
+          </SocialButton>
+          <SocialButton href={member.linkedIn} label={`${member.name} on LinkedIn`}>
+            <FaLinkedin className="h-4 w-4" />
+          </SocialButton>
+          <SocialButton href={member.twitter} label={`${member.name} on Twitter/X`}>
+            <FaXTwitter className="h-4 w-4" />
+          </SocialButton>
+          <SocialButton href={whatsappHref} label={`${member.name} on WhatsApp`}>
+            <FaWhatsapp className="h-4 w-4" />
+          </SocialButton>
         </div>
       </div>
     </motion.div>
@@ -252,13 +230,12 @@ export function AboutTeam({ members, id }: AboutTeamProps) {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {(members.length > 0 ? members : FALLBACK_TEAM).map((member, i) => (
             <TeamCard key={member.id} member={member} index={i} />
           ))}
         </div>
 
-        {/* Hiring CTA */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -268,10 +245,7 @@ export function AboutTeam({ members, id }: AboutTeamProps) {
         >
           <p className="text-muted-foreground text-sm">
             Want to work with the team?{" "}
-            <a
-              href="/request-quote"
-              className="text-primary font-medium hover:underline"
-            >
+            <a href="/request-quote" className="text-primary font-medium hover:underline">
               Start a project conversation →
             </a>
           </p>
