@@ -133,7 +133,7 @@ export function AboutStory() {
                     initial={{ opacity: 0, y: 16 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.45, delay: 0.2 + i * 0.06 }}
-                    className="rounded-2xl border border-white/10 bg-white/[0.06] p-4"
+                    className="flex flex-col items-center text-center rounded-2xl border border-white/10 bg-white/[0.06] p-4"
                   >
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-slate-950">
                       <Icon className="h-5 w-5" />

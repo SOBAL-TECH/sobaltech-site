@@ -100,11 +100,11 @@ export function AboutValues() {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.07 }}
-              className="group space-y-4 rounded-[1.25rem] border border-slate-200/70 bg-white/72 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-[0_18px_40px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-white/[0.045] dark:hover:border-indigo-400/25"
+              className="group flex flex-col items-center space-y-4 rounded-[1.25rem] border border-slate-200/70 bg-white/72 p-6 shadow-sm backdrop-blur-xl text-center transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-[0_18px_40px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-white/[0.045] dark:hover:border-indigo-400/25"
             >
               <div
                 className={cn(
-                  "inline-flex h-11 w-11 items-center justify-center rounded-xl border transition-transform duration-300 group-hover:scale-105",
+                  "flex h-11 w-11 items-center justify-center rounded-xl border transition-transform duration-300 group-hover:scale-105",
                   value.bg
                 )}
               >
