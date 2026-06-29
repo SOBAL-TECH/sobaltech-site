@@ -8,6 +8,9 @@ import {
   CheckCircle2,
   Cloud,
   Code2,
+  Globe,
+  MonitorSmartphone,
+  Settings2,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
@@ -86,23 +89,40 @@ export function HeroSection() {
             </Link>
           </motion.div>
 
-          <motion.div
-            variants={fadeUp}
-            className="mt-10 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3"
-          >
-            {[
-              "Senior product engineers",
-              "Secure cloud architecture",
-              "Launch-ready execution",
-            ].map((item) => (
-              <div
-                key={item}
-                className="flex items-center gap-2 rounded-2xl border border-slate-200/70 bg-white/64 px-4 py-3 text-sm text-muted-foreground shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.045]"
-              >
-                <CheckCircle2 className="h-4 w-4 shrink-0 text-indigo-600 dark:text-indigo-400" />
-                {item}
-              </div>
-            ))}
+          <motion.div variants={fadeUp} className="mt-10 max-w-2xl">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground/70">
+              What we build
+            </p>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {[
+                {
+                  Icon: Globe,
+                  title: "Websites & Web Apps",
+                  detail: "Landing pages · SaaS platforms · Dashboards",
+                },
+                {
+                  Icon: MonitorSmartphone,
+                  title: "Mobile Apps",
+                  detail: "iOS & Android · React Native · Cross-platform",
+                },
+                {
+                  Icon: Settings2,
+                  title: "Custom Software",
+                  detail: "Management systems · POS · Receipt systems · Booking platforms",
+                },
+              ].map(({ Icon, title, detail }) => (
+                <div
+                  key={title}
+                  className="flex flex-col gap-2 rounded-2xl border border-slate-200/70 bg-white/64 px-4 py-3.5 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.045]"
+                >
+                  <div className="flex items-center gap-2">
+                    <Icon className="h-4 w-4 shrink-0 text-indigo-600 dark:text-indigo-400" />
+                    <p className="text-sm font-semibold text-foreground">{title}</p>
+                  </div>
+                  <p className="text-xs leading-relaxed text-muted-foreground">{detail}</p>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
 
