@@ -349,7 +349,7 @@ export function ProductForm({ product }: ProductFormProps) {
                     <FormItem>
                       <FormLabel>Price Label</FormLabel>
                       <FormControl>
-                        <Input placeholder="From $4,500 / project" {...field} />
+                        <Input placeholder="From ₵4,500 / project" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
