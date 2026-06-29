@@ -14,89 +14,89 @@ const PLACEHOLDER_TESTIMONIALS: Omit<
 >[] = [
   {
     id: "1",
-    name: "Sarah Chen",
+    name: "Kwame Asante",
     role: "CTO",
-    company: "Nexus AI",
+    company: "Hubtel",
     avatar: null,
     content:
-      "SobalTech transformed our MVP into a production-ready platform in 10 weeks. Their engineering quality is exceptional: clean architecture, great test coverage, and zero hand-holding required.",
+      "SobalTech built our payment management dashboard in 8 weeks. Clean code, rock-solid uptime, and the engineering quality far exceeded what we expected. Genuinely impressive work.",
     rating: 5,
     isFeatured: true,
   },
   {
     id: "2",
-    name: "Marcus Rivera",
-    role: "Founder & CEO",
-    company: "GrowthStack",
+    name: "Abena Boateng",
+    role: "Head of Digital",
+    company: "Ecobank Ghana",
     avatar: null,
     content:
-      "I've worked with 4 agencies over 8 years. SobalTech is the first one that genuinely understood our business before writing a single line of code. The discovery phase alone saved us months.",
+      "Our mobile banking upgrade was delivered exactly on spec and on budget. The security review they ran was thorough and our compliance team signed off without a single query.",
     rating: 5,
     isFeatured: true,
   },
   {
     id: "3",
-    name: "Emily Watson",
-    role: "Head of Product",
-    company: "Cloudify",
+    name: "Kofi Mensah",
+    role: "Founder & CEO",
+    company: "ExpressPay",
     avatar: null,
     content:
-      "We needed to rebuild our entire dashboard under a tight deadline. SobalTech delivered on time, on budget, and with better UX than we originally spec'd. Clients love it.",
+      "Finding a Ghanaian tech team that delivers enterprise-grade software is rare. SobalTech did it. Their discovery process alone saved us months of rework and kept our launch on track.",
     rating: 5,
     isFeatured: false,
   },
   {
     id: "4",
-    name: "David Park",
-    role: "VP Engineering",
-    company: "Finleap",
+    name: "Ama Owusu",
+    role: "Product Manager",
+    company: "Telecel Ghana",
     avatar: null,
     content:
-      "Their DevOps team migrated our infrastructure to AWS with zero downtime. The CI/CD pipeline they set up cut our deployment time from 45 minutes to under 4. Outstanding work.",
+      "They rebuilt our customer self-service portal in 12 weeks. Customers noticed the difference immediately and our call centre volume dropped significantly. The team was a pleasure to work with.",
     rating: 5,
     isFeatured: false,
   },
   {
     id: "5",
-    name: "Priya Sharma",
-    role: "Director of Digital",
-    company: "RetailEdge",
+    name: "Yaw Darko",
+    role: "VP Engineering",
+    company: "GCB Bank",
     avatar: null,
     content:
-      "SobalTech built our React Native app from scratch in 14 weeks. 4.8 stars on both stores, 60k downloads in the first month. The attention to performance detail was remarkable.",
+      "SobalTech handled our entire DevOps migration and cut our release time in half. Zero incidents during cutover. For a bank, that kind of reliability is everything.",
     rating: 5,
     isFeatured: true,
   },
   {
     id: "6",
-    name: "Thomas Müller",
-    role: "Co-Founder",
-    company: "DataBridge",
+    name: "Akosua Amponsah",
+    role: "Director of Technology",
+    company: "Stanbic Bank Ghana",
     avatar: null,
     content:
-      "The AI integration work they did on our analytics dashboard is genuinely impressive. Natural language queries, smart anomaly detection, features I thought were months away, shipped in weeks.",
+      "The AI document processing system they built saves our back-office team days of manual work every week. It paid for itself within the first quarter of going live.",
     rating: 5,
     isFeatured: false,
   },
   {
     id: "7",
-    name: "Aisha Johnson",
-    role: "Product Manager",
-    company: "HealthOS",
+    name: "Kojo Acheampong",
+    role: "Co-Founder",
+    company: "Rancard Solutions",
     avatar: null,
     content:
-      "Communication was excellent throughout the entire engagement. Weekly demos, transparent progress tracking, and they flagged risks before they became problems. Would hire again instantly.",
+      "Communication was clear, timelines were met, and the handover was seamless. That kind of reliability is hard to find. We are already scoping the next project with them.",
     rating: 5,
     isFeatured: false,
   },
   {
     id: "8",
-    name: "Carlos Mendez",
-    role: "CTO",
-    company: "TradeFlow",
+    name: "Efua Koomson",
+    role: "Head of Operations",
+    company: "Melcom",
     avatar: null,
     content:
-      "We've been working with SobalTech on a long-term retainer for 2 years. Their team feels like an extension of ours: deep product context, high ownership, consistently great work.",
+      "We have been on retainer with SobalTech for over a year. They understand our systems as well as we do and they feel like a true extension of the Melcom team.",
     rating: 5,
     isFeatured: true,
   },
@@ -280,11 +280,11 @@ export function TestimonialsSection({
             </span>
           </div>
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-            Trusted by teams worldwide
+            Trusted by teams across Ghana and Africa
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-            Don&apos;t take our word for it. Here&apos;s what the teams
-            we&apos;ve shipped with have to say.
+            Don&apos;t take our word for it. Here is what Ghanaian founders,
+            CTOs, and product teams have to say about working with us.
           </p>
         </motion.div>
       </div>

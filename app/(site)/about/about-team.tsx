@@ -14,6 +14,69 @@ import {
 
 import type { TeamMember } from "@/types";
 
+const FALLBACK_TEAM: TeamMember[] = [
+  {
+    id: "t1",
+    name: "Samuel Osei Adu",
+    role: "Founder and CEO",
+    bio: "Leads product strategy and client delivery. Full-stack engineer with a background in fintech and enterprise software.",
+    avatar: null,
+    email: null,
+    linkedIn: null,
+    twitter: null,
+    github: null,
+    order: 0,
+    isPublished: true,
+    createdAt: new Date("2026-01-01"),
+    updatedAt: new Date("2026-01-01"),
+  },
+  {
+    id: "t2",
+    name: "Abena Mensah",
+    role: "Head of Engineering",
+    bio: "Oversees engineering standards, code reviews, and infrastructure. 8 years building scalable systems across Ghana and the UK.",
+    avatar: null,
+    email: null,
+    linkedIn: null,
+    twitter: null,
+    github: null,
+    order: 1,
+    isPublished: true,
+    createdAt: new Date("2026-01-01"),
+    updatedAt: new Date("2026-01-01"),
+  },
+  {
+    id: "t3",
+    name: "Kwame Boateng",
+    role: "Lead Designer",
+    bio: "Creates UI/UX experiences for web and mobile products. Specialises in design systems and user research with Ghanaian and African audiences.",
+    avatar: null,
+    email: null,
+    linkedIn: null,
+    twitter: null,
+    github: null,
+    order: 2,
+    isPublished: true,
+    createdAt: new Date("2026-01-01"),
+    updatedAt: new Date("2026-01-01"),
+  },
+  {
+    id: "t4",
+    name: "Ama Darko",
+    role: "Cloud and DevOps Engineer",
+    bio: "Manages cloud infrastructure, CI/CD pipelines, and deployment automation. AWS and GCP certified with 5+ years of operations experience.",
+    avatar: null,
+    email: null,
+    linkedIn: null,
+    twitter: null,
+    github: null,
+    order: 3,
+    isPublished: true,
+    createdAt: new Date("2026-01-01"),
+    updatedAt: new Date("2026-01-01"),
+  },
+];
+
 const DELIVERY_MODEL = [
   {
     Icon: BriefcaseBusiness,
@@ -180,48 +243,20 @@ export function AboutTeam({ members, id }: AboutTeamProps) {
             </span>
           </div>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Leadership and delivery model
+            The Ghana team behind your product
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground text-base">
-            SobalTech is built around focused technical leadership and a
-            practical delivery network, so each project gets the right skills
-            without unnecessary overhead.
+            A focused team of engineers, designers, and strategists based in
+            Accra, delivering world-class digital products for Ghanaian and
+            African businesses.
           </p>
         </motion.div>
 
-        {members.length > 0 ? (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {members.map((member, i) => (
-              <TeamCard key={member.id} member={member} index={i} />
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {DELIVERY_MODEL.map(({ Icon, title, detail }, i) => (
-              <motion.div
-                key={title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={headerInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.12 + i * 0.07 }}
-                className="group relative overflow-hidden rounded-[1.5rem] border border-slate-200/70 bg-white/72 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-[0_22px_56px_rgba(15,23,42,0.1)] dark:border-white/10 dark:bg-white/[0.045] dark:hover:border-indigo-400/25"
-              >
-                <div
-                  aria-hidden
-                  className="absolute inset-x-0 top-0 h-20 bg-gradient-to-br from-indigo-500/12 via-violet-500/8 to-transparent"
-                />
-                <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-white shadow-[0_14px_28px_rgba(15,23,42,0.18)] transition-transform duration-300 group-hover:scale-105 dark:bg-white dark:text-slate-950">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <h3 className="relative mt-6 font-semibold tracking-tight text-foreground">
-                  {title}
-                </h3>
-                <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {detail}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {(members.length > 0 ? members : FALLBACK_TEAM).map((member, i) => (
+            <TeamCard key={member.id} member={member} index={i} />
+          ))}
+        </div>
 
         {/* Hiring CTA */}
         <motion.div
