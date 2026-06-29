@@ -44,6 +44,9 @@ import {
   GraduationCap,
   Network,
   ShieldCheck,
+  AppWindow,
+  Store,
+  CreditCard,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -209,6 +212,27 @@ const MENUS: Record<string, MenuConfig> = {
         description: "Capacity building for software, security, AI & ops",
         href: "/services/it-training",
         gradient: "from-violet-600 via-purple-600 to-fuchsia-700",
+      },
+      {
+        Icon: AppWindow,
+        label: "Custom Applications",
+        description: "Bespoke software built around your business processes",
+        href: "/services/custom-applications",
+        gradient: "from-slate-500 via-slate-600 to-slate-800",
+      },
+      {
+        Icon: CreditCard,
+        label: "POS Systems",
+        description: "Custom point-of-sale for retail, hospitality & services",
+        href: "/services/pos-systems",
+        gradient: "from-emerald-600 via-green-600 to-teal-700",
+      },
+      {
+        Icon: Store,
+        label: "E-commerce",
+        description: "Full-featured online stores with payments & order management",
+        href: "/services/ecommerce",
+        gradient: "from-orange-500 via-amber-500 to-orange-600",
       },
     ],
     footer: { label: "View all services", href: "/services" },

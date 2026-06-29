@@ -10,6 +10,9 @@ import {
   Palette,
   Code2,
   Cpu,
+  AppWindow,
+  CreditCard,
+  Store,
   ArrowRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -82,6 +85,39 @@ const services = [
     iconBg: "bg-amber-50 dark:bg-amber-950/50",
     iconColor: "text-amber-600 dark:text-amber-400",
     features: ["LLM integration", "RAG pipelines", "AI automation"],
+  },
+  {
+    Icon: AppWindow,
+    title: "Custom Applications",
+    description:
+      "Bespoke software built around your exact business processes — management systems, internal tools, booking platforms, and more.",
+    href: "/services/custom-applications",
+    accent: "from-slate-500 to-slate-700",
+    iconBg: "bg-slate-100 dark:bg-slate-800/50",
+    iconColor: "text-slate-600 dark:text-slate-400",
+    features: ["Management systems", "Internal tools", "Workflow automation"],
+  },
+  {
+    Icon: CreditCard,
+    title: "POS Systems",
+    description:
+      "Custom point-of-sale software for retail, hospitality, and service businesses — built around your workflow, not a generic template.",
+    href: "/services/pos-systems",
+    accent: "from-emerald-600 to-teal-600",
+    iconBg: "bg-emerald-50 dark:bg-emerald-950/50",
+    iconColor: "text-emerald-600 dark:text-emerald-400",
+    features: ["Sales & checkout", "Inventory management", "Sales reporting"],
+  },
+  {
+    Icon: Store,
+    title: "E-commerce",
+    description:
+      "Full-featured online stores with product management, payment processing, order workflows, and integrations that scale with your business.",
+    href: "/services/ecommerce",
+    accent: "from-orange-500 to-amber-500",
+    iconBg: "bg-orange-50 dark:bg-orange-950/50",
+    iconColor: "text-orange-600 dark:text-orange-400",
+    features: ["Product catalogue", "Checkout & payments", "Order management"],
   },
 ] as const;
 
