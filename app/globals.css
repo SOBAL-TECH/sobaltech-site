@@ -47,10 +47,10 @@
   }
 
   .dark {
-    --background: 222 47% 8%; /* #0a0f1e */
-    --foreground: 213 31% 91%; /* #e8eaf0 */
+    --background: 222 47% 7%; /* #080d1a */
+    --foreground: 213 38% 94%; /* brighter page headings */
 
-    --card: 222 47% 10%; /* #0d1526 */
+    --card: 222 42% 11%; /* slightly raised from background */
     --card-foreground: 213 31% 91%;
 
     --popover: 222 47% 10%;
@@ -59,24 +59,24 @@
     --primary: 238 74% 73%; /* #818cf8 lighter indigo */
     --primary-foreground: 222 47% 8%;
 
-    --secondary: 222 40% 14%;
+    --secondary: 222 34% 15%;
     --secondary-foreground: 213 31% 91%;
 
-    --muted: 222 40% 14%;
-    --muted-foreground: 215 16% 57%; /* #8792a2 */
+    --muted: 222 32% 15%;
+    --muted-foreground: 215 18% 66%;
 
-    --accent: 222 40% 16%;
+    --accent: 222 34% 17%;
     --accent-foreground: 213 31% 91%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 213 31% 91%;
 
-    --border: 222 30% 18%;
-    --input: 222 30% 18%;
+    --border: 222 26% 22%;
+    --input: 222 26% 22%;
     --ring: 238 74% 73%;
 
-    --surface: 222 47% 10%;
-    --surface-raised: 222 40% 13%;
+    --surface: 222 40% 9%;
+    --surface-raised: 222 34% 14%;
 
     /* Chart colors */
     --chart-1: 238 74% 73%;
