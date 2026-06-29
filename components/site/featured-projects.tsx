@@ -120,7 +120,7 @@ function ProjectCard({
 
   return (
     <div
-      className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(15,23,42,0.12)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)] select-none"
+      className="group flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-[0_12px_40px_rgba(15,23,42,0.12)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)] select-none"
       style={{ width: cardWidth, minWidth: cardWidth }}
     >
       {/* Cover */}

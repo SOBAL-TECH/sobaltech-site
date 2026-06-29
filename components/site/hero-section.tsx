@@ -113,7 +113,7 @@ export function HeroSection() {
               ].map(({ Icon, title, detail }) => (
                 <div
                   key={title}
-                  className="flex flex-col gap-2 rounded-2xl border border-slate-200/70 bg-white/64 px-4 py-3.5 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.045]"
+                  className="flex flex-col gap-2 rounded-lg border border-slate-200/70 bg-white/64 px-4 py-3.5 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.045]"
                 >
                   <div className="flex items-center gap-2">
                     <Icon className="h-4 w-4 shrink-0 text-indigo-600 dark:text-indigo-400" />
@@ -134,9 +134,9 @@ export function HeroSection() {
         >
           <motion.div
             variants={fadeUp}
-            className="relative overflow-hidden rounded-[2rem] border border-white/60 bg-white/68 p-4 shadow-[0_32px_100px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,0.78)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/58 dark:shadow-[0_32px_100px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.08)]"
+            className="relative overflow-hidden rounded-xl border border-white/60 bg-white/68 p-4 shadow-[0_32px_100px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,0.78)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/58 dark:shadow-[0_32px_100px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.08)]"
           >
-            <div className="relative overflow-hidden rounded-[1.45rem] border border-slate-200/75 bg-slate-950 p-5 text-white shadow-2xl dark:border-white/10">
+            <div className="relative overflow-hidden rounded-xl border border-slate-200/75 bg-slate-950 p-5 text-white shadow-2xl dark:border-white/10">
               <div aria-hidden className="hero-active-line-field" />
               <div aria-hidden className="hero-line-streams">
                 <span style={{ left: "16%", animationDelay: "0s" }} />
@@ -166,7 +166,7 @@ export function HeroSection() {
                     ["99.9%", "Target uptime"],
                     ["24/7", "Monitoring"],
                   ].map(([value, label]) => (
-                    <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.07] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
+                    <div key={label} className="rounded-lg border border-white/10 bg-white/[0.07] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
                       <p className="text-2xl font-bold tracking-tight">{value}</p>
                       <p className="mt-1 text-xs text-slate-300">{label}</p>
                     </div>
@@ -179,7 +179,7 @@ export function HeroSection() {
                     { Icon: Cloud, title: "Infrastructure", detail: "CI/CD, cloud, observability" },
                     { Icon: ShieldCheck, title: "Security", detail: "Reviews, hardening, safe release" },
                   ].map(({ Icon, title, detail }) => (
-                    <div key={title} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.065] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
+                    <div key={title} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.065] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
                       <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-slate-950">
                         <Icon className="h-5 w-5" />
                       </div>
@@ -192,7 +192,7 @@ export function HeroSection() {
                   ))}
                 </div>
 
-                <div className="mt-4 rounded-2xl border border-white/10 bg-gradient-to-r from-indigo-500/20 to-violet-500/18 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
+                <div className="mt-4 rounded-lg border border-white/10 bg-gradient-to-r from-indigo-500/20 to-violet-500/18 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm font-semibold">Analytics pipeline</p>

@@ -133,7 +133,7 @@ export default async function ProductsPage() {
                 <Link
                   key={product.id}
                   href={`/products/${product.slug}`}
-                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300/50 hover:shadow-[0_20px_60px_rgba(15,23,42,0.12)] dark:hover:border-indigo-400/25 dark:hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+                  className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300/50 hover:shadow-[0_20px_60px_rgba(15,23,42,0.12)] dark:hover:border-indigo-400/25 dark:hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
                 >
                   {/* Gradient top bar */}
                   <div className={`h-1 w-full bg-gradient-to-r ${g.bar}`} />

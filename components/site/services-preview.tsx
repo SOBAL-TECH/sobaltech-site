@@ -169,7 +169,7 @@ function ServiceCard({
           isLeft ? "md:col-start-1 md:row-start-1" : "md:col-start-3 md:row-start-1",
         )}
       >
-        <div className="relative overflow-hidden rounded-2xl border border-border bg-card/85 p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-300/60 hover:bg-card hover:shadow-[0_12px_36px_rgba(15,23,42,0.08)] dark:hover:border-indigo-400/25 dark:hover:shadow-[0_12px_36px_rgba(0,0,0,0.35)]">
+        <div className="relative overflow-hidden rounded-lg border border-border bg-card/85 p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-300/60 hover:bg-card hover:shadow-[0_12px_36px_rgba(15,23,42,0.08)] dark:hover:border-indigo-400/25 dark:hover:shadow-[0_12px_36px_rgba(0,0,0,0.35)]">
           <div className="flex gap-4 pl-2">
             <div
               className={cn(

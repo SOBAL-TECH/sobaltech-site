@@ -353,6 +353,12 @@ function isSectionActive(pathname: string, menuId: string) {
   );
 }
 
+function isHrefActive(pathname: string, href: string) {
+  const [hrefPath, hrefSuffix] = href.split(/[?#]/);
+  if (!hrefPath || hrefSuffix) return false;
+  return pathname === hrefPath || pathname.startsWith(`${hrefPath}/`);
+}
+
 // ─── Animation config ─────────────────────────────────────────────────────────
 
 const PANEL_SPRING = {
@@ -381,9 +387,11 @@ const menuContentVariants = {
 
 function VisualCard({
   card,
+  isActive,
   onClose,
 }: {
   card: VisualCard;
+  isActive: boolean;
   onClose: () => void;
 }) {
   return (
@@ -391,7 +399,13 @@ function VisualCard({
       <Link
         href={card.href}
         onClick={onClose}
-        className="group flex min-h-[92px] items-start gap-3 rounded-[1.05rem] border border-slate-200/65 bg-white/64 p-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] outline-none backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-200 hover:bg-white/88 hover:shadow-[0_18px_38px_rgba(15,23,42,0.09)] focus-visible:ring-2 focus-visible:ring-indigo-500/35 dark:border-white/10 dark:bg-white/[0.055] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] dark:hover:border-indigo-400/30 dark:hover:bg-white/[0.09] dark:hover:shadow-[0_18px_42px_rgba(0,0,0,0.34)]"
+        aria-current={isActive ? "page" : undefined}
+        className={cn(
+          "group flex min-h-[92px] items-start gap-3 rounded-lg border p-3.5 outline-none backdrop-blur-xl transition-all duration-200 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-indigo-500/35",
+          isActive
+            ? "border-indigo-300 bg-indigo-50/95 shadow-[0_16px_34px_rgba(79,70,229,0.12),inset_0_1px_0_rgba(255,255,255,0.78)] ring-1 ring-indigo-500/15 dark:border-indigo-400/45 dark:bg-indigo-400/[0.14] dark:shadow-[0_18px_42px_rgba(0,0,0,0.34),inset_0_1px_0_rgba(255,255,255,0.08)] dark:ring-indigo-300/20"
+            : "border-slate-200/80 bg-white/88 shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] hover:border-indigo-200 hover:bg-white hover:shadow-[0_18px_38px_rgba(15,23,42,0.09)] dark:border-white/10 dark:bg-slate-900/78 dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] dark:hover:border-indigo-400/30 dark:hover:bg-slate-900 dark:hover:shadow-[0_18px_42px_rgba(0,0,0,0.34)]",
+        )}
       >
         <div
           className={cn(
@@ -405,7 +419,14 @@ function VisualCard({
 
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
-            <h3 className="truncate text-[13px] font-semibold leading-snug text-slate-950 dark:text-white">
+            <h3
+              className={cn(
+                "truncate text-[13px] font-semibold leading-snug",
+                isActive
+                  ? "text-indigo-950 dark:text-indigo-100"
+                  : "text-slate-950 dark:text-white",
+              )}
+            >
               {card.label}
             </h3>
             {card.badge && (
@@ -414,10 +435,15 @@ function VisualCard({
               </span>
             )}
           </div>
-          <p className="mt-1 line-clamp-2 text-[11.5px] leading-relaxed text-slate-600 dark:text-slate-300">
+          <p className="mt-1 line-clamp-2 text-[11.5px] leading-relaxed text-slate-700 dark:text-slate-300">
             {card.description}
           </p>
-          <div className="mt-2 flex items-center gap-1 text-[11px] font-semibold text-indigo-600 opacity-0 transition-all duration-150 group-hover:opacity-100 dark:text-indigo-300">
+          <div
+            className={cn(
+              "mt-2 flex items-center gap-1 text-[11px] font-semibold text-indigo-700 transition-all duration-150 dark:text-indigo-300",
+              isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100",
+            )}
+          >
             Explore
             <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
           </div>
@@ -431,9 +457,11 @@ function VisualCard({
 
 function FeaturedStrip({
   strip,
+  isActive,
   onClose,
 }: {
   strip: FeaturedStrip;
+  isActive: boolean;
   onClose: () => void;
 }) {
   return (
@@ -445,7 +473,13 @@ function FeaturedStrip({
       <Link
         href={strip.href}
         onClick={onClose}
-        className="group flex items-center gap-4 rounded-[1.1rem] border border-indigo-200/60 bg-gradient-to-r from-indigo-50/90 via-white/72 to-violet-50/80 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] backdrop-blur-xl transition-all duration-200 hover:border-indigo-300/75 hover:shadow-[0_16px_34px_rgba(79,70,229,0.12)] dark:border-indigo-300/15 dark:from-indigo-400/[0.11] dark:via-white/[0.045] dark:to-violet-400/[0.09] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.07)] dark:hover:bg-indigo-400/[0.11]"
+        aria-current={isActive ? "page" : undefined}
+        className={cn(
+          "group flex items-center gap-4 rounded-lg border p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] backdrop-blur-xl transition-all duration-200 hover:border-indigo-300/75 hover:shadow-[0_16px_34px_rgba(79,70,229,0.12)] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.07)]",
+          isActive
+            ? "border-indigo-300 bg-indigo-50/95 ring-1 ring-indigo-500/15 dark:border-indigo-400/40 dark:bg-indigo-400/[0.14] dark:ring-indigo-300/20"
+            : "border-indigo-200/70 bg-gradient-to-r from-indigo-50/95 via-white/90 to-violet-50/90 dark:border-indigo-300/15 dark:from-indigo-400/[0.11] dark:via-slate-900/80 dark:to-violet-400/[0.09] dark:hover:bg-indigo-400/[0.11]",
+        )}
       >
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-slate-950 shadow-md shadow-slate-950/20 dark:bg-white">
           <Sparkles className="h-4 w-4 text-white dark:text-slate-950" />
@@ -476,11 +510,13 @@ function PanelContent({
   menuId,
   config,
   direction,
+  pathname,
   onClose,
 }: {
   menuId: string;
   config: MenuConfig;
   direction: number;
+  pathname: string;
   onClose: () => void;
 }) {
   return (
@@ -494,15 +530,21 @@ function PanelContent({
       exit="exit"
       transition={{ duration: 0.26, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="mb-4 flex items-center justify-between border-b border-slate-200/65 pb-3 dark:border-white/10">
-        <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+      <div className="mb-4 flex items-center justify-between border-b border-slate-200/80 pb-3 dark:border-white/10">
+        <p className="text-[10.5px] font-bold uppercase tracking-[0.18em] text-slate-950 dark:text-white">
           {config.heading}
         </p>
         {config.footer && (
           <Link
             href={config.footer.href}
             onClick={onClose}
-            className="group flex items-center gap-1.5 rounded-full border border-slate-200/70 bg-white/58 px-3 py-1.5 text-[12px] font-semibold text-indigo-600 shadow-sm backdrop-blur transition-all hover:gap-2 hover:border-indigo-200 hover:bg-white/90 dark:border-white/10 dark:bg-white/[0.04] dark:text-indigo-300"
+            aria-current={isHrefActive(pathname, config.footer.href) ? "page" : undefined}
+            className={cn(
+              "group flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[12px] font-semibold shadow-sm backdrop-blur transition-all hover:gap-2 hover:border-indigo-200 hover:bg-white dark:border-white/10 dark:text-indigo-300",
+              isHrefActive(pathname, config.footer.href)
+                ? "border-indigo-300 bg-indigo-50 text-indigo-800 dark:border-indigo-400/35 dark:bg-indigo-400/[0.12]"
+                : "border-slate-200/80 bg-white/85 text-indigo-700 dark:bg-slate-900/75",
+            )}
           >
             {config.footer.label}
             <ArrowRight className="h-3.5 w-3.5" />
@@ -520,13 +562,22 @@ function PanelContent({
         )}
       >
         {config.cards.map((card) => (
-          <VisualCard key={card.href} card={card} onClose={onClose} />
+          <VisualCard
+            key={card.href}
+            card={card}
+            isActive={isHrefActive(pathname, card.href)}
+            onClose={onClose}
+          />
         ))}
       </div>
 
       {config.featured && (
         <div className="mt-4">
-          <FeaturedStrip strip={config.featured} onClose={onClose} />
+          <FeaturedStrip
+            strip={config.featured}
+            isActive={isHrefActive(pathname, config.featured.href)}
+            onClose={onClose}
+          />
         </div>
       )}
     </motion.div>
@@ -823,7 +874,7 @@ export function Navbar() {
             <motion.div
               layout
               className={cn(
-                "pointer-events-auto mx-auto w-[calc(100vw-2rem)] overflow-hidden rounded-[1.5rem] border border-white/55 bg-white/72 p-4 shadow-[0_28px_90px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,0.78)] ring-1 ring-slate-950/[0.03] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/68 dark:shadow-[0_30px_96px_rgba(0,0,0,0.64),inset_0_1px_0_rgba(255,255,255,0.08)] dark:ring-white/[0.03]",
+                "pointer-events-auto mx-auto w-[calc(100vw-2rem)] overflow-hidden rounded-xl border border-slate-200 bg-white/96 p-4 shadow-[0_28px_90px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,0.78)] ring-1 ring-slate-950/[0.04] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/92 dark:shadow-[0_30px_96px_rgba(0,0,0,0.64),inset_0_1px_0_rgba(255,255,255,0.08)] dark:ring-white/[0.03]",
                 getPanelWidthClass(MENUS[activeMenu.id]!),
               )}
               transition={PANEL_SPRING}
@@ -837,6 +888,7 @@ export function Navbar() {
                     menuId={activeMenu.id}
                     config={MENUS[activeMenu.id]!}
                     direction={activeMenu.direction}
+                    pathname={pathname}
                     onClose={closeMenu}
                   />
                 </AnimatePresence>
@@ -880,7 +932,7 @@ export function Navbar() {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="mx-3 mt-2 overflow-hidden rounded-2xl border border-white/35 bg-background/78 shadow-[0_18px_50px_rgba(15,23,42,0.14)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/76 dark:shadow-[0_18px_50px_rgba(0,0,0,0.5)]">
+              <div className="mx-3 mt-2 overflow-hidden rounded-xl border border-white/35 bg-background/78 shadow-[0_18px_50px_rgba(15,23,42,0.14)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/76 dark:shadow-[0_18px_50px_rgba(0,0,0,0.5)]">
                 <div className="max-h-[calc(100dvh-5.5rem)] overflow-y-auto p-3">
 
                   {NAV_ITEMS.map((item) => {
@@ -895,7 +947,7 @@ export function Navbar() {
                             className={cn(
                               "flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-[13.5px] font-semibold transition-colors hover:bg-muted",
                               isActive
-                                ? "text-indigo-600 dark:text-indigo-400"
+                                ? "bg-indigo-50 text-indigo-700 dark:bg-indigo-400/[0.12] dark:text-indigo-300"
                                 : "text-foreground",
                             )}
                           >
@@ -916,29 +968,38 @@ export function Navbar() {
                                 className="overflow-hidden"
                               >
                                 <div className="grid grid-cols-1 gap-1.5 px-1 pb-2 pt-1">
-                                  {config?.cards.map((card, ii) => (
-                                    <Link
-                                      key={ii}
-                                      href={card.href}
-                                      onClick={() => setMobileOpen(false)}
-                                      className="flex items-start gap-3 rounded-xl border border-transparent px-3 py-2.5 transition-colors hover:border-white/40 hover:bg-white/45 dark:hover:border-white/10 dark:hover:bg-white/[0.05]"
-                                    >
-                                      <div className={cn(
-                                        "mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br",
-                                        card.gradient,
-                                      )}>
-                                        <card.Icon className="h-4 w-4 text-white" />
-                                      </div>
-                                      <div>
-                                        <p className="text-[13px] font-semibold text-foreground">
-                                          {card.label}
-                                        </p>
-                                        <p className="text-[11px] leading-snug text-muted-foreground">
-                                          {card.description}
-                                        </p>
-                                      </div>
-                                    </Link>
-                                  ))}
+                                  {config?.cards.map((card, ii) => {
+                                    const isCardActive = isHrefActive(pathname, card.href);
+                                    return (
+                                      <Link
+                                        key={ii}
+                                        href={card.href}
+                                        onClick={() => setMobileOpen(false)}
+                                        aria-current={isCardActive ? "page" : undefined}
+                                        className={cn(
+                                          "flex items-start gap-3 rounded-xl border px-3 py-2.5 transition-colors hover:border-indigo-200 hover:bg-indigo-50/70 dark:hover:border-white/10 dark:hover:bg-white/[0.05]",
+                                          isCardActive
+                                            ? "border-indigo-300 bg-indigo-50 text-indigo-950 dark:border-indigo-400/35 dark:bg-indigo-400/[0.12] dark:text-indigo-100"
+                                            : "border-transparent text-foreground",
+                                        )}
+                                      >
+                                        <div className={cn(
+                                          "mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br",
+                                          card.gradient,
+                                        )}>
+                                          <card.Icon className="h-4 w-4 text-white" />
+                                        </div>
+                                        <div>
+                                          <p className="text-[13px] font-semibold">
+                                            {card.label}
+                                          </p>
+                                          <p className="text-[11px] leading-snug text-muted-foreground">
+                                            {card.description}
+                                          </p>
+                                        </div>
+                                      </Link>
+                                    );
+                                  })}
                                   {config?.footer && (
                                     <Link
                                       href={config.footer.href}

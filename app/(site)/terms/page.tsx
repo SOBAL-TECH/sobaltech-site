@@ -143,7 +143,7 @@ export default function TermsPage() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-24 sm:px-6 md:pb-28 md:pt-32 lg:px-8">
           <div className="flex flex-col gap-6 max-w-3xl">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 shadow-md">
@@ -210,7 +210,7 @@ export default function TermsPage() {
           {/* ── Sidebar TOC ── */}
           <aside className="lg:w-64 xl:w-72 shrink-0">
             <div className="lg:sticky lg:top-24 space-y-6">
-              <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+              <div className="rounded-lg border border-border bg-card p-5 shadow-sm">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground mb-4">
                   On this page
                 </p>
@@ -242,7 +242,7 @@ export default function TermsPage() {
               </div>
 
               {/* Contact card */}
-              <div className="rounded-2xl border border-violet-200 bg-violet-50/60 dark:border-violet-800/40 dark:bg-violet-950/20 p-5">
+              <div className="rounded-lg border border-violet-200 bg-violet-50/60 dark:border-violet-800/40 dark:bg-violet-950/20 p-5">
                 <p className="text-sm font-semibold text-foreground mb-1.5">Legal questions?</p>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-3">
                   Our legal team is happy to clarify any aspect of these terms before you engage us.

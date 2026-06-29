@@ -95,7 +95,7 @@ function StepCard({
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.09, ease: "easeOut" }}
-      className="group relative flex flex-col gap-5 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
+      className="group relative flex flex-col gap-5 rounded-lg border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
     >
       {/* Number + icon row */}
       <div className="flex items-start justify-between">

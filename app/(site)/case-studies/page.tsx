@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, CheckCircle2, TrendingUp, Layers } from "lucide-react";
+import { ArrowRight, BookOpen, CheckCircle2, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CTASection } from "@/components/site/cta-section";
 
@@ -118,10 +118,9 @@ const CASE_STUDIES = [
 
 // ─── Card ─────────────────────────────────────────────────────────────────────
 
-function CaseStudyCard({ cs, index }: { cs: (typeof CASE_STUDIES)[number]; index: number }) {
-  const isEven = index % 2 === 0;
+function CaseStudyCard({ cs }: { cs: (typeof CASE_STUDIES)[number] }) {
   return (
-    <article className="rounded-2xl border border-border bg-card overflow-hidden shadow-sm">
+    <article className="rounded-lg border border-border bg-card overflow-hidden shadow-sm">
 
       {/* Header band */}
       <div className={cn(
@@ -185,7 +184,7 @@ function CaseStudyCard({ cs, index }: { cs: (typeof CASE_STUDIES)[number]; index
         {/* Quote */}
         <div className="rounded-xl border border-border bg-muted/40 p-4">
           <p className="text-sm text-foreground italic leading-relaxed mb-3">
-            "{cs.quote.text}"
+            &ldquo;{cs.quote.text}&rdquo;
           </p>
           <div className="flex items-center gap-2">
             <div className={cn(
@@ -290,8 +289,8 @@ export default function CaseStudiesPage() {
       {/* Case studies */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 md:py-20">
         <div className="space-y-8">
-          {CASE_STUDIES.map((cs, i) => (
-            <CaseStudyCard key={cs.slug} cs={cs} index={i} />
+          {CASE_STUDIES.map((cs) => (
+            <CaseStudyCard key={cs.slug} cs={cs} />
           ))}
         </div>
       </div>

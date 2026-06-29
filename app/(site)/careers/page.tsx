@@ -74,7 +74,7 @@ function JobCard({ job }: { job: JobListing }) {
     new Date(job.closingDate) > new Date();
 
   return (
-    <article className="group rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-card-hover">
+    <article className="group rounded-lg border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-card-hover">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_260px]">
         <div>
           <div className="flex flex-wrap items-start gap-3">
@@ -164,7 +164,7 @@ export default async function CareersPage() {
           {benefits.map((benefit) => (
             <div
               key={benefit.title}
-              className="rounded-2xl border border-border bg-card p-5 shadow-sm"
+              className="rounded-lg border border-border bg-card p-5 shadow-sm"
             >
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl border border-brand-500/20 bg-brand-500/10">
                 <benefit.icon className="h-5 w-5 text-brand-500" />
@@ -199,7 +199,7 @@ export default async function CareersPage() {
               ))}
             </div>
           ) : (
-            <div className="rounded-2xl border border-border bg-card p-10 text-center">
+            <div className="rounded-lg border border-border bg-card p-10 text-center">
               <p className="text-base font-medium">No open roles right now.</p>
               <p className="mt-2 text-sm text-muted-foreground">
                 We are not actively hiring at the moment but we welcome speculative
@@ -219,7 +219,7 @@ export default async function CareersPage() {
         </section>
 
         {/* Hiring Process */}
-        <section className="mt-16 rounded-3xl border border-border bg-card p-6 sm:p-8">
+        <section className="mt-16 rounded-xl border border-border bg-card p-6 sm:p-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
               <Badge variant="secondary" className="mb-3 rounded-full">
@@ -238,7 +238,7 @@ export default async function CareersPage() {
               {hiringProcess.map((step, index) => (
                 <li
                   key={step}
-                  className="rounded-2xl border border-border bg-background p-4"
+                  className="rounded-lg border border-border bg-background p-4"
                 >
                   <span className="text-xs font-bold uppercase tracking-wide text-brand-500">
                     Step {index + 1}

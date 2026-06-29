@@ -201,7 +201,7 @@ export default async function JobDetailPage({
           <div>
             <div
               id="apply"
-              className="sticky top-28 rounded-2xl border border-border bg-card p-6 sm:p-8 scroll-mt-28"
+              className="sticky top-28 rounded-lg border border-border bg-card p-6 sm:p-8 scroll-mt-28"
             >
               {isClosed ? (
                 <div className="space-y-3 text-center">

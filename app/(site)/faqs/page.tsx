@@ -205,7 +205,7 @@ export default function FAQsPage() {
           <div className="absolute left-1/2 top-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-indigo-400/10 blur-[100px] dark:bg-indigo-600/10" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.5)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.5)_1px,transparent_1px)] bg-[size:48px_48px] opacity-25" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-24 sm:px-6 md:pb-28 md:pt-32 lg:px-8">
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 shadow-md">
@@ -219,7 +219,7 @@ export default function FAQsPage() {
               Frequently asked questions
             </h1>
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-              Everything you need to know about working with SobalTech. Can't find your answer? Reach out directly.
+              Everything you need to know about working with SobalTech. Can&apos;t find your answer? Reach out directly.
             </p>
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
               {[
@@ -245,7 +245,7 @@ export default function FAQsPage() {
           {/* Sidebar */}
           <aside className="lg:w-56 shrink-0">
             <div className="lg:sticky lg:top-24 space-y-6">
-              <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+              <div className="rounded-lg border border-border bg-card p-4 shadow-sm">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground mb-3">Categories</p>
                 <nav className="space-y-1">
                   {CATEGORIES.map(({ id, label }) => {
@@ -273,7 +273,7 @@ export default function FAQsPage() {
                 </nav>
               </div>
 
-              <div className="rounded-2xl border border-indigo-200 bg-indigo-50/60 dark:border-indigo-800/40 dark:bg-indigo-950/20 p-4">
+              <div className="rounded-lg border border-indigo-200 bg-indigo-50/60 dark:border-indigo-800/40 dark:bg-indigo-950/20 p-4">
                 <p className="text-sm font-semibold text-foreground mb-1">Still have questions?</p>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-3">
                   Book a free 30-minute call and we will answer everything.

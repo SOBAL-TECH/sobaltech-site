@@ -91,7 +91,7 @@ export function AboutStory() {
               ].map(([value, label]) => (
                 <div
                   key={label}
-                  className="rounded-2xl border border-slate-200/70 bg-white/64 p-4 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.045]"
+                  className="rounded-lg border border-slate-200/70 bg-white/64 p-4 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.045]"
                 >
                   <p className="text-2xl font-bold tracking-tight text-foreground">
                     {value}
@@ -109,9 +109,9 @@ export function AboutStory() {
             initial={{ opacity: 0, x: 24 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.65, delay: 0.15, ease: "easeOut" }}
-            className="overflow-hidden rounded-[2rem] border border-white/60 bg-white/68 p-4 shadow-[0_26px_80px_rgba(15,23,42,0.13),inset_0_1px_0_rgba(255,255,255,0.78)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/56 dark:shadow-[0_26px_80px_rgba(0,0,0,0.45)]"
+            className="overflow-hidden rounded-xl border border-white/60 bg-white/68 p-4 shadow-[0_26px_80px_rgba(15,23,42,0.13),inset_0_1px_0_rgba(255,255,255,0.78)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/56 dark:shadow-[0_26px_80px_rgba(0,0,0,0.45)]"
           >
-            <div className="rounded-[1.45rem] border border-slate-200/75 bg-slate-950 p-5 text-white dark:border-white/10">
+            <div className="rounded-xl border border-slate-200/75 bg-slate-950 p-5 text-white dark:border-white/10">
               <div className="mb-5 flex items-start justify-between gap-6">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-200">
@@ -133,7 +133,7 @@ export function AboutStory() {
                     initial={{ opacity: 0, y: 16 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.45, delay: 0.2 + i * 0.06 }}
-                    className="flex flex-col items-center text-center rounded-2xl border border-white/10 bg-white/[0.06] p-4"
+                    className="flex flex-col items-center text-center rounded-lg border border-white/10 bg-white/[0.06] p-4"
                   >
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-slate-950">
                       <Icon className="h-5 w-5" />

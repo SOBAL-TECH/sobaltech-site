@@ -347,7 +347,7 @@ export default async function PortfolioDetailPage({
             <div className="lg:sticky lg:top-24 flex flex-col gap-5">
 
               {/* Project details card */}
-              <div className="rounded-2xl border border-border bg-card shadow-sm overflow-hidden">
+              <div className="rounded-lg border border-border bg-card shadow-sm overflow-hidden">
                 <div className={cn("h-1.5 w-full bg-gradient-to-r", cover.grad)} />
                 <div className="p-5">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground mb-4">
@@ -442,7 +442,7 @@ export default async function PortfolioDetailPage({
               </div>
 
               {/* CTA card */}
-              <div className="rounded-2xl border border-indigo-200 dark:border-indigo-800/40 bg-gradient-to-br from-indigo-50/80 to-violet-50/40 dark:from-indigo-950/30 dark:to-violet-950/20 p-5">
+              <div className="rounded-lg border border-indigo-200 dark:border-indigo-800/40 bg-gradient-to-br from-indigo-50/80 to-violet-50/40 dark:from-indigo-950/30 dark:to-violet-950/20 p-5">
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 shadow-sm mb-4">
                   <ArrowRight className="h-4 w-4 text-white" />
                 </div>
@@ -459,7 +459,7 @@ export default async function PortfolioDetailPage({
               </div>
 
               {/* Related quick links */}
-              <div className="rounded-2xl border border-border bg-card p-5">
+              <div className="rounded-lg border border-border bg-card p-5">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground mb-3">
                   Also explore
                 </p>
@@ -499,13 +499,13 @@ export default async function PortfolioDetailPage({
               </Link>
             </div>
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
-              {related.map((p, i) => {
+              {related.map((p) => {
                 const relCover = COVERS[getCoverIndex(p.slug) % COVERS.length];
                 return (
                   <Link
                     key={p.id}
                     href={`/portfolio/${p.slug}`}
-                    className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(15,23,42,0.1)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.35)]"
+                    className="group overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(15,23,42,0.1)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.35)]"
                   >
                     <div className="relative h-32 overflow-hidden">
                       {p.coverImage ? (

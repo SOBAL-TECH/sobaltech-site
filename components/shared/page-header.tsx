@@ -47,7 +47,7 @@ export function PageHeader({
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-400/30 to-transparent" />
       </div>
 
-      <Container className="relative py-14 sm:py-18 lg:py-20">
+      <Container className="relative pb-14 pt-24 sm:pb-18 sm:pt-28 lg:pb-20 lg:pt-32">
         <div className="flex max-w-3xl flex-col gap-4">
           {/* Breadcrumbs */}
           {breadcrumbs && breadcrumbs.length > 0 && (

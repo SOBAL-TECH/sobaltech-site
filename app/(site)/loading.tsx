@@ -8,7 +8,7 @@ export default function SiteLoading() {
       />
 
       <div className="relative z-10 flex flex-col items-center text-center">
-        <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-slate-200/70 bg-white/70 shadow-[0_18px_50px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.05]">
+        <div className="relative flex h-16 w-16 items-center justify-center rounded-lg border border-slate-200/70 bg-white/70 shadow-[0_18px_50px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.05]">
           <div className="absolute inset-2 rounded-xl border border-indigo-300/40" />
           <div className="h-7 w-7 animate-spin rounded-full border-2 border-indigo-200 border-t-indigo-600 dark:border-indigo-400/25 dark:border-t-indigo-300" />
         </div>

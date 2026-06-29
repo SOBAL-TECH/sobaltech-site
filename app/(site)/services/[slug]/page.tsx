@@ -508,7 +508,7 @@ export default async function ServicePage({
                 <span className="text-white">{service.title}</span>
               </div>
 
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-slate-950 shadow-2xl shadow-indigo-500/20">
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-lg bg-white text-slate-950 shadow-2xl shadow-indigo-500/20">
                 <IconComponent className="h-6 w-6" />
               </div>
 
@@ -550,7 +550,7 @@ export default async function ServicePage({
               { icon: ShieldCheck, label: "Production standards", text: "Security and handoff included." },
               { icon: Clock3, label: "Clear delivery rhythm", text: "Weekly progress and tradeoffs." },
             ].map((item) => (
-              <div key={item.label} className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 backdrop-blur">
+              <div key={item.label} className="rounded-lg border border-white/10 bg-white/[0.06] p-4 backdrop-blur">
                 <div className="flex items-start gap-3">
                   <item.icon className="mt-0.5 h-4 w-4 text-cyan-300" />
                   <div>

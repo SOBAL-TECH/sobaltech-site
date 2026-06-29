@@ -138,7 +138,7 @@ export default function PrivacyPage() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-24 sm:px-6 md:pb-28 md:pt-32 lg:px-8">
           <div className="flex flex-col gap-6 max-w-3xl">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 shadow-md">
@@ -199,7 +199,7 @@ export default function PrivacyPage() {
           {/* ── Sidebar TOC ── */}
           <aside className="lg:w-64 xl:w-72 shrink-0">
             <div className="lg:sticky lg:top-24 space-y-6">
-              <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+              <div className="rounded-lg border border-border bg-card p-5 shadow-sm">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground mb-4">
                   On this page
                 </p>
@@ -231,7 +231,7 @@ export default function PrivacyPage() {
               </div>
 
               {/* Contact card */}
-              <div className="rounded-2xl border border-indigo-200 bg-indigo-50/60 dark:border-indigo-800/40 dark:bg-indigo-950/20 p-5">
+              <div className="rounded-lg border border-indigo-200 bg-indigo-50/60 dark:border-indigo-800/40 dark:bg-indigo-950/20 p-5">
                 <p className="text-sm font-semibold text-foreground mb-1.5">Privacy questions?</p>
                 <p className="text-xs text-muted-foreground leading-relaxed mb-3">
                   Contact our privacy team directly and we&rsquo;ll respond within 30 days.

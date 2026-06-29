@@ -234,12 +234,12 @@ function ServiceCard({
   return (
     <Link
       href={`/services/${service.slug}`}
-      className="group relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white p-1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,23,42,0.14)] dark:border-white/10 dark:bg-slate-950"
+      className="group relative overflow-hidden rounded-xl border border-slate-200/80 bg-white p-1 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(15,23,42,0.14)] dark:border-white/10 dark:bg-slate-950"
     >
       <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${gradient}`} />
-      <div className="relative flex min-h-[360px] flex-col rounded-[1.5rem] bg-gradient-to-b from-slate-50 to-white p-6 dark:from-white/[0.06] dark:to-transparent">
+      <div className="relative flex min-h-[360px] flex-col rounded-xl bg-gradient-to-b from-slate-50 to-white p-6 dark:from-white/[0.06] dark:to-transparent">
         <div className="flex items-start justify-between gap-4">
-          <div className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${gradient} shadow-lg shadow-indigo-500/15`}>
+          <div className={`flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br ${gradient} shadow-lg shadow-indigo-500/15`}>
             <IconComponent className="h-5 w-5 text-white" />
           </div>
           <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300">
@@ -344,7 +344,7 @@ export default async function ServicesPage() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 backdrop-blur"
+                className="rounded-lg border border-white/10 bg-white/[0.06] p-4 backdrop-blur"
               >
                 <item.icon className="h-5 w-5 text-cyan-300" />
                 <p className="mt-3 text-sm font-semibold">{item.label}</p>
@@ -376,8 +376,8 @@ export default async function ServicesPage() {
           ))}
         </div>
 
-        <section className="mt-20 overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-950 p-1 text-white shadow-[0_30px_90px_rgba(15,23,42,0.2)] dark:border-white/10">
-          <div className="relative rounded-[1.75rem] bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.35),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.22),transparent_35%)] p-8 sm:p-10">
+        <section className="mt-20 overflow-hidden rounded-xl border border-slate-200 bg-slate-950 p-1 text-white shadow-[0_30px_90px_rgba(15,23,42,0.2)] dark:border-white/10">
+          <div className="relative rounded-xl bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.35),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.22),transparent_35%)] p-8 sm:p-10">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
               <div>
                 <Badge className="mb-4 rounded-full border-white/15 bg-white/10 text-white hover:bg-white/10">

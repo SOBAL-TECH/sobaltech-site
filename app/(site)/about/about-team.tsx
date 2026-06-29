@@ -137,7 +137,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.07 }}
-      className="group relative overflow-hidden rounded-[1.5rem] border border-slate-200/70 bg-white/72 p-3 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)] dark:border-white/10 dark:bg-white/[0.045] dark:hover:border-indigo-400/25"
+      className="group relative overflow-hidden rounded-xl border border-slate-200/70 bg-white/72 p-3 shadow-sm backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)] dark:border-white/10 dark:bg-white/[0.045] dark:hover:border-indigo-400/25"
     >
       <div
         aria-hidden
@@ -145,7 +145,7 @@ function TeamCard({ member, index }: { member: TeamMember; index: number }) {
       />
 
       {/* Avatar */}
-      <div className="relative mx-auto mt-4 h-24 w-24 overflow-hidden rounded-3xl border border-white/70 bg-muted shadow-[0_18px_40px_rgba(15,23,42,0.16)] ring-4 ring-white/70 dark:border-white/10 dark:ring-white/10">
+      <div className="relative mx-auto mt-4 h-24 w-24 overflow-hidden rounded-xl border border-white/70 bg-muted shadow-[0_18px_40px_rgba(15,23,42,0.16)] ring-4 ring-white/70 dark:border-white/10 dark:ring-white/10">
         {member.avatar ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img

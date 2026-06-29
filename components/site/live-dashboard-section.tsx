@@ -101,7 +101,7 @@ export function LiveDashboardSection() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="rounded-2xl border border-border bg-card p-4 shadow-sm"
+                className="rounded-lg border border-border bg-card p-4 shadow-sm"
               >
                 <item.icon className="h-4 w-4 text-brand-500" />
                 <p className="mt-3 text-xs font-semibold text-foreground">
@@ -115,11 +115,11 @@ export function LiveDashboardSection() {
         <motion.div style={{ y: dashboardY }} className="relative">
           <motion.div
             style={{ opacity: glowOpacity }}
-            className="absolute -inset-8 rounded-[3rem] bg-gradient-to-br from-indigo-500/30 via-cyan-400/20 to-fuchsia-500/20 blur-3xl"
+            className="absolute -inset-8 rounded-xl bg-gradient-to-br from-indigo-500/30 via-cyan-400/20 to-fuchsia-500/20 blur-3xl"
           />
 
-          <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-2 shadow-[0_30px_100px_rgba(15,23,42,0.14)] dark:border-white/10 dark:bg-slate-950 dark:shadow-[0_30px_100px_rgba(0,0,0,0.45)]">
-            <div className="rounded-[1.6rem] border border-slate-200/70 bg-slate-50 dark:border-white/10 dark:bg-[#07111f]">
+          <div className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-2 shadow-[0_30px_100px_rgba(15,23,42,0.14)] dark:border-white/10 dark:bg-slate-950 dark:shadow-[0_30px_100px_rgba(0,0,0,0.45)]">
+            <div className="rounded-xl border border-slate-200/70 bg-slate-50 dark:border-white/10 dark:bg-[#07111f]">
               <div className="flex items-center gap-1.5 border-b border-slate-200 px-4 py-3 dark:border-white/10">
                 <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
@@ -168,7 +168,7 @@ export function LiveDashboardSection() {
                     {metrics.map(([label, value]) => (
                       <div
                         key={label}
-                        className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-white/[0.045]"
+                        className="rounded-lg border border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-white/[0.045]"
                       >
                         <p className="text-xl font-bold text-foreground">{value}</p>
                         <p className="mt-1 text-[11px] text-muted-foreground">{label}</p>
@@ -176,7 +176,7 @@ export function LiveDashboardSection() {
                     ))}
                   </div>
 
-                  <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-white/10 dark:bg-white/[0.035]">
+                  <div className="mt-6 overflow-hidden rounded-lg border border-slate-200 bg-white dark:border-white/10 dark:bg-white/[0.035]">
                     <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-white/10">
                       <p className="text-xs font-semibold text-foreground">Activity stream</p>
                       <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
@@ -190,7 +190,7 @@ export function LiveDashboardSection() {
                         {[...activity, ...activity].map((item, index) => (
                           <div
                             key={`${item.label}-${index}`}
-                            className="relative flex items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-3 shadow-sm dark:border-white/10 dark:bg-slate-950/70"
+                            className="relative flex items-start gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3 shadow-sm dark:border-white/10 dark:bg-slate-950/70"
                           >
                             <div className="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 text-white">
                               <item.icon className="h-4 w-4" />

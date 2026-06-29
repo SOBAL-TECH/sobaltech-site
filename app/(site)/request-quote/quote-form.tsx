@@ -96,7 +96,7 @@ function SuccessState({ name }: { name: string }) {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.45 }}
-      className="flex flex-col items-center gap-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/[0.05] py-16 px-8 text-center"
+      className="flex flex-col items-center gap-6 rounded-lg border border-emerald-500/20 bg-emerald-500/[0.05] py-16 px-8 text-center"
     >
       <div className="flex h-16 w-16 items-center justify-center rounded-full border border-emerald-500/20 bg-emerald-500/10">
         <CheckCircle2 className="h-8 w-8 text-emerald-500" />

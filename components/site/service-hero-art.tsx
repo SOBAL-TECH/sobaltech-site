@@ -95,8 +95,8 @@ export function ServiceHeroArt({ slug }: { slug: string }) {
       className="relative hidden lg:block"
     >
       <div className="absolute -inset-8 rounded-full bg-cyan-400/10 blur-3xl" />
-      <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.07] p-4 shadow-2xl shadow-black/20 backdrop-blur-xl">
-        <div className="mb-4 flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.05] px-4 py-3">
+      <div className="relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.07] p-4 shadow-2xl shadow-black/20 backdrop-blur-xl">
+        <div className="mb-4 flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.05] px-4 py-3">
           <div className="flex items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white text-slate-950">
               <Icon className="h-4 w-4" />

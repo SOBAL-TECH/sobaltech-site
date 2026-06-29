@@ -23,6 +23,8 @@ import { CTASection } from "@/components/site/cta-section";
 import { FALLBACK_PRODUCTS, getFallbackProduct } from "@/lib/products-fallbacks";
 import type { Product } from "@/types";
 
+export const dynamic = "force-dynamic";
+
 const ICON_MAP: Record<string, React.ElementType> = {
   LayoutDashboard,
   ShoppingCart,
@@ -88,20 +90,26 @@ export async function generateMetadata({
 }
 
 async function getProductData(slug: string) {
-  const [product, related] = await Promise.all([
-    prisma.product.findUnique({ where: { slug, isPublished: true } }),
-    prisma.product.findMany({
-      where: { isPublished: true, NOT: { slug } },
-      orderBy: { order: "asc" },
-      take: 3,
-    }),
-  ]);
-  const fallbackProduct = product ?? getFallbackProduct(slug);
   const fallbackRelated = FALLBACK_PRODUCTS.filter((p) => p.slug !== slug).slice(0, 3);
-  return {
-    product: fallbackProduct,
-    related: related.length > 0 ? related : fallbackRelated,
-  };
+  try {
+    const [product, related] = await Promise.all([
+      prisma.product.findUnique({ where: { slug, isPublished: true } }),
+      prisma.product.findMany({
+        where: { isPublished: true, NOT: { slug } },
+        orderBy: { order: "asc" },
+        take: 3,
+      }),
+    ]);
+    return {
+      product: product ?? getFallbackProduct(slug),
+      related: related.length > 0 ? related : fallbackRelated,
+    };
+  } catch {
+    return {
+      product: getFallbackProduct(slug),
+      related: fallbackRelated,
+    };
+  }
 }
 
 export default async function ProductPage({
@@ -117,9 +125,7 @@ export default async function ProductPage({
     const data = await getProductData(slug);
     product = data.product;
     related = data.related;
-  } catch {
-    notFound();
-  }
+  } catch {}
 
   if (!product) notFound();
 
@@ -168,7 +174,7 @@ export default async function ProductPage({
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
             <div className="max-w-3xl">
               {/* Icon */}
-              <div className={`mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${heroGradient} shadow-2xl`}>
+              <div className={`mb-6 flex h-16 w-16 items-center justify-center rounded-lg bg-gradient-to-br ${heroGradient} shadow-2xl`}>
                 <Icon className="h-8 w-8 text-white" />
               </div>
 

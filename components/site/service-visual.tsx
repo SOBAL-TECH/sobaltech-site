@@ -15,7 +15,6 @@ import {
   Server,
   ShieldCheck,
   Smartphone,
-  Sparkles,
   Terminal,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -29,8 +28,8 @@ type ServiceVisualProps = {
 function MacbookDashboard() {
   return (
     <div className="relative mx-auto w-full max-w-[560px] transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-[-1deg]">
-      <div className="rounded-t-[1.5rem] border border-white/15 bg-slate-900 p-2 shadow-2xl shadow-indigo-500/20">
-        <div className="overflow-hidden rounded-[1rem] border border-white/10 bg-slate-950">
+      <div className="rounded-t-xl border border-white/15 bg-slate-900 p-2 shadow-2xl shadow-indigo-500/20">
+        <div className="overflow-hidden rounded-lg border border-white/10 bg-slate-950">
           <div className="flex items-center gap-1.5 border-b border-white/10 bg-white/[0.04] px-4 py-3">
             <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
             <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
@@ -104,13 +103,13 @@ function MobileScreens() {
         <div
           key={phone}
           className={cn(
-            "relative w-32 rounded-[2rem] border border-white/15 bg-slate-900 p-2 shadow-2xl shadow-cyan-500/15 transition-transform duration-500",
+            "relative w-32 rounded-xl border border-white/15 bg-slate-900 p-2 shadow-2xl shadow-cyan-500/15 transition-transform duration-500",
             phone === 0
               ? "z-10 rotate-[-7deg] group-hover:-translate-x-2 group-hover:rotate-[-11deg]"
               : "-ml-8 mt-8 rotate-[8deg] group-hover:translate-x-2 group-hover:rotate-[12deg]"
           )}
         >
-          <div className="overflow-hidden rounded-[1.55rem] bg-slate-950">
+          <div className="overflow-hidden rounded-xl bg-slate-950">
             <div className="mx-auto mt-2 h-1 w-10 rounded-full bg-white/20" />
             <div className="p-3">
               <div className="mb-3 flex items-center justify-between">
@@ -138,7 +137,7 @@ function MobileScreens() {
 
 function CloudPipeline() {
   return (
-    <div className="relative mx-auto max-w-md rounded-[1.75rem] border border-white/10 bg-slate-950/80 p-5 shadow-2xl shadow-violet-500/15 transition-transform duration-500 group-hover:-translate-y-2">
+    <div className="relative mx-auto max-w-md rounded-xl border border-white/10 bg-slate-950/80 p-5 shadow-2xl shadow-violet-500/15 transition-transform duration-500 group-hover:-translate-y-2">
       <div className="absolute inset-x-8 top-1/2 h-px bg-gradient-to-r from-transparent via-cyan-300/60 to-transparent" />
       <div className="grid grid-cols-3 gap-4">
         {[
@@ -146,7 +145,7 @@ function CloudPipeline() {
           { icon: Server, label: "Build" },
           { icon: Cloud, label: "Deploy" },
         ].map((item) => (
-          <div key={item.label} className="relative rounded-2xl border border-white/10 bg-white/[0.05] p-4 text-center">
+          <div key={item.label} className="relative rounded-lg border border-white/10 bg-white/[0.05] p-4 text-center">
             <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400">
               <item.icon className="h-5 w-5 text-white" />
             </div>
@@ -154,7 +153,7 @@ function CloudPipeline() {
           </div>
         ))}
       </div>
-      <div className="mt-5 rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-4">
+      <div className="mt-5 rounded-lg border border-emerald-400/20 bg-emerald-400/10 p-4">
         <div className="flex items-center gap-2 text-sm font-semibold text-emerald-300">
           <CheckCircle2 className="h-4 w-4" />
           Production healthy
@@ -173,7 +172,7 @@ function CloudPipeline() {
 
 function DesignCanvas() {
   return (
-    <div className="relative mx-auto max-w-md rounded-[1.75rem] border border-white/10 bg-slate-950 p-4 shadow-2xl shadow-rose-500/15 transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-1">
+    <div className="relative mx-auto max-w-md rounded-xl border border-white/10 bg-slate-950 p-4 shadow-2xl shadow-rose-500/15 transition-transform duration-500 group-hover:-translate-y-2 group-hover:rotate-1">
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Palette className="h-4 w-4 text-rose-300" />
@@ -189,8 +188,8 @@ function DesignCanvas() {
             </div>
           ))}
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-          <div className="h-20 rounded-2xl bg-gradient-to-br from-rose-400 via-fuchsia-500 to-indigo-500 transition-transform duration-500 group-hover:scale-[1.03]" />
+        <div className="rounded-lg border border-white/10 bg-white/[0.04] p-4">
+          <div className="h-20 rounded-lg bg-gradient-to-br from-rose-400 via-fuchsia-500 to-indigo-500 transition-transform duration-500 group-hover:scale-[1.03]" />
           <div className="mt-4 h-3 w-32 rounded-full bg-white/20" />
           <div className="mt-2 h-2 w-40 rounded-full bg-white/10" />
           <div className="mt-5 grid grid-cols-3 gap-2">
@@ -206,7 +205,7 @@ function DesignCanvas() {
 
 function ApiConsole() {
   return (
-    <div className="relative mx-auto max-w-md overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-950 shadow-2xl shadow-emerald-500/15 transition-transform duration-500 group-hover:-translate-y-2">
+    <div className="relative mx-auto max-w-md overflow-hidden rounded-xl border border-white/10 bg-slate-950 shadow-2xl shadow-emerald-500/15 transition-transform duration-500 group-hover:-translate-y-2">
       <div className="flex items-center gap-1.5 border-b border-white/10 bg-white/[0.04] px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
         <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
@@ -217,9 +216,9 @@ function ApiConsole() {
         <p className="text-emerald-300">POST /v1/workflows</p>
         <div className="mt-4 space-y-2 text-slate-400">
           <p>{"{"}</p>
-          <p className="pl-4"><span className="text-cyan-300">"status"</span>: <span className="text-amber-200">"queued"</span>,</p>
-          <p className="pl-4"><span className="text-cyan-300">"webhook"</span>: <span className="text-amber-200">"verified"</span>,</p>
-          <p className="pl-4"><span className="text-cyan-300">"latency"</span>: <span className="text-amber-200">"42ms"</span></p>
+          <p className="pl-4"><span className="text-cyan-300">&quot;status&quot;</span>: <span className="text-amber-200">&quot;queued&quot;</span>,</p>
+          <p className="pl-4"><span className="text-cyan-300">&quot;webhook&quot;</span>: <span className="text-amber-200">&quot;verified&quot;</span>,</p>
+          <p className="pl-4"><span className="text-cyan-300">&quot;latency&quot;</span>: <span className="text-amber-200">&quot;42ms&quot;</span></p>
           <p>{"}"}</p>
         </div>
         <div className="mt-5 rounded-xl border border-emerald-400/20 bg-emerald-400/10 p-3 text-emerald-200">
@@ -233,16 +232,16 @@ function ApiConsole() {
 
 function AiWorkspace() {
   return (
-    <div className="relative mx-auto max-w-md rounded-[1.75rem] border border-white/10 bg-slate-950 p-4 shadow-2xl shadow-fuchsia-500/15 transition-transform duration-500 group-hover:-translate-y-2">
+    <div className="relative mx-auto max-w-md rounded-xl border border-white/10 bg-slate-950 p-4 shadow-2xl shadow-fuchsia-500/15 transition-transform duration-500 group-hover:-translate-y-2">
       <div className="mb-4 flex items-center gap-2">
         <Bot className="h-5 w-5 text-fuchsia-300" />
         <p className="text-sm font-semibold text-white">AI workflow</p>
       </div>
       <div className="space-y-3">
-        <div className="mr-10 rounded-2xl rounded-tl-sm bg-white/[0.07] p-3 text-xs leading-5 text-slate-300">
+        <div className="mr-10 rounded-lg rounded-tl-sm bg-white/[0.07] p-3 text-xs leading-5 text-slate-300">
           Summarize the latest support tickets and flag urgent accounts.
         </div>
-        <div className="ml-10 rounded-2xl rounded-tr-sm bg-gradient-to-br from-fuchsia-500/25 to-cyan-500/20 p-3 text-xs leading-5 text-white">
+        <div className="ml-10 rounded-lg rounded-tr-sm bg-gradient-to-br from-fuchsia-500/25 to-cyan-500/20 p-3 text-xs leading-5 text-white">
           Found 8 urgent accounts. Drafted response paths and routed 3 billing issues.
         </div>
       </div>
@@ -260,7 +259,7 @@ function AiWorkspace() {
 
 function SecurityConsole() {
   return (
-    <div className="relative mx-auto max-w-md overflow-hidden rounded-[1.75rem] border border-white/10 bg-slate-950 shadow-2xl shadow-emerald-500/15 transition-transform duration-500 group-hover:-translate-y-2">
+    <div className="relative mx-auto max-w-md overflow-hidden rounded-xl border border-white/10 bg-slate-950 shadow-2xl shadow-emerald-500/15 transition-transform duration-500 group-hover:-translate-y-2">
       <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.04] px-4 py-3">
         <div className="flex items-center gap-2">
           <ShieldCheck className="h-4 w-4 text-emerald-300" />
@@ -298,7 +297,7 @@ function SecurityConsole() {
 
 function AnalyticsWorkspace() {
   return (
-    <div className="relative mx-auto max-w-md rounded-[1.75rem] border border-white/10 bg-slate-950 p-4 shadow-2xl shadow-blue-500/15 transition-transform duration-500 group-hover:-translate-y-2">
+    <div className="relative mx-auto max-w-md rounded-xl border border-white/10 bg-slate-950 p-4 shadow-2xl shadow-blue-500/15 transition-transform duration-500 group-hover:-translate-y-2">
       <div className="mb-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <BarChart3 className="h-4 w-4 text-cyan-300" />
@@ -307,16 +306,16 @@ function AnalyticsWorkspace() {
         <Database className="h-4 w-4 text-slate-400" />
       </div>
       <div className="grid grid-cols-2 gap-3">
-        <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+        <div className="rounded-lg border border-white/10 bg-white/[0.05] p-4">
           <p className="text-2xl font-bold text-white">84%</p>
           <p className="mt-1 text-[10px] text-slate-400">workflow health</p>
         </div>
-        <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-4">
+        <div className="rounded-lg border border-white/10 bg-white/[0.05] p-4">
           <p className="text-2xl font-bold text-white">18k</p>
           <p className="mt-1 text-[10px] text-slate-400">records synced</p>
         </div>
       </div>
-      <div className="mt-4 flex h-28 items-end gap-2 rounded-2xl border border-white/10 bg-white/[0.04] p-3">
+      <div className="mt-4 flex h-28 items-end gap-2 rounded-lg border border-white/10 bg-white/[0.04] p-3">
         {[35, 48, 62, 52, 78, 88, 70, 96].map((height, i) => (
           <div
             key={i}
@@ -331,7 +330,7 @@ function AnalyticsWorkspace() {
 
 function AdvisoryBoard() {
   return (
-    <div className="relative mx-auto max-w-md rounded-[1.75rem] border border-white/10 bg-slate-950 p-5 shadow-2xl shadow-slate-500/15 transition-transform duration-500 group-hover:-translate-y-2">
+    <div className="relative mx-auto max-w-md rounded-xl border border-white/10 bg-slate-950 p-5 shadow-2xl shadow-slate-500/15 transition-transform duration-500 group-hover:-translate-y-2">
       <div className="mb-5 flex items-center gap-2">
         <BriefcaseBusiness className="h-4 w-4 text-indigo-300" />
         <p className="text-sm font-semibold text-white">Technology roadmap</p>
@@ -342,7 +341,7 @@ function AdvisoryBoard() {
           { icon: Code2, label: "Build vs buy" },
           { icon: GraduationCap, label: "Team enablement" },
         ].map((item, index) => (
-          <div key={item.label} className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.05] p-3">
+          <div key={item.label} className="flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.05] p-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400">
               <item.icon className="h-4 w-4 text-white" />
             </div>
@@ -390,9 +389,9 @@ export function ServiceVisual({ slug, className, size = "hero" }: ServiceVisualP
   return (
     <div
       className={cn(
-        "group relative isolate overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06] p-5 backdrop-blur-xl",
+        "group relative isolate overflow-hidden rounded-xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-xl",
         "before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.24),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(6,182,212,0.18),transparent_35%)]",
-        size === "card" && "rounded-[1.35rem] p-3",
+        size === "card" && "rounded-lg p-3",
         size === "wide" && "border-slate-200 bg-slate-950 p-6 dark:border-white/10",
         className
       )}

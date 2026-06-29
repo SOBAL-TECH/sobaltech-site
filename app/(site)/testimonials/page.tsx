@@ -146,7 +146,7 @@ function TestimonialCard({ t, index, large }: {
 }) {
   return (
     <div className={cn(
-      "group relative flex flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition-shadow duration-200 hover:shadow-md",
+      "group relative flex flex-col rounded-lg border border-border bg-card p-6 shadow-sm transition-shadow duration-200 hover:shadow-md",
       large && "p-7",
     )}>
       {t.isFeatured && (

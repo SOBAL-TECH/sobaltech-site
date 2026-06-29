@@ -174,7 +174,7 @@ function FeaturedPost({ post }: { post: Partial<BlogPost> }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group relative flex overflow-hidden rounded-2xl border border-border bg-card transition-all hover:shadow-glow-lg"
+      className="group relative flex overflow-hidden rounded-lg border border-border bg-card transition-all hover:shadow-glow-lg"
     >
       {/* Left: image */}
       <div className="relative hidden aspect-video w-2/5 shrink-0 overflow-hidden sm:block">

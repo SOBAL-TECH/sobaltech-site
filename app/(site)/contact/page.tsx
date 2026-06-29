@@ -144,7 +144,7 @@ export default function ContactPage() {
                 <h3 className="text-sm font-semibold text-foreground">
                   Our location
                 </h3>
-                <div className="aspect-video overflow-hidden rounded-2xl border border-border bg-muted flex items-center justify-center">
+                <div className="aspect-video overflow-hidden rounded-lg border border-border bg-muted flex items-center justify-center">
                   <div className="text-center space-y-1 p-4">
                     <MapPin className="h-8 w-8 text-muted-foreground/40 mx-auto" />
                     <p className="text-xs text-muted-foreground">
@@ -163,7 +163,7 @@ export default function ContactPage() {
               </div>
 
               {/* Quick link */}
-              <div className="rounded-2xl border border-indigo-200 bg-indigo-50/60 dark:border-indigo-800/40 dark:bg-indigo-950/30 p-5 space-y-2">
+              <div className="rounded-lg border border-indigo-200 bg-indigo-50/60 dark:border-indigo-800/40 dark:bg-indigo-950/30 p-5 space-y-2">
                 <p className="text-sm font-semibold text-foreground">
                   Need a quote instead?
                 </p>

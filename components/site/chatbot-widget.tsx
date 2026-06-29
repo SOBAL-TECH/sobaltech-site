@@ -83,11 +83,11 @@ export function ChatbotWidget() {
   return (
     <div className="fixed bottom-20 right-5 z-50 flex flex-col items-end gap-3">
       {open && (
-        <div className="w-[calc(100vw-2.5rem)] max-w-[380px] overflow-hidden rounded-3xl border border-slate-200/80 bg-white/88 shadow-[0_24px_80px_rgba(15,23,42,0.18)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
+        <div className="w-[calc(100vw-2.5rem)] max-w-[380px] overflow-hidden rounded-xl border border-slate-200/80 bg-white/88 shadow-[0_24px_80px_rgba(15,23,42,0.18)] backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/88 dark:shadow-[0_24px_80px_rgba(0,0,0,0.55)]">
           <div className="border-b border-border bg-gradient-to-br from-indigo-600 via-violet-600 to-cyan-500 p-4 text-white">
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/15 backdrop-blur">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/15 backdrop-blur">
                   <Bot className="h-5 w-5" />
                 </div>
                 <div>
@@ -117,7 +117,7 @@ export function ChatbotWidget() {
                 >
                   <div
                     className={cn(
-                      "max-w-[82%] rounded-2xl px-3.5 py-2.5 text-sm leading-6",
+                      "max-w-[82%] rounded-lg px-3.5 py-2.5 text-sm leading-6",
                       message.role === "user"
                         ? "bg-indigo-600 text-white"
                         : "border border-border bg-muted/60 text-foreground"
@@ -130,7 +130,7 @@ export function ChatbotWidget() {
 
               {isPending && (
                 <div className="flex justify-start">
-                  <div className="flex items-center gap-2 rounded-2xl border border-border bg-muted/60 px-3.5 py-2.5 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2 rounded-lg border border-border bg-muted/60 px-3.5 py-2.5 text-sm text-muted-foreground">
                     <Loader2 className="h-3.5 w-3.5 animate-spin" />
                     Thinking…
                   </div>
