@@ -101,7 +101,7 @@ const FAQS = [
   {
     category: "pricing",
     q: "What currency do you invoice in?",
-    a: "We invoice in Ghanaian Cedis (₵) by default. For international clients, we can invoice in USD or GBP by prior agreement.",
+    a: "We invoice in Ghanaian Cedis (₵). All prices, proposals, and payments are in cedis.",
   },
 
   // Technical
